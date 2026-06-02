@@ -270,11 +270,66 @@ function checkPrimeNum() {
       count++;
     }
   }
-  if(count === 2){
-    console.log("prime number")
-  }
-  else{
-    console.log("not prime")
+  if (count === 2) {
+    console.log("prime number");
+  } else {
+    console.log("not prime");
   }
 }
 // checkPrimeNum();
+
+// 8. calculate power of a number.
+
+function calculatePower() {
+  let power = 3;
+  let n = 2;
+  let result = 1;
+
+  for (let i = 1; i <= power; i++) {
+    result *= n;
+  }
+  console.log(result);
+}
+// calculatePower()
+
+// 9. check if a number is a strong.
+
+function checkStrongNum() {
+  let n = 140;
+  let sum = 0;
+  let nCopy = n;
+
+  while (n > 0) {
+    let rem = n % 10;
+    n = Math.floor(n / 10);
+    let fact = 1;
+
+    for (let i = 1; i <= rem; i++) {
+      fact *= i;
+    }
+    sum += fact;
+  }
+
+  if (nCopy == sum) {
+    console.log(`${nCopy} is strong number`);
+  } else {
+    console.log(`${nCopy} is not strong number`);
+  }
+}
+
+// checkStrongNum();
+
+
+// 10. Reverse integer. (Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.)
+
+function reverseInteger(){
+    let n = 1234;
+    let rev = 0
+    while(n>0){
+      let rem = n % 10;
+       rev = (rev * 10) + rem;
+      n = Math.floor(n/10)
+    }
+    console.log(rev)
+}
+// reverseInteger()
