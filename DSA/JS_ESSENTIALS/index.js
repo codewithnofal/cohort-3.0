@@ -473,3 +473,10 @@ function checkNeonNum(){
     sum == n ? console.log("Neon number") : console.log("not neon number")
 }
 // checkNeonNum()
+
+
+
+
+
+
+// *****************************************************  PATTERN PROGRAMING   *********************************************************
