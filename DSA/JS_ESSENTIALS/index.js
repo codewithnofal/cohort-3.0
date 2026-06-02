@@ -178,5 +178,103 @@ function findGreatestOfthreeNumbers() {
 // let ans = findGreatestOfthreeNumbers();
 // console.log(ans);
 
+// *****************************************************  LOOPS QUESTIONS   *********************************************************
 
+// 1. Print natural numbers from1 to n.
 
+function print1ton() {
+  let n = 10;
+  for (let i = 1; i <= n; i++) {
+    console.log(i);
+  }
+}
+// print1ton()
+
+// 2. print natural numbers from n to 1.
+
+function printnto1() {
+  let n = 10;
+  for (let i = n; i >= 0; i--) {
+    console.log(i);
+  }
+}
+// printnto1()
+
+// 3. Sum up to n terms.
+
+function sumUpToNterms() {
+  let n = 5;
+  let sum = 0;
+
+  for (let i = 1; i <= n; i++) {
+    sum += i;
+  }
+  console.log(sum);
+}
+// sumUpToNterms()
+
+// 4. factorial of a number.
+
+function factorialOfNumbers() {
+  let n = 5;
+  let fact = 1;
+
+  for (let i = 1; i <= n; i++) {
+    fact *= i;
+  }
+  console.log(fact);
+}
+// factorialOfNumbers();
+
+// 5. print all factors of a number.
+
+function printFactorsOfNum() {
+  let n = 12;
+
+  for (let i = 1; i <= n / 2; i++) {
+    if (n % i === 0) {
+      process.stdout.write(i + " ");
+    }
+  }
+  console.log(n);
+}
+// printFactorsOfNum()
+
+// 6. sum of even and odd number in a range.(start to end )
+
+function sumOfEvenAndOdd() {
+  let start = 5;
+  let end = 15;
+  let sumOfEven = 0,
+    sumOfOdd = 0;
+
+  for (let i = start; i <= end; i++) {
+    if (i % 2 === 0) {
+      sumOfEven += i;
+    } else {
+      sumOfOdd += i;
+    }
+  }
+  console.log("sum of even : " + sumOfEven);
+  console.log("sum of odd : " + sumOfOdd);
+}
+// sumOfEvenAndOdd()
+
+// 7. check if a number is prime.
+
+function checkPrimeNum() {
+  let n = 9;
+  let count = 0;
+  for (let i = 1; i <= n; i++) {
+    if (n % i === 0) {
+      count++;
+    }
+  }
+  if(count === 2){
+    console.log("prime number")
+  }
+  else{
+    console.log("not prime")
+  }
+}
+// checkPrimeNum();
