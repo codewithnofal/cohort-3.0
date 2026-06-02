@@ -319,17 +319,66 @@ function checkStrongNum() {
 
 // checkStrongNum();
 
-
 // 10. Reverse integer. (Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.)
 
-function reverseInteger(){
-    let n = 1234;
-    let rev = 0
-    while(n>0){
-      let rem = n % 10;
-       rev = (rev * 10) + rem;
-      n = Math.floor(n/10)
-    }
-    console.log(rev)
+function reverseInteger() {
+  let n = 1234;
+  let rev = 0;
+  while (n > 0) {
+    let rem = n % 10;
+    rev = rev * 10 + rem;
+    n = Math.floor(n / 10);
+  }
+  console.log(rev);
 }
+
 // reverseInteger()
+
+// 11. sum of digits of a number.
+
+function SumOfDigit() {
+  let n = 12345;
+  let sum = 0;
+  while (n > 0) {
+    let rem = n % 10;
+    n = Math.floor(n / 10);
+    sum += rem;
+  }
+  console.log(sum);
+}
+
+// SumOfDigit();
+
+// 12. check if a number is automorphic.
+
+function checkNumIsAutomorphic() {
+  let n = 7;
+  let square = n * n;
+  let nCopy = n;
+  let count = 0;
+
+  while (n > 0) {
+    count++;
+    n = Math.floor(n / 10);
+  }
+
+  let divisor = 1;
+  for (let i = 1; i <= count; i++) {
+    divisor *= 10;
+  }
+
+  let digits = square % divisor;
+  console.log(digits);
+
+  if(digits == nCopy){
+    console.log(`${nCopy} is automorphic number`)
+  }
+  else{
+    console.log(`${nCopy} is Not automorphic number`)
+  }
+}
+// checkNumIsAutomorphic();
+
+
+// 14. Harshad number check.
+
