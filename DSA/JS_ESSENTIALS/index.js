@@ -370,15 +370,106 @@ function checkNumIsAutomorphic() {
   let digits = square % divisor;
   console.log(digits);
 
-  if(digits == nCopy){
-    console.log(`${nCopy} is automorphic number`)
-  }
-  else{
-    console.log(`${nCopy} is Not automorphic number`)
+  if (digits == nCopy) {
+    console.log(`${nCopy} is automorphic number`);
+  } else {
+    console.log(`${nCopy} is Not automorphic number`);
   }
 }
 // checkNumIsAutomorphic();
 
-
 // 14. Harshad number check.
 
+function checkHarshadNum() {
+  let n = 19;
+  let nCopy = n;
+  let sum = 0;
+  while (n > 0) {
+    let rem = n % 10;
+    n = Math.floor(n / 10);
+    sum += rem;
+  }
+
+  nCopy % sum === 0
+    ? console.log("harshad number")
+    : console.log("not harshad number");
+}
+// checkHarshadNum();
+
+// 15. abundant number checker.
+
+function checkAbundantNum() {
+  let n = 12;
+  let nCopy = n;
+  let sum = 0;
+  for (let i = 1; i <= n / 2; i++) {
+    if (n % i === 0) {
+      sum += i;
+    }
+  }
+
+  if (sum > nCopy) {
+    console.log("abundunt");
+  } else {
+    console.log("not abundant");
+  }
+}
+// checkAbundantNum()
+
+// 16. finding prime factors of a numbers
+
+function primeFactorsOfNum() {
+  let n = 12;
+
+  for (let i = 2; i <= n; i++) {
+    while (n % i === 0) {
+      console.log(i);
+      n = n / i;
+    }
+  }
+}
+// primeFactorsOfNum();
+
+// 17. armstrong number checker.
+
+function checkArmstrongNum() {
+  let n = 144;
+  let count = 0;
+  let temp = n;
+
+  // count digits of n
+  while (temp > 0) {
+    count++;
+    temp = Math.floor(temp / 10);
+  }
+
+  temp = n;
+  let sum = 0;
+
+  while (temp > 0) {
+    let digit = temp % 10;
+    temp = Math.floor(temp / 10);
+    sum += digit ** count;
+  }
+  sum === n
+    ? console.log("Armstrong number")
+    : console.log("not Armstrong number");
+}
+// checkArmstrongNum();
+
+
+// 18. check if a number is a neon number.
+
+function checkNeonNum(){
+    let n = 12;
+    let square = n * n;
+    let sum = 0
+
+    while(square>0){
+      let digits = square % 10;
+      square = Math.floor(square/10);
+      sum+=digits
+    }
+    sum == n ? console.log("Neon number") : console.log("not neon number")
+}
+// checkNeonNum()
