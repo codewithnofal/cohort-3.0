@@ -510,16 +510,32 @@ function mirroredRightTriangle() {
 
   for (let i = 1; i <= n; i++) {
     let row = "";
-    for (let j = 1+i; j <= n; j++) {
+    for (let j = 1 + i; j <= n; j++) {
       row += "  ";
     }
-    for(let k=1; k<=i; k++){
-      row+="* "
+    for (let k = 1; k <= i; k++) {
+      row += "* ";
     }
     console.log(row);
   }
 }
-mirroredRightTriangle()
-
+// mirroredRightTriangle();
 
 // 4. Print an X- shape Pattern.
+
+function xShapePattern() {
+  let n = 5;
+  for (let i = 0; i < n; i++) {
+    let row = "";
+    for (let j = 0; j < n; j++) {
+      if (i === j || i+j === n-1) {
+        row += "*";
+      }
+      else{
+        row+=" "
+      }
+    }
+    console.log(row);
+  }
+}
+xShapePattern();
