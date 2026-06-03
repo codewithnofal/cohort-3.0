@@ -457,26 +457,69 @@ function checkArmstrongNum() {
 }
 // checkArmstrongNum();
 
-
 // 18. check if a number is a neon number.
 
-function checkNeonNum(){
-    let n = 12;
-    let square = n * n;
-    let sum = 0
+function checkNeonNum() {
+  let n = 12;
+  let square = n * n;
+  let sum = 0;
 
-    while(square>0){
-      let digits = square % 10;
-      square = Math.floor(square/10);
-      sum+=digits
-    }
-    sum == n ? console.log("Neon number") : console.log("not neon number")
+  while (square > 0) {
+    let digits = square % 10;
+    square = Math.floor(square / 10);
+    sum += digits;
+  }
+  sum == n ? console.log("Neon number") : console.log("not neon number");
 }
 // checkNeonNum()
 
-
-
-
-
-
 // *****************************************************  PATTERN PROGRAMING   *********************************************************
+
+// 1. Right triangle - star pattern.
+
+function rightTriangle() {
+  let n = 5;
+  for (let i = 1; i <= n; i++) {
+    let row = "";
+    for (let j = 1; j <= i; j++) {
+      row += " *";
+    }
+    console.log(row);
+  }
+}
+// rightTriangle();
+
+// 2. inverted right triangle -  star pattern.
+
+function invertedRightTriangle() {
+  let n = 5;
+  for (let i = 1; i <= n; i++) {
+    let row = "";
+    for (let j = i; j <= n; j++) {
+      row += " *";
+    }
+    console.log(row);
+  }
+}
+// invertedRightTriangle();
+
+// 3. Mirrored right triangle - star pattern.
+
+function mirroredRightTriangle() {
+  let n = 5;
+
+  for (let i = 1; i <= n; i++) {
+    let row = "";
+    for (let j = 1+i; j <= n; j++) {
+      row += "  ";
+    }
+    for(let k=1; k<=i; k++){
+      row+="* "
+    }
+    console.log(row);
+  }
+}
+mirroredRightTriangle()
+
+
+// 4. Print an X- shape Pattern.
