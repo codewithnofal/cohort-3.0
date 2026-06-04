@@ -672,4 +672,17 @@ function removeElements(){
     let arr2 = arr.slice(0, x)
     console.log(arr2)
 }
-removeElements()
+// removeElements()
+
+function reverseString(){
+    let str = ["h","e","l","l","o"];
+    let half = str.length / 2
+
+    for(let i = 0; i<half; i++){
+      let temp = str[i];
+      str[i] = str[str.length -1 -i]
+      str[str.length-1-i] = temp
+    }
+    console.log(str)
+}
+reverseString()
