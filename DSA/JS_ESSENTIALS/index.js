@@ -598,11 +598,29 @@ function countNegativeNum() {
   let arr = [-1, 3, -2, 4, 6, 0, -4, -7];
   let count = 0;
 
-  for(let i = 0; i<arr.length; i++){
-    if(arr[i] < 0){
-      count++
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < 0) {
+      count++;
     }
   }
-  console.log(count)
+  console.log(count);
 }
 // countNegativeNum()
+
+// 4. Find Smallest Number in an Array.
+
+function findSmallestNum() {
+  let arr = [32, 5, 324, 5, 245, 6, 34, 6, 3, 8];
+
+  let smallestNum = Infinity;
+
+  for(let i = 0; i<arr.length; i++){
+    if(arr[i] < smallestNum){
+      smallestNum = arr[i]
+    }
+  }
+  console.log(smallestNum)
+}
+// findSmallestNum();
+
+
