@@ -655,3 +655,21 @@ function removeDuplicates() {
   console.log(arr2);
 }
 // removeDuplicates();
+
+
+// 7. Remove Element.
+
+function removeElements(){
+    let arr = [1,3,4,2,4,3,5,3];
+    let x = 0
+    let val = 3
+    for(let i = 0; i<arr.length; i++){
+        if(arr[i] !== val){
+            arr[x] = arr[i];
+            x++
+        }
+    }
+    let arr2 = arr.slice(0, x)
+    console.log(arr2)
+}
+removeElements()
