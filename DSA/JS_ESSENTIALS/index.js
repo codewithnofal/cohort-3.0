@@ -528,14 +528,31 @@ function xShapePattern() {
   for (let i = 0; i < n; i++) {
     let row = "";
     for (let j = 0; j < n; j++) {
-      if (i === j || i+j === n-1) {
+      if (i === j || i + j === n - 1) {
         row += "*";
-      }
-      else{
-        row+=" "
+      } else {
+        row += " ";
       }
     }
     console.log(row);
   }
 }
-xShapePattern();
+// xShapePattern();
+
+// 5. Print an V - shape Pattern.
+
+function vShapePattern() {
+  let n = 5;
+  for (let i = 0; i < n; i++) {
+    let row = " ";
+    for (let j = 0; j < n*2; j++) {
+      if (i === j || i + j === n * 2 - 1) {
+        row += "*";
+      } else {
+        row += " ";
+      }
+    }
+    console.log(row);
+  }
+}
+// vShapePattern();
