@@ -571,3 +571,25 @@ function calcSumAndMeanOfArry() {
   console.log("sum =", sum, "mean = ", mean);
 }
 // calcSumAndMeanOfArry();
+
+
+// 2. Second Largest.
+
+function secondLargrst(){
+    let arr = [10,36,21,0,54,27];
+
+    let Largest = -Infinity;
+    let secondLargest = -Infinity;
+
+    for(let i=0; i<arr.length; i++){
+      if(arr[i] > Largest){
+        secondLargest = Largest
+        Largest = arr[i]
+      }
+      else if(arr[i] > secondLargest){
+        secondLargest = arr[i]
+      }
+    }
+    console.log(secondLargest)
+}
+// secondLargrst()
