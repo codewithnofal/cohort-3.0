@@ -545,7 +545,7 @@ function vShapePattern() {
   let n = 5;
   for (let i = 0; i < n; i++) {
     let row = " ";
-    for (let j = 0; j < n*2; j++) {
+    for (let j = 0; j < n * 2; j++) {
       if (i === j || i + j === n * 2 - 1) {
         row += "*";
       } else {
@@ -557,7 +557,17 @@ function vShapePattern() {
 }
 // vShapePattern();
 
-
-
 // *****************************************************  ARRAYS QUESTIONS   *********************************************************
 
+// 1. Calculates sum and mean of array elements.
+
+function calcSumAndMeanOfArry() {
+  let arr = [1, 2, 3, 4, 5];
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  let mean = sum / arr.length;
+  console.log("sum =", sum, "mean = ", mean);
+}
+// calcSumAndMeanOfArry();
