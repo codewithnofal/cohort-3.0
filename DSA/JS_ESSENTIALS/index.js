@@ -614,13 +614,44 @@ function findSmallestNum() {
 
   let smallestNum = Infinity;
 
-  for(let i = 0; i<arr.length; i++){
-    if(arr[i] < smallestNum){
-      smallestNum = arr[i]
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < smallestNum) {
+      smallestNum = arr[i];
     }
   }
-  console.log(smallestNum)
+  console.log(smallestNum);
 }
 // findSmallestNum();
 
+// 5. Find Largest Number in an Array.
 
+function findLargestNum() {
+  let arr = [32, 5, 324, 5, 245, 6, 34, 6, 3, 8];
+
+  let LargestNum = -Infinity;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > LargestNum) {
+      LargestNum = arr[i];
+    }
+  }
+  console.log(LargestNum);
+}
+// findLargestNum()
+
+// 6. Remove Duplicates from Sorted Array.
+
+function removeDuplicates() {
+  let arr = [0, 1, 1, 1, 2, 3, 4, 4, 4, 5];
+
+  let x = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > arr[x]) {
+      x++;
+      arr[x] = arr[i];
+    }
+  }
+  let arr2 = arr.slice(0, x + 1);
+  console.log(arr2);
+}
+// removeDuplicates();
