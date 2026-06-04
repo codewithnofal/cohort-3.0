@@ -572,24 +572,37 @@ function calcSumAndMeanOfArry() {
 }
 // calcSumAndMeanOfArry();
 
-
 // 2. Second Largest.
 
-function secondLargrst(){
-    let arr = [10,36,21,0,54,27];
+function secondLargrst() {
+  let arr = [10, 36, 21, 0, 54, 27];
 
-    let Largest = -Infinity;
-    let secondLargest = -Infinity;
+  let Largest = -Infinity;
+  let secondLargest = -Infinity;
 
-    for(let i=0; i<arr.length; i++){
-      if(arr[i] > Largest){
-        secondLargest = Largest
-        Largest = arr[i]
-      }
-      else if(arr[i] > secondLargest){
-        secondLargest = arr[i]
-      }
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > Largest) {
+      secondLargest = Largest;
+      Largest = arr[i];
+    } else if (arr[i] > secondLargest) {
+      secondLargest = arr[i];
     }
-    console.log(secondLargest)
+  }
+  console.log(secondLargest);
 }
 // secondLargrst()
+
+// 3. Count Negative Numbers in an Array.
+
+function countNegativeNum() {
+  let arr = [-1, 3, -2, 4, 6, 0, -4, -7];
+  let count = 0;
+
+  for(let i = 0; i<arr.length; i++){
+    if(arr[i] < 0){
+      count++
+    }
+  }
+  console.log(count)
+}
+// countNegativeNum()
