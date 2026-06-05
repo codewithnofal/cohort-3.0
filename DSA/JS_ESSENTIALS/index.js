@@ -656,33 +656,60 @@ function removeDuplicates() {
 }
 // removeDuplicates();
 
-
 // 7. Remove Element.
 
-function removeElements(){
-    let arr = [1,3,4,2,4,3,5,3];
-    let x = 0
-    let val = 3
-    for(let i = 0; i<arr.length; i++){
-        if(arr[i] !== val){
-            arr[x] = arr[i];
-            x++
-        }
+function removeElements() {
+  let arr = [1, 3, 4, 2, 4, 3, 5, 3];
+  let x = 0;
+  let val = 3;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== val) {
+      arr[x] = arr[i];
+      x++;
     }
-    let arr2 = arr.slice(0, x)
-    console.log(arr2)
+  }
+  let arr2 = arr.slice(0, x);
+  console.log(arr2);
 }
 // removeElements()
 
-function reverseString(){
-    let str = ["h","e","l","l","o"];
-    let half = str.length / 2
+// 8. reverse sting.
 
-    for(let i = 0; i<half; i++){
-      let temp = str[i];
-      str[i] = str[str.length -1 -i]
-      str[str.length-1-i] = temp
-    }
-    console.log(str)
+function reverseString() {
+  let str = ["h", "e", "l", "l", "o"];
+  let half = str.length / 2;
+
+  for (let i = 0; i < half; i++) {
+    let temp = str[i];
+    str[i] = str[str.length - 1 - i];
+    str[str.length - 1 - i] = temp;
+  }
+  console.log(str);
 }
-reverseString()
+// reverseString()
+
+// 9. Merge Sorted Array.
+
+function mergeSortedArray() {
+  let nums1 = [];
+  let nums2 = [1];
+  let p1 = 0;
+  let p2 = 0;
+
+  let m = 0;
+  let n = 1;
+
+  let numsCopy = new Array(m + n);
+
+  for (let i = 0; i < m + n; i++) {
+    if (p2 >= n || (p1 < m && nums1[p1] < nums2[p2])) {
+      numsCopy[i] = nums1[p1];
+      p1++;
+    } else {
+      numsCopy[i] = nums2[p2];
+      p2++;
+    }
+  }
+  console.log(numsCopy);
+}
+mergeSortedArray();
