@@ -712,4 +712,4 @@ function mergeSortedArray() {
   }
   console.log(numsCopy);
 }
-mergeSortedArray();
+// mergeSortedArray();
