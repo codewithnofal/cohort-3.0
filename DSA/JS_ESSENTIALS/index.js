@@ -725,17 +725,35 @@ function mergeSortedArraywithoutExtraSpace() {
   let p1 = m - 1;
   let p2 = n - 1;
 
-  for(let i=m+n-1; i>=0; i--){
-    if(p2 < 0) break;
-    if(p1 >=0 && nums1[p1] > nums2[p2]){
-      nums1[i] = nums1[p1]
-      p1--
-    }
-    else{
-      nums1[i] = nums2[p2]
-      p2--
+  for (let i = m + n - 1; i >= 0; i--) {
+    if (p2 < 0) break;
+    if (p1 >= 0 && nums1[p1] > nums2[p2]) {
+      nums1[i] = nums1[p1];
+      p1--;
+    } else {
+      nums1[i] = nums2[p2];
+      p2--;
     }
   }
-  console.log(nums1)
+  console.log(nums1);
 }
-mergeSortedArraywithoutExtraSpace();
+// mergeSortedArraywithoutExtraSpace();
+
+// 10. best time to buy and sell stock.
+
+function bestTimeToBuyAndSellStock() {
+  let prices = [7, 1, 5, 3, 6, 4];
+  let min = prices[0];
+  let maxProfit = 0;
+
+  for (let i = 0; i < prices.length; i++) {
+    if (prices[i] < min) {
+      min = prices[i];
+    }
+    if (prices[i] - min > maxProfit) {
+      maxProfit = prices[i] - min;
+    }
+  }
+  console.log(maxProfit);
+}
+bestTimeToBuyAndSellStock();
