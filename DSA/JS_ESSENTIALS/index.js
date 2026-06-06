@@ -690,7 +690,7 @@ function reverseString() {
 
 // 9. Merge Sorted Array.
 
-function mergeSortedArray() {
+function mergeSortedArraywithextraSpace() {
   let nums1 = [];
   let nums2 = [1];
   let p1 = 0;
