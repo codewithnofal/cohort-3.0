@@ -1,4 +1,4 @@
-// 1.
+// 1. Find Expensive Products.
 
 function findPrimiumProducts() {
   let prices = [100, 250, 500, 150, 700];
@@ -8,7 +8,7 @@ function findPrimiumProducts() {
 }
 // findPrimiumProducts();
 
-// 2.
+// 2. Student Average.
 
 function findTotalAndEverage() {
   let marks = [80, 90, 70, 85, 95];
@@ -24,7 +24,7 @@ function findTotalAndEverage() {
 
 // 3.
 
-function mostFrequencyCount() {
+function mostFrequentCount() {
   let nums = [1, 2, 3, 2, 4, 2, 5, 1, 1, 1];
 
   let count = {};
@@ -51,4 +51,17 @@ function mostFrequencyCount() {
   }
   console.log(mostFrequent);
 }
-// mostFrequencyCount();
+// mostFrequentCount();
+
+
+// 4. Update User Age.
+
+function updateUSerAge() {
+  let user = {
+    name: "Nofal",
+    age: 22,
+  };
+  user.age = 24;
+  console.log(user);
+}
+// updateUSerAge()
