@@ -88,34 +88,55 @@ function highestPaidEmployee() {
     ritik: 50000,
     priya: 45000,
   };
-  let highestPaidemp = 0
+  let highestPaidemp = 0;
   let name;
-  for(let key in employees){
-    if(employees[key] > highestPaidemp){
-      highestPaidemp = employees[key]
-      name = key
+  for (let key in employees) {
+    if (employees[key] > highestPaidemp) {
+      highestPaidemp = employees[key];
+      name = key;
     }
   }
-  console.log(highestPaidemp)
-  console.log(name)
+  console.log(highestPaidemp);
+  console.log(name);
 }
 // highestPaidEmployee();
 
 // 7. Greeting Function.
 
-function greet(name){
-  console.log("hello", name)
+function greet(name) {
+  console.log("hello", name);
 }
-greet("Nofal")
-
+greet("Nofal");
 
 // 8. Discount Calculator
 
-function calculateDiscount(price){
-    let Discount = (price* 10) / 100
-    let finalAmount = price - Discount
-    console.log(finalAmount)
+function calculateDiscount(price) {
+  let Discount = (price * 10) / 100;
+  let finalAmount = price - Discount;
+  console.log(finalAmount);
 }
-calculateDiscount(500)
+// calculateDiscount(500);
 
 // 9. Dynamic Sum Function
+
+function dynamicSum(...numbers) {
+  let sum = numbers.reduce((acc, val) => {
+    return (acc += val);
+  }, 0);
+  console.log(sum);
+}
+dynamicSum(1, 2, 3, 4, 5);
+
+// 10. Find Adult Users.
+
+let users = [
+  { name: "Ritik", age: 20 },
+  { name: "Aman", age: 16 },
+  { name: "Priya", age: 25 },
+];
+
+function getAdults(users) {
+  let adultUser = users.filter((user) => user.age >= 18);
+  console.log(adultUser);
+}
+// getAdults(users);
