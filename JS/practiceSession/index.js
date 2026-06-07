@@ -117,3 +117,5 @@ function calculateDiscount(price){
     console.log(finalAmount)
 }
 calculateDiscount(500)
+
+// 9. Dynamic Sum Function
