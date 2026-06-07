@@ -106,7 +106,7 @@ function highestPaidEmployee() {
 function greet(name) {
   console.log("hello", name);
 }
-greet("Nofal");
+// greet("Nofal");
 
 // 8. Discount Calculator
 
@@ -125,7 +125,7 @@ function dynamicSum(...numbers) {
   }, 0);
   console.log(sum);
 }
-dynamicSum(1, 2, 3, 4, 5);
+// dynamicSum(1, 2, 3, 4, 5);
 
 // 10. Find Adult Users.
 
@@ -140,3 +140,21 @@ function getAdults(users) {
   console.log(adultUser);
 }
 // getAdults(users);
+
+
+// 11. Shopping Cart Total.
+
+let cart= [
+{ name:"Mouse", price:500, qty:2 },
+{ name:"Keyboard", price:1000, qty:1 },
+{ name:"Monitor", price:10000, qty:1 }
+];
+
+function getCartTotal(cart){
+ let total = cart.reduce((acc,val) => {
+     return acc+= val.price * val.qty
+  },0)
+  console.log(total)
+}
+// getCartTotal(cart)
+
