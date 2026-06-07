@@ -107,3 +107,13 @@ function greet(name){
   console.log("hello", name)
 }
 greet("Nofal")
+
+
+// 8. Discount Calculator
+
+function calculateDiscount(price){
+    let Discount = (price* 10) / 100
+    let finalAmount = price - Discount
+    console.log(finalAmount)
+}
+calculateDiscount(500)
