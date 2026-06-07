@@ -53,7 +53,6 @@ function mostFrequentCount() {
 }
 // mostFrequentCount();
 
-
 // 4. Update User Age.
 
 function updateUSerAge() {
@@ -65,3 +64,39 @@ function updateUSerAge() {
   console.log(user);
 }
 // updateUSerAge()
+
+// 5. Print User Information.
+
+function printUserInformation() {
+  let user = {
+    name: "Ritik",
+    age: 20,
+    city: "Bhopal",
+  };
+
+  for (let key in user) {
+    console.log(`${key} : ${user[key]}`);
+  }
+}
+// printUserInformation();
+
+// 6. Highest Paid Employee.
+
+function highestPaidEmployee() {
+  let employees = {
+    aman: 25000,
+    ritik: 50000,
+    priya: 45000,
+  };
+  let highestPaidemp = 0
+  let name;
+  for(let key in employees){
+    if(employees[key] > highestPaidemp){
+      highestPaidemp = employees[key]
+      name = key
+    }
+  }
+  console.log(highestPaidemp)
+  console.log(name)
+}
+// highestPaidEmployee();
