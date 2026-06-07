@@ -100,3 +100,10 @@ function highestPaidEmployee() {
   console.log(name)
 }
 // highestPaidEmployee();
+
+// 7. Greeting Function.
+
+function greet(name){
+  console.log("hello", name)
+}
+greet("Nofal")
