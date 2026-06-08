@@ -51,12 +51,27 @@
 
 // 6.
 
-const products = [
-  { id: 1, name: "iPhone" },
-  { id: 2, name: "Samsung" },
-  { id: 3, name: "OnePlus" },
-];
+// const products = [
+//   { id: 1, name: "iPhone" },
+//   { id: 2, name: "Samsung" },
+//   { id: 3, name: "OnePlus" },
+// ];
 
-let findPhone = products.find((p) => p.name === "OnePlus");
+// let findPhone = products.find((p) => p.name === "OnePlus");
 
-console.log(findPhone)
+// console.log(findPhone)
+
+// 7.
+// const prices = [100, 200, 300, 400];
+
+// let total = prices.reduce((acc, val) => acc + val, 0);
+// console.log(total)
+
+// 8.
+// const cart = [{ price: 1000 }, { price: 2000 }, { price: 3000 }];
+
+// let total = cart.reduce((acc, val) => {
+//   return (acc += val.price);
+// }, 0);
+
+// console.log(total);
