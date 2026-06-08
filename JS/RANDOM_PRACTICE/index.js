@@ -30,10 +30,11 @@
 
 // 4.
 
-const users = [
-  { name: "Ali", active: true },
-  { name: "Ahmed", active: false },
-  { name: "Nofil", active: true }
-];
+// const users = [
+//   { name: "Ali", active: true },
+//   { name: "Ahmed", active: false },
+//   { name: "Nofil", active: true }
+// ];
 
-let activeUsers = users.filter((u)=>u.active)
+// let activeUsers = users.filter((u)=>u.active)
+// console.log(activeUsers)
