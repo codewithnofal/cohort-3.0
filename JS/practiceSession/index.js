@@ -141,20 +141,37 @@ function getAdults(users) {
 }
 // getAdults(users);
 
-
 // 11. Shopping Cart Total.
 
-let cart= [
-{ name:"Mouse", price:500, qty:2 },
-{ name:"Keyboard", price:1000, qty:1 },
-{ name:"Monitor", price:10000, qty:1 }
+let cart = [
+  { name: "Mouse", price: 500, qty: 2 },
+  { name: "Keyboard", price: 1000, qty: 1 },
+  { name: "Monitor", price: 10000, qty: 1 },
 ];
 
-function getCartTotal(cart){
- let total = cart.reduce((acc,val) => {
-     return acc+= val.price * val.qty
-  },0)
-  console.log(total)
+function getCartTotal(cart) {
+  let total = cart.reduce((acc, val) => {
+    return (acc += val.price * val.qty);
+  }, 0);
+  console.log(total);
 }
 // getCartTotal(cart)
 
+// 12. Student Grade Report.
+
+let students = [
+  {
+    name: "Ritik",
+    marks: [80, 90, 85],
+  },
+  {
+    name: "Aman",
+    marks: [50, 40, 60],
+  },
+];
+
+function generateReport(students) {
+
+  
+}
+generateReport(students);
