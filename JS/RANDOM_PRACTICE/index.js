@@ -27,7 +27,6 @@
 // let filteredProducts = products.filter((p) => p.price > 1000);
 // console.log(filteredProducts)
 
-
 // 4.
 
 // const users = [
@@ -38,3 +37,26 @@
 
 // let activeUsers = users.filter((u)=>u.active)
 // console.log(activeUsers)
+
+// 5.
+
+// const users = [
+//   { id: 1, name: "Ali" },
+//   { id: 2, name: "Nofil" },
+//   { id: 3, name: "Ahmed" }
+// ];
+
+// let findUser = users.find((u)=>u.id === 2)
+// console.log(findUser)
+
+// 6.
+
+const products = [
+  { id: 1, name: "iPhone" },
+  { id: 2, name: "Samsung" },
+  { id: 3, name: "OnePlus" },
+];
+
+let findPhone = products.find((p) => p.name === "OnePlus");
+
+console.log(findPhone)
