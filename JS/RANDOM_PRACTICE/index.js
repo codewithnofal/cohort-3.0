@@ -91,17 +91,19 @@
 
 // console.log(user)
 
-class CreateStudens {
-  constructor(name, age, grade, city) {
-    this.name = name;
-    this.age = age;
-    this.grade = grade;
-    this.city = city;
-  }
-  greet() {
-    console.log("hello", this.name);
-  }
-}
-let st1 = new CreateStudens("Nofal", 22, "A+", "Ahmedabad");
-st1.greet()
+// class CreateStudens {
+//   constructor(name, age, grade, city) {
+//     this.name = name;
+//     this.age = age;
+//     this.grade = grade;
+//     this.city = city;
+//   }
+//   greet() {
+//     console.log("hello", this.name);
+//   }
+// }
+// let st1 = new CreateStudens("Nofal", 22, "A+", "Ahmedabad");
+// st1.greet()
+
+
 
