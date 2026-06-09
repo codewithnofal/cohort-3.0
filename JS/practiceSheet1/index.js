@@ -231,10 +231,98 @@ function bestSellingProducts() {
       pName = key;
     }
   }
-  console.log(pName)
+  console.log(pName);
 }
 // bestSellingProducts();
 
+// *******************************************  Part 2: Objects (20 Questions)  ***********************************************
 
-// *******************************************  Part 2: Objects (20 Questions)  *****************************************
+// Question 1 — Access User Name.
 
+function accessUserName() {
+  let user = {
+    name: "Ritik",
+    age: 21,
+    city: "Bhopal",
+  };
+
+  console.log(user.name);
+}
+// accessUserName();
+
+// Question 2 — Update User Age.
+
+function updateUserAge() {
+  let user = {
+    name: "Ritik",
+    age: 21,
+  };
+
+  user.age = 22;
+  console.log(user);
+}
+// updateUserAge();
+
+// Question 3 — Add Country.
+
+function addCountry() {
+  let user = {
+    name: "Ritik",
+    city: "Bhopal",
+  };
+
+  user.country = "India";
+  console.log(user);
+}
+// addCountry();
+
+// Question 4 — Delete Property.
+
+function deletePassword() {
+  let user = {
+    name: "Ritik",
+    age: 21,
+    password: "12345",
+  };
+
+  delete user.password;
+
+  console.log(user);
+}
+// deletePassword();
+
+// Question 5 — Check Property Exists.
+
+function propertyExist() {
+  let product = {
+    name: "Laptop",
+    price: 60000,
+  };
+}
+// propertyExist();
+
+// Question 6 — Print All Keys
+
+function printAllKeys() {
+  let car = {
+    brand: "BMW",
+    model: "X5",
+    year: 2025,
+  };
+
+  console.log(Object.keys(car));
+}
+// printAllKeys();
+
+// Question 7 — Print All Values.
+
+function printAllValues() {
+  let car = {
+    brand: "BMW",
+    model: "X5",
+    year: 2025,
+  };
+
+  console.log(Object.values(car))
+}
+printAllValues();
