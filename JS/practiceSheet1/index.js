@@ -446,9 +446,47 @@ function highestPaidEmployee() {
       empName = key;
     }
   }
-  console.log(empName)
+  console.log(empName);
 }
 // highestPaidEmployee();
 
-
 // Question 16 — Most Used Programming Language.
+
+function mostUsedProgramingLanguage() {
+  let votes = {
+    JavaScript: 25,
+    Python: 30,
+    Java: 15,
+    Cpp: 10,
+  };
+  let highest = 0;
+  let mostUsedLang;
+
+  for (let key in votes) {
+    if (votes[key] > highest) {
+      highest = votes[key];
+      mostUsedLang = key;
+    }
+  }
+  console.log(mostUsedLang);
+}
+// mostUsedProgramingLanguage();
+
+// Question 17 — Reverse Key Value.
+
+function reverceKeyValue() {
+  let countries = {
+    India: "Delhi",
+    Japan: "Tokyo",
+    France: "Paris",
+  };
+
+  let obj = {};
+
+  Object.entries(countries).forEach(([key, val]) => {
+    [key, val] = [val, key];
+    obj[key] = val;
+  });
+  console.log(obj);
+}
+reverceKeyValue();
