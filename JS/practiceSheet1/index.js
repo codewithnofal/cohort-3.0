@@ -323,6 +323,110 @@ function printAllValues() {
     year: 2025,
   };
 
-  console.log(Object.values(car))
+  console.log(Object.values(car));
 }
-printAllValues();
+// printAllValues();
+
+// Question 8 — Print User Information Dynamically.
+
+function printUserInfo() {
+  let user = {
+    name: "Ritik",
+    age: 21,
+    city: "Bhopal",
+  };
+
+  Object.entries(user).forEach(([key, val]) => {
+    console.log(`${key} : ${val}`);
+  });
+}
+// printUserInfo();
+
+// Question 9 — Employee Salary Increase.
+
+function employeeSalaryIncrease() {
+  let employee = {
+    name: "Aman",
+    salary: 50000,
+  };
+
+  employee.salary = employee.salary + (employee.salary * 10) / 100;
+  console.log(employee);
+}
+// employeeSalaryIncrease();
+
+// Question 10 — Nested Object Access.
+
+function nestedObject() {
+  let user = {
+    name: "Ritik",
+    address: {
+      city: "Bhopal",
+      state: "MP",
+    },
+  };
+
+  console.log(user.address.city);
+}
+// nestedObject();
+
+// Question 11 — Object Destructuring.
+
+function objectDestructuring() {
+  let student = {
+    name: "Priya",
+    age: 20,
+    course: "BCA",
+  };
+
+  let { name, age } = student;
+  console.log(name, age);
+}
+// objectDestructuring();
+
+// Question 12 — Rename During Destructuring.
+
+function renameDestructuring() {
+  let student = {
+    name: "Priya",
+    age: 20,
+  };
+
+  let { name: studentName, age: studentAge } = student;
+  console.log(studentName, studentAge);
+}
+// renameDestructuring();
+
+// Question 13 — Merge User and Address.
+
+function mergeObjects() {
+  let user = {
+    name: "Ritik",
+    age: 21,
+  };
+  let address = {
+    city: "Bhopal",
+    state: "MP",
+  };
+
+  user = { ...user, ...address };
+  console.log(user);
+}
+// mergeObjects();
+
+// Question 14 — Count Object Properties.
+
+function countObjectProperties() {
+  let user = {
+    name: "Ritik",
+    age: 21,
+    city: "Bhopal",
+    country: "India",
+  };
+
+  let length = Object.keys(user).length;
+  console.log(length)
+}
+// countObjectProperties();
+
+
