@@ -233,4 +233,8 @@ function bestSellingProducts() {
   }
   console.log(pName)
 }
-bestSellingProducts();
+// bestSellingProducts();
+
+
+// *******************************************  Part 2: Objects (20 Questions)  *****************************************
+
