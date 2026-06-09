@@ -425,8 +425,30 @@ function countObjectProperties() {
   };
 
   let length = Object.keys(user).length;
-  console.log(length)
+  console.log(length);
 }
 // countObjectProperties();
 
+// Question 15 — Highest Paid Employee.
 
+function highestPaidEmployee() {
+  let employees = {
+    aman: 25000,
+    ritik: 50000,
+    priya: 45000,
+  };
+
+  let highestSalary = 0;
+  let empName;
+  for (let key in employees) {
+    if (employees[key] > highestSalary) {
+      highestSalary = employees[key];
+      empName = key;
+    }
+  }
+  console.log(empName)
+}
+// highestPaidEmployee();
+
+
+// Question 16 — Most Used Programming Language.
