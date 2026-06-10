@@ -575,4 +575,47 @@ function productInventoryAnalyzer() {
 function greet(name) {
   console.log("Hello", name);
 }
-greet("Nofal");
+// greet("Nofal");
+
+// Question 2 — Add Two Numbers.
+
+function add(a, b) {
+  console.log(a + b);
+}
+// add(10, 20);
+
+// Question 3 — Find Square.
+
+function square(num) {
+  console.log(num * num);
+}
+// square(5)
+
+// Question 4 — Check Even Number.
+
+function isEven(num) {
+  return num % 2 === 0 ? true : false;
+}
+// let ans = isEven(8);
+// console.log(ans);
+
+// Question 5 — Default Username.
+
+function greet(name = "guest") {
+  console.log("hello", name);
+}
+// greet()
+
+// Question 6 — Celsius to Fahrenheit.
+
+function converrtTemp(Celsius) {
+  console.log((Celsius * 9.5) + 32);
+}
+// converrtTemp(32);
+
+// Question 7 — Arrow Function Practice.
+
+let multiply = (a,b) => {
+  console.log(a*b)
+}
+// multiply(2,3)
