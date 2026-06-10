@@ -609,13 +609,64 @@ function greet(name = "guest") {
 // Question 6 — Celsius to Fahrenheit.
 
 function converrtTemp(Celsius) {
-  console.log((Celsius * 9.5) + 32);
+  console.log(Celsius * 9.5 + 32);
 }
 // converrtTemp(32);
 
 // Question 7 — Arrow Function Practice.
 
-let multiply = (a,b) => {
-  console.log(a*b)
-}
+let multiply = (a, b) => {
+  console.log(a * b);
+};
 // multiply(2,3)
+
+// Question 8 — Discount Calculator.
+
+function calculateDiscount(price) {
+  let Discount = price - (price * 10) / 100;
+  console.log(Discount);
+}
+// calculateDiscount(500);
+
+// Question 9 — Largest of Three Numbers.
+
+function findLargest(a, b, c) {
+  if (a > b && a > c) {
+    console.log(a);
+  } else if (b > a && b > c) {
+    console.log(b);
+  } else {
+    console.log(c);
+  }
+}
+// findLargest(10, 50, 20);
+
+// Question 10 — Reverse String.
+
+function reverseString(str) {
+  str = str.split("");
+  let half = str.length / 2;
+  for (let i = 0; i < half; i++) {
+    let temp = str[i];
+    str[i] = str[str.length - i - 1];
+    str[str.length - i - 1] = temp;
+  }
+  return str.join("");
+}
+let ans = reverseString("hello");
+// console.log(ans);
+
+// Question 11 — Count Vowels.
+
+function countVowels(str) {
+  str = str.split("");
+  let vowels = ["a", "e", "i", "o", "u"];
+  let count = 0;
+  for (let i = 0; i < str.length; i++) {
+    if(vowels.includes(str[i])){
+      count++
+    }
+  }
+  console.log(count);
+}
+// countVowels("javascript");
