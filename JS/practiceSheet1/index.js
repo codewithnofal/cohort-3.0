@@ -663,10 +663,83 @@ function countVowels(str) {
   let vowels = ["a", "e", "i", "o", "u"];
   let count = 0;
   for (let i = 0; i < str.length; i++) {
-    if(vowels.includes(str[i])){
-      count++
+    if (vowels.includes(str[i])) {
+      count++;
     }
   }
   console.log(count);
 }
 // countVowels("javascript");
+
+// Question 12 — Generate Username.
+
+function generateUsername(name) {
+  let userName = name.toLowerCase().split(" ").join("_");
+  console.log(userName);
+}
+// generateUsername("Nofal Kachhot")
+
+// Question 13 — Dynamic Sum Function.
+
+function sum(...numbers) {
+  let total = numbers.reduce((acc, val) => acc + val, 0);
+  console.log(total);
+}
+// sum(1,2,3,4)
+
+// Question 14 — Login Validation.
+
+function login(username, password) {
+  if (username === "admin" && password === 1234) {
+    console.log("Login Successful");
+  } else {
+    console.log("Invalid Credentials");
+  }
+}
+// login("admin", 1234);
+
+// Question 15 — Factorial Function.
+
+function factorial(n) {
+  let fact = 1;
+  for (let i = 1; i <= n; i++) {
+    fact *= i;
+  }
+  console.log(fact);
+}
+// factorial(5);
+
+// Question 16 — Palindrome Checker.
+
+function isPalindrome(str) {
+  let reversedString = str.split("").reverse().join("");
+  if (str == reversedString) {
+    console.log(true);
+  } else {
+    console.log(false);
+  }
+}
+// isPalindrome("madam");
+
+// Question 17 — Password Strength Checker.
+
+function checkPassword(password){
+    if(password.length >= 8 && (/\d/.test(password)) ){
+      console.log("Strong")
+    }
+    else{
+      console.log("Weak")
+    }
+}
+// checkPassword("Nofalddd1")
+
+
+// Question 18 — Function Returning Function.
+
+function makeMultiplier(multiplier){
+    return function(num){
+        return num * 2
+    }
+}
+let double = makeMultiplier(2)
+// console.log(double(10))
