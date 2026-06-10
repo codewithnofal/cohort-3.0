@@ -566,4 +566,13 @@ function productInventoryAnalyzer() {
   let [lowest, productName] = productWithLowestestStock(inventory);
   console.log(`Product with lowest stock is ${productName} : ${lowest} `);
 }
-productInventoryAnalyzer();
+// productInventoryAnalyzer();
+
+// *******************************************  Part 3: Functions (20 Questions)  ***********************************************
+
+// Question 1 — Greeting Function.
+
+function greet(name) {
+  console.log("Hello", name);
+}
+greet("Nofal");
