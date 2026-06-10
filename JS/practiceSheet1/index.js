@@ -500,6 +500,70 @@ function studentMarksSummary() {
     english: 85,
   };
   let total = Object.values(marks).reduce((acc, val) => acc + val, 0);
-  console.log(total)
+  console.log(total);
 }
 // studentMarksSummary();
+
+// Question 19 — Find Missing Property.
+
+function FindMissingProperty() {
+  let user = {
+    name: "Ritik",
+    age: 21,
+  };
+
+  if (!("email" in user)) {
+    user.email = "Not provided";
+  }
+
+  console.log(user);
+}
+// FindMissingProperty();
+
+// Question 20 — Product Inventory Analyzer.
+
+function productInventoryAnalyzer() {
+  let inventory = {
+    mouse: 25,
+    keyboard: 10,
+    monitor: 5,
+    laptop: 2,
+  };
+
+  function totalStock(inventory) {
+    return Object.values(inventory).reduce((acc, val) => acc + val, 0);
+  }
+  let total = totalStock(inventory);
+  console.log(`Total items in stock : ${total}`);
+
+  function productWithHighestStock(inventory) {
+    let highest = 0;
+    let product;
+
+    for (let key in inventory) {
+      if (inventory[key] > highest) {
+        highest = inventory[key];
+        product = key;
+      }
+    }
+    return [product, highest];
+  }
+  let [product, highest] = productWithHighestStock(inventory);
+  console.log(`Product with highest stock is ${product} : ${highest}`);
+
+  function productWithLowestestStock(inventory) {
+    let lowest = Infinity;
+    let productName;
+
+    for (let key in inventory) {
+      if (inventory[key] < lowest) {
+        lowest = inventory[key];
+        productName = key;
+      }
+    }
+    return [lowest, productName];
+  }
+  let [lowest, productName] = productWithLowestestStock(inventory);
+  console.log(`Product with lowest stock is ${productName} : ${lowest} `);
+}
+productInventoryAnalyzer();
