@@ -489,4 +489,17 @@ function reverceKeyValue() {
   });
   console.log(obj);
 }
-reverceKeyValue();
+// reverceKeyValue();
+
+// Question 18 — Student Marks Summary.
+
+function studentMarksSummary() {
+  let marks = {
+    math: 90,
+    science: 80,
+    english: 85,
+  };
+  let total = Object.values(marks).reduce((acc, val) => acc + val, 0);
+  console.log(total)
+}
+// studentMarksSummary();
