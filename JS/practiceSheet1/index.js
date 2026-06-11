@@ -756,18 +756,105 @@ function processUser(name, callback) {
 
 // Question 20 — Shopping Bill Generator.
 
-let products = [
-  { name: "Mouse", price: 500 },
-  { name: "Keyboard", price: 1000 },
-  { name: "Monitor", price: 10000 },
-];
+// let products = [
+//   { name: "Mouse", price: 500 },
+//   { name: "Keyboard", price: 1000 },
+//   { name: "Monitor", price: 10000 },
+// ];
 
 function generateBill(items) {
   let total = items.reduce((acc, val) => acc + val.price, 0);
-  console.log(`Total : ${total}`)
+  console.log(`Total : ${total}`);
 }
 // generateBill(products);
 
-
 // *******************************************  Part 4: Arrays + Objects + Functions (20Questions)  ***************************************
+
+// Question 1 — Find Adult Users.
+
+// let users = [
+//   { name: "Ritik", age: 20 },
+//   { name: "Aman", age: 16 },
+//   { name: "Priya", age: 25 },
+// ];
+
+function getAdults(users) {
+  return users.filter((u) => u.age >= 18);
+}
+// let adultUser = getAdults(users);
+// console.log(adultUser)
+
+// Question 2 — Product Names Extractor.
+
+// let products = [
+//   { name: "Laptop", price: 50000 },
+//   { name: "Mouse", price: 500 },
+// ];
+
+function getProductNames(products) {
+  return products.map((p) => p.name);
+}
+// let pName = getProductNames(products);
+// console.log(pName)
+
+// Question 3 — Find User By Name.
+
+// let users = [{ name: "Ritik" }, { name: "Aman" }, { name: "Priya" }];
+
+function findUser(users, username) {
+  return users.find((u, i) => u.name == username);
+}
+// let user = findUser(users, "Aman");
+// console.log(user);
+
+// Question 4 — Total Marks.
+
+// let students = [
+//   { name: "Ritik", marks: 80 },
+//   { name: "Aman", marks: 90 },
+//   { name: "Priya", marks: 70 },
+// ];
+
+function getTotalMarks(students) {
+  return students.reduce((acc, val) => acc + val.marks, 0);
+}
+// let total = getTotalMarks(students);
+// console.log(total);
+
+// Question 5 — Available Products.
+
+// let products = [
+//   { name: "Mouse", stock: 10 },
+//   { name: "Keyboard", stock: 0 },
+//   { name: "Monitor", stock: 5 },
+// ];
+
+function getAvlProducts(products) {
+  return products.filter((p) => p.stock > 0);
+}
+// let avlProd = getAvlProducts(products);
+// console.log(avlProd)
+
+// Question 6 — Add New Student.
+
+// let students = ["Ritik", "Aman", "Priya"];
+function addStudent(students, student) {
+  students.push(student);
+  console.log(students);
+}
+// addStudent(students, "Nofal");
+
+// Question 7 — Count Premium Products
+
+let products = [
+  { name: "Laptop", price: 50000 },
+  { name: "Phone", price: 30000 },
+  { name: "Mouse", price: 500 },
+];
+
+function findPremiumProd(products){
+    let premiumPrd = products.filter((p)=>p.price > 10000).length
+    console.log(premiumPrd)
+}
+// findPremiumProd(products)
 
