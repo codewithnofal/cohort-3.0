@@ -723,23 +723,51 @@ function isPalindrome(str) {
 
 // Question 17 — Password Strength Checker.
 
-function checkPassword(password){
-    if(password.length >= 8 && (/\d/.test(password)) ){
-      console.log("Strong")
-    }
-    else{
-      console.log("Weak")
-    }
+function checkPassword(password) {
+  if (password.length >= 8 && /\d/.test(password)) {
+    console.log("Strong");
+  } else {
+    console.log("Weak");
+  }
 }
 // checkPassword("Nofalddd1")
 
-
 // Question 18 — Function Returning Function.
 
-function makeMultiplier(multiplier){
-    return function(num){
-        return num * 2
-    }
+function makeMultiplier(multiplier) {
+  return function (num) {
+    return num * 2;
+  };
 }
-let double = makeMultiplier(2)
+let double = makeMultiplier(2);
 // console.log(double(10))
+
+// Question 19 — Callback Function.
+
+function welcomeUser(name) {
+  console.log("welcome", name);
+}
+
+function processUser(name, callback) {
+  console.log("processing user... ");
+  callback(name);
+}
+// processUser("Nofal", welcomeUser);
+
+// Question 20 — Shopping Bill Generator.
+
+let products = [
+  { name: "Mouse", price: 500 },
+  { name: "Keyboard", price: 1000 },
+  { name: "Monitor", price: 10000 },
+];
+
+function generateBill(items) {
+  let total = items.reduce((acc, val) => acc + val.price, 0);
+  console.log(`Total : ${total}`)
+}
+// generateBill(products);
+
+
+// *******************************************  Part 4: Arrays + Objects + Functions (20Questions)  ***************************************
+
