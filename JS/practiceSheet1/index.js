@@ -957,14 +957,52 @@ function updateStock(id, quantity) {
 
 // Question 14 — Sort Students by Marks.
 
+// let students = [
+//   { name: "A", marks: 70 },
+//   { name: "B", marks: 95 },
+//   { name: "C", marks: 80 },
+// ];
+
+function sortStudents(students) {
+  students = students.sort((a, b) => b.marks - a.marks);
+  console.log(students);
+}
+// sortStudents(students)
+
+// Question 15 — Student Grade Report.
+
 let students = [
-  { name: "A", marks: 70 },
-  { name: "B", marks: 95 },
-  { name: "C", marks: 80 },
+  {
+    name: "Ritik",
+    marks: [80, 90, 85],
+  },
+  {
+    name: "Aman",
+    marks: [50, 40, 60],
+  },
 ];
 
-function sortStudents(students){
-   students = students.sort((a,b)=> b.marks - a.marks)
-    console.log(students)
+function generateReport(students) {
+  let reports = students.map((s) => {
+    let total = s.marks.reduce((acc, val) => {
+      return (acc += val);
+    }, 0);
+    let average = total / s.marks.length;
+
+    let grade;
+    if (average >= 81 && average <= 100) {
+      grade = "A";
+    } else if (average >= 61 && average <= 80) {
+      grade = "B";
+    } else if (average >= 41 && average <= 60) {
+      grade = "C";
+    } else {
+      grade = "FAIL";
+    }
+
+    return { name: s.name, average: average, grade: grade };
+  });
+  return reports;
 }
-sortStudents(students)
+let finalResult = generateReport(students);
+console.log(finalResult);
