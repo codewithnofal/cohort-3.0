@@ -942,15 +942,29 @@ function highestScoringStudents(students) {
 
 // Question 13 — Update Product Stock.
 
-let products2 = [
-  { id: 1, name: "Mouse", stock: 10 },
-  { id: 2, name: "Keyboard", stock: 0 },
-  { id: 3, name: "Monitor", stock: 5 },
-];
+// let products2 = [
+//   { id: 1, name: "Mouse", stock: 10 },
+//   { id: 2, name: "Keyboard", stock: 0 },
+//   { id: 3, name: "Monitor", stock: 5 },
+// ];
 
 function updateStock(id, quantity) {
   let prd = products2.find((p) => p.id === id);
-  prd.stock = quantity
-  console.log(products2)
+  prd.stock = quantity;
+  console.log(products2);
 }
 // updateStock(2, 6);
+
+// Question 14 — Sort Students by Marks.
+
+let students = [
+  { name: "A", marks: 70 },
+  { name: "B", marks: 95 },
+  { name: "C", marks: 80 },
+];
+
+function sortStudents(students){
+   students = students.sort((a,b)=> b.marks - a.marks)
+    console.log(students)
+}
+sortStudents(students)
