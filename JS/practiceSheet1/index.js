@@ -852,9 +852,105 @@ let products = [
   { name: "Mouse", price: 500 },
 ];
 
-function findPremiumProd(products){
-    let premiumPrd = products.filter((p)=>p.price > 10000).length
-    console.log(premiumPrd)
+function findPremiumProd(products) {
+  let premiumPrd = products.filter((p) => p.price > 10000).length;
+  console.log(premiumPrd);
 }
 // findPremiumProd(products)
 
+// Question 8 — Shopping Cart Total.
+
+// let cart = [
+//   { name: "Mouse", price: 500, qty: 2 },
+//   { name: "Keyboard", price: 1000, qty: 1 },
+//   { name: "Monitor", price: 10000, qty: 1 },
+// ];
+
+function getCartTotal(cart) {
+  return cart.reduce((acc, val) => {
+    return (acc += val.price * val.qty);
+  }, 0);
+}
+// let total = getCartTotal(cart);
+// console.log(total)
+
+// Question 9 — Student Average Generator.
+
+// let students = [
+//   { name: "Ritik", marks: [80, 90, 85] },
+//   { name: "Aman", marks: [70, 75, 80] },
+// ];
+
+function getAverageMarks(students) {
+  function average(marks) {
+    return marks.reduce((acc, val) => acc + val, 0) / marks.length;
+  }
+
+  let studentMarks = students.map((s) => {
+    return average(s.marks);
+  });
+  console.log(studentMarks);
+}
+// getAverageMarks(students)
+
+// Question 10 — Inventory Search.
+
+// let inventory = [
+//   { id: 1, name: "Laptop" },
+//   { id: 2, name: "Mouse" },
+//   { id: 3, name: "Monitor" },
+// ];
+
+function findProductById(id) {
+  return inventory.find((i) => i.id === id);
+}
+// let inv = findProductById(2)
+// console.log(inv)
+
+// Question 11 — Usernames Generator.
+
+// let users = [{ name: "Ritik Rajput" }, { name: "Aman Gupta" }];
+
+function usernameGenerator(users) {
+  return users.map((u) => {
+    return u.name.toLowerCase().split(" ").join("_");
+  });
+}
+// let userName = usernameGenerator(users);
+// console.log(userName)
+
+// Question 12 — Highest Scoring Student.
+
+// let students = [
+//   { name: "Ritik", marks: 85 },
+//   { name: "Aman", marks: 95 },
+//   { name: "Priya", marks: 75 },
+// ];
+
+function highestScoringStudents(students) {
+  let highest = 0;
+  let name;
+  for (let key in students) {
+    if (students[key].marks > highest) {
+      highest = students[key].marks;
+      name = students[key];
+    }
+  }
+  console.log(name);
+}
+// highestScoringStudents(students)
+
+// Question 13 — Update Product Stock.
+
+let products2 = [
+  { id: 1, name: "Mouse", stock: 10 },
+  { id: 2, name: "Keyboard", stock: 0 },
+  { id: 3, name: "Monitor", stock: 5 },
+];
+
+function updateStock(id, quantity) {
+  let prd = products2.find((p) => p.id === id);
+  prd.stock = quantity
+  console.log(products2)
+}
+// updateStock(2, 6);
