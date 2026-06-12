@@ -1009,18 +1009,18 @@ function generateReport(students) {
 
 // Question 16 — Product Revenue Analyzer.
 
-let products2 = [
-  {
-    name: "Mouse",
-    price: 500,
-    sold: 20,
-  },
-  {
-    name: "Keyboard",
-    price: 1000,
-    sold: 10,
-  },
-];
+// let products2 = [
+//   {
+//     name: "Mouse",
+//     price: 500,
+//     sold: 20,
+//   },
+//   {
+//     name: "Keyboard",
+//     price: 1000,
+//     sold: 10,
+//   },
+// ];
 
 function revenueAnalyzer(products) {
   let productRev = products.map((p) => {
@@ -1049,5 +1049,36 @@ function revenueAnalyzer(products) {
     bestSelling: name,
   };
 }
-let res = revenueAnalyzer(products2);
-console.log(res);
+// let res = revenueAnalyzer(products2);
+// console.log(res);
+
+// Question 17 — Attendance System.
+
+let students = [
+  { name: "Ritik", present: true },
+  { name: "Aman", present: false },
+  { name: "Priya", present: true },
+];
+
+function countPresent(students) {
+  let present = students.filter((s) => s.present === true);
+  console.log(`${present.length} students are present`);
+}
+countPresent(students);
+
+function countAbsent(students) {
+  let absent = students.filter((s) => s.present === false);
+  console.log(`${absent.length} students are absent`);
+}
+countAbsent(students);
+
+function getPresentStudents(students) {
+  let present = students.filter((s) => s.present === true);
+  console.log(present);
+}
+getPresentStudents(students);
+
+
+
+// Question 18 — Library Management System.
+
