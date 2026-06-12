@@ -1080,33 +1080,66 @@ function revenueAnalyzer(products) {
 
 // Question 18 — Library Management System.
 
-let Library = [];
+// let Library = [];
 
-function addBook(id, title, borrowed) {
-  Library.push({ id, title, borrowed });
-}
-addBook(1, "Atomic Habits", false);
-addBook(2, "Harry Potter and the Sorcerer's Stone", false);
-addBook(3, "Harry Potter and the Chamber of Secrets", false);
-addBook(4, "Harry Potter and the Prisoner of Azkaban", false);
-addBook(5, "Harry Potter and the Goblet of Fire", false);
+// function addBook(id, title, borrowed) {
+//   Library.push({ id, title, borrowed });
+// }
+// addBook(1, "Atomic Habits", false);
+// addBook(2, "Harry Potter and the Sorcerer's Stone", false);
+// addBook(3, "Harry Potter and the Chamber of Secrets", false);
+// addBook(4, "Harry Potter and the Prisoner of Azkaban", false);
+// addBook(5, "Harry Potter and the Goblet of Fire", false);
 
-function borrowBook(id) {
-  let borrowedBook = Library.find((b) => b.id === id);
-  borrowedBook.borrowed = true;
-}
-borrowBook(2);
-borrowBook(4);
-borrowBook(1)
+// function borrowBook(id) {
+//   let borrowedBook = Library.find((b) => b.id === id);
+//   borrowedBook.borrowed = true;
+// }
+// borrowBook(2);
+// borrowBook(4);
+// borrowBook(1)
 
-function returnBook(id) {
-  let returnB = Library.find((b) => b.id === id);
-  returnB.borrowed = false;
-}
-returnBook(2);
+// function returnBook(id) {
+//   let returnB = Library.find((b) => b.id === id);
+//   returnB.borrowed = false;
+// }
+// returnBook(2);
 
-function showAvailableBooks() {
-  return Library.filter((b) => b.borrowed === false);
+// function showAvailableBooks() {
+//   return Library.filter((b) => b.borrowed === false);
+// }
+// let avlBooks = showAvailableBooks();
+// console.log(avlBooks);
+
+// Question 19 — Order Management System.
+
+let Orders = [];
+
+function createOrder(id, customer, amount, status) {
+  Orders.push({ id, customer, amount, status });
 }
-let avlBooks = showAvailableBooks();
-console.log(avlBooks);
+
+createOrder(1, "Nofal", 5000, "pending");
+createOrder(2, "kaif", 3000, "pending");
+createOrder(3, "yasar", 8000, "pending");
+createOrder(4, "sahad", 11000, "pending");
+
+function updateStatus(id) {
+  let updatestat = Orders.find((o) => o.id === id);
+  updatestat.status = "completed";
+}
+updateStatus(2);
+updateStatus(4);
+
+function getPendingOrders() {
+  let pendingProd = Orders.filter((o) => o.status === "pending");
+  return pendingProd;
+}
+let pendingProd = getPendingOrders();
+console.log("pending-Prod",pendingProd);
+
+function getCompletedOrders() {
+  return Orders.filter((o) => o.status === "completed");
+}
+let completedProd = getCompletedOrders();
+console.log("completed-Prod", completedProd);
