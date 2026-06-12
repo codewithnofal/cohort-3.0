@@ -1054,31 +1054,59 @@ function revenueAnalyzer(products) {
 
 // Question 17 — Attendance System.
 
-let students = [
-  { name: "Ritik", present: true },
-  { name: "Aman", present: false },
-  { name: "Priya", present: true },
-];
+// let students = [
+//   { name: "Ritik", present: true },
+//   { name: "Aman", present: false },
+//   { name: "Priya", present: true },
+// ];
 
-function countPresent(students) {
-  let present = students.filter((s) => s.present === true);
-  console.log(`${present.length} students are present`);
-}
-countPresent(students);
+// function countPresent(students) {
+//   let present = students.filter((s) => s.present === true);
+//   console.log(`${present.length} students are present`);
+// }
+// countPresent(students);
 
-function countAbsent(students) {
-  let absent = students.filter((s) => s.present === false);
-  console.log(`${absent.length} students are absent`);
-}
-countAbsent(students);
+// function countAbsent(students) {
+//   let absent = students.filter((s) => s.present === false);
+//   console.log(`${absent.length} students are absent`);
+// }
+// countAbsent(students);
 
-function getPresentStudents(students) {
-  let present = students.filter((s) => s.present === true);
-  console.log(present);
-}
-getPresentStudents(students);
-
-
+// function getPresentStudents(students) {
+//   let present = students.filter((s) => s.present === true);
+//   console.log(present);
+// }
+// getPresentStudents(students);
 
 // Question 18 — Library Management System.
 
+let Library = [];
+
+function addBook(id, title, borrowed) {
+  Library.push({ id, title, borrowed });
+}
+addBook(1, "Atomic Habits", false);
+addBook(2, "Harry Potter and the Sorcerer's Stone", false);
+addBook(3, "Harry Potter and the Chamber of Secrets", false);
+addBook(4, "Harry Potter and the Prisoner of Azkaban", false);
+addBook(5, "Harry Potter and the Goblet of Fire", false);
+
+function borrowBook(id) {
+  let borrowedBook = Library.find((b) => b.id === id);
+  borrowedBook.borrowed = true;
+}
+borrowBook(2);
+borrowBook(4);
+borrowBook(1)
+
+function returnBook(id) {
+  let returnB = Library.find((b) => b.id === id);
+  returnB.borrowed = false;
+}
+returnBook(2);
+
+function showAvailableBooks() {
+  return Library.filter((b) => b.borrowed === false);
+}
+let avlBooks = showAvailableBooks();
+console.log(avlBooks);
