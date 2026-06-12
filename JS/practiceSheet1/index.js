@@ -1113,33 +1113,74 @@ function revenueAnalyzer(products) {
 
 // Question 19 — Order Management System.
 
-let Orders = [];
+// let Orders = [];
 
-function createOrder(id, customer, amount, status) {
-  Orders.push({ id, customer, amount, status });
+// function createOrder(id, customer, amount, status) {
+//   Orders.push({ id, customer, amount, status });
+// }
+
+// createOrder(1, "Nofal", 5000, "pending");
+// createOrder(2, "kaif", 3000, "pending");
+// createOrder(3, "yasar", 8000, "pending");
+// createOrder(4, "sahad", 11000, "pending");
+
+// function updateStatus(id) {
+//   let updatestat = Orders.find((o) => o.id === id);
+//   updatestat.status = "completed";
+// }
+// updateStatus(2);
+// updateStatus(4);
+
+// function getPendingOrders() {
+//   let pendingProd = Orders.filter((o) => o.status === "pending");
+//   return pendingProd;
+// }
+// let pendingProd = getPendingOrders();
+// console.log("pending-Prod",pendingProd);
+
+// function getCompletedOrders() {
+//   return Orders.filter((o) => o.status === "completed");
+// }
+// let completedProd = getCompletedOrders();
+// console.log("completed-Prod", completedProd);
+
+// Question 20 — Mini E-Commerce System (Interview Level).
+
+let Products = [];
+
+function addProduct(id, name, price, stock) {
+  Products.push({ id, name, price, stock });
 }
+addProduct(1, "Laptop", 50000, 23);
+addProduct(2, "Mobile", 35000, 32);
+addProduct(3, "keyboard", 10000, 14);
+addProduct(4, "mouse", 6000, 16);
+addProduct(5, "Ear-buds", 4000, 19);
 
-createOrder(1, "Nofal", 5000, "pending");
-createOrder(2, "kaif", 3000, "pending");
-createOrder(3, "yasar", 8000, "pending");
-createOrder(4, "sahad", 11000, "pending");
+// console.log("Products : ", Products);
 
-function updateStatus(id) {
-  let updatestat = Orders.find((o) => o.id === id);
-  updatestat.status = "completed";
+function removeProduct(id, Products) {
+  return Products.filter((p) => p.id !== id);
 }
-updateStatus(2);
-updateStatus(4);
+Products = removeProduct(3, Products);
 
-function getPendingOrders() {
-  let pendingProd = Orders.filter((o) => o.status === "pending");
-  return pendingProd;
+function updateStock(id, stock) {
+  let updateSt = Products.find((p) => p.id === id);
+  updateSt.stock = stock;
 }
-let pendingProd = getPendingOrders();
-console.log("pending-Prod",pendingProd);
+updateStock(2, 22);
+updateStock(4, 33);
 
-function getCompletedOrders() {
-  return Orders.filter((o) => o.status === "completed");
+function purchaseProduct(id, qty) {
+  let purchseProd = Products.find((p) => p.id === id);
+  purchseProd.stock = purchseProd.stock - qty;
 }
-let completedProd = getCompletedOrders();
-console.log("completed-Prod", completedProd);
+purchaseProduct(4, 3);
+
+function getInventoryValue() {
+  let inventoryVal = Products.map((p) => p.price * p.stock);
+  console.log(inventoryVal)
+}
+getInventoryValue();
+
+console.log(Products);
