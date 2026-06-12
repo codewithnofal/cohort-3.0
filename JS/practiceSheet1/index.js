@@ -971,16 +971,16 @@ function sortStudents(students) {
 
 // Question 15 — Student Grade Report.
 
-let students = [
-  {
-    name: "Ritik",
-    marks: [80, 90, 85],
-  },
-  {
-    name: "Aman",
-    marks: [50, 40, 60],
-  },
-];
+// let students = [
+//   {
+//     name: "Ritik",
+//     marks: [80, 90, 85],
+//   },
+//   {
+//     name: "Aman",
+//     marks: [50, 40, 60],
+//   },
+// ];
 
 function generateReport(students) {
   let reports = students.map((s) => {
@@ -1004,5 +1004,50 @@ function generateReport(students) {
   });
   return reports;
 }
-let finalResult = generateReport(students);
-console.log(finalResult);
+// let finalResult = generateReport(students);
+// console.log(finalResult);
+
+// Question 16 — Product Revenue Analyzer.
+
+let products2 = [
+  {
+    name: "Mouse",
+    price: 500,
+    sold: 20,
+  },
+  {
+    name: "Keyboard",
+    price: 1000,
+    sold: 10,
+  },
+];
+
+function revenueAnalyzer(products) {
+  let productRev = products.map((p) => {
+    return `revenue of ${p.name} is : ${p.price * p.sold}`;
+  });
+  // console.log(productRev);
+
+  let totalRevenue = products.reduce((acc, val) => {
+    return (acc += val.price * val.sold);
+  }, 0);
+  // console.log(`Total Revenue : ${totalRevenue}`);
+
+  let highest = 0;
+  let name;
+  for (let key in products) {
+    if (products[key].sold > highest) {
+      highest = products[key].sold;
+      name = products[key].name;
+    }
+  }
+  // console.log(`Best Selling Product : ${name}`);
+
+  return {
+    revenuePerProduct: productRev,
+    TotalRevenue: totalRevenue,
+    bestSelling: name,
+  };
+}
+let res = revenueAnalyzer(products2);
+console.log(res);
