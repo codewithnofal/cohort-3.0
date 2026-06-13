@@ -3,12 +3,146 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>TODO</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body>
+    <main
+      class="h-[100%] w-[100%] flex items-center justify-center bg-[#78C2F2]"
+    >
+      <!--  MAIN CONTAINER -->
+      <div
+        class="container h-[65%] sm:h-[80%] w-[80%] sm:w-[35%] rounded-xl bg-[#FFFFFF]"
+      >
+        <!-- NAV SECTION -->
+        <div
+          class="nav h-[100px] w-full flex items-center justify-center gap-2"
+        >
+          <div class="nav-part1 text-[20px] sm:text-[32px] font-bold">
+            TODO List
+          </div>
+          <div class="nav-part2">
+            <img
+              class="h-[35px] sm:h-[55px]"
+              src="./assets/notebook.gif"
+              alt="gif"
+            />
+          </div>
+        </div>
 
-    
+        <!-- ADD TODO SECTION -->
+        <div
+          class="add-todo h-60px md:h-[80px] flex items-center justify-center w-full"
+        >
+          <div
+            class="search flex items-center justify-between h-[60%] sm:h-[80%] w-[90%] rounded-full bg-[#ECEEF0]"
+          >
+            <input
+              class="p-2 h-full w-[80%] outline-0 ml-2 placeholder:text-[#717574] placeholder:font-normal text-[17px] sm:text-[20px] font-medium placeholder:text-[15px] sm:placeholder:text-[20px]"
+              type="text"
+              placeholder="Add your items"
+            />
+            <div
+              class="add h-[45px] sm:h-[100%] w-[19%] sm:w-[13%] rounded-full flex items-center justify-center bg-green-400"
+            >
+              <img
+                class="h-[22px] sm:h-[30px]"
+                src="./assets/plus.png"
+                alt="add"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- TODO MESSAGE -->
+
+        <p
+          class="text-center h-[40px] font-medium text-[13px] sm:text-[15px] mt-2 text-[#0faf17]"
+        >
+          Todo item Created Successfully!
+        </p>
+
+        <!-- TODO LISTS -->
+
+        <div
+          class="list-container flex flex-nowrap items-center flex-col gap-3 h-[55%] sm:h-[58%] w-[100%] overflow-y-scroll "
+        >
+          <div
+            class="list shrink-0 h-[40px] sm:h-[50px] pl-2 pr-2 flex items-center justify-between w-[90%] bg-[#ECEEF0] rounded-sm"
+          >
+            <div class="flex items-center gap-0 sm:gap-1">
+              <p class=" text-[13px] sm:text-[17px]">Completed the blog today</p>
+              <img class=" h-[15px] hidden sm:h-[20px]" src="./assets/check-mark.png" alt="" />
+            </div>
+            <div class="edit-del flex items-center gap-2 sm:gap-5">
+              <img class=" h-[15px] sm:h-[18px]" src="./assets/pencil.png" alt="" />
+              <img class=" h-[15px] sm:h-[18px]" src="./assets/delete.png" alt="" />
+            </div>
+          </div>
+          <div
+            class="list shrink-0 h-[40px] sm:h-[50px] pl-2 pr-2 flex items-center justify-between w-[90%] bg-[#ECEEF0] rounded-sm"
+          >
+            <div class="flex items-center gap-0 sm:gap-1">
+              <p class=" text-[13px] sm:text-[17px]">Completed the blog today</p>
+              <img class=" h-[15px] hidden sm:h-[20px]" src="./assets/check-mark.png" alt="" />
+            </div>
+            <div class="edit-del flex items-center gap-2 sm:gap-5">
+              <img class=" h-[15px] sm:h-[18px]" src="./assets/pencil.png" alt="" />
+              <img class=" h-[15px] sm:h-[18px]" src="./assets/delete.png" alt="" />
+            </div>
+          </div>
+          <div
+            class="list shrink-0 h-[40px] sm:h-[50px] pl-2 pr-2 flex items-center justify-between w-[90%] bg-[#ECEEF0] rounded-sm"
+          >
+            <div class="flex items-center gap-0 sm:gap-1">
+              <p class=" text-[13px] sm:text-[17px]">Completed the blog today</p>
+              <img class=" h-[15px] hidden sm:h-[20px]" src="./assets/check-mark.png" alt="" />
+            </div>
+            <div class="edit-del flex items-center gap-2 sm:gap-5">
+              <img class=" h-[15px] sm:h-[18px]" src="./assets/pencil.png" alt="" />
+              <img class=" h-[15px] sm:h-[18px]" src="./assets/delete.png" alt="" />
+            </div>
+          </div>
+          <div
+            class="list shrink-0 h-[40px] sm:h-[50px] pl-2 pr-2 flex items-center justify-between w-[90%] bg-[#ECEEF0] rounded-sm"
+          >
+            <div class="flex items-center gap-0 sm:gap-1">
+              <p class=" text-[13px] sm:text-[17px]">Completed the blog today</p>
+              <img class=" h-[15px] hidden sm:h-[20px]" src="./assets/check-mark.png" alt="" />
+            </div>
+            <div class="edit-del flex items-center gap-2 sm:gap-5">
+              <img class=" h-[15px] sm:h-[18px]" src="./assets/pencil.png" alt="" />
+              <img class=" h-[15px] sm:h-[18px]" src="./assets/delete.png" alt="" />
+            </div>
+          </div>
+          <div
+            class="list shrink-0 h-[40px] sm:h-[50px] pl-2 pr-2 flex items-center justify-between w-[90%] bg-[#ECEEF0] rounded-sm"
+          >
+            <div class="flex items-center gap-0 sm:gap-1">
+              <p class=" text-[13px] sm:text-[17px]">Completed the blog today</p>
+              <img class=" h-[15px] hidden sm:h-[20px]" src="./assets/check-mark.png" alt="" />
+            </div>
+            <div class="edit-del flex items-center gap-2 sm:gap-5">
+              <img class=" h-[15px] sm:h-[18px]" src="./assets/pencil.png" alt="" />
+              <img class=" h-[15px] sm:h-[18px]" src="./assets/delete.png" alt="" />
+            </div>
+          </div>
+          <div
+            class="list shrink-0 h-[40px] sm:h-[50px] pl-2 pr-2 flex items-center justify-between w-[90%] bg-[#ECEEF0] rounded-sm"
+          >
+            <div class="flex items-center gap-0 sm:gap-1">
+              <p class=" text-[13px] sm:text-[17px]">Completed the blog today</p>
+              <img class=" h-[15px] hidden sm:h-[20px]" src="./assets/check-mark.png" alt="" />
+            </div>
+            <div class="edit-del flex items-center gap-2 sm:gap-5">
+              <img class=" h-[15px] sm:h-[18px]" src="./assets/pencil.png" alt="" />
+              <img class=" h-[15px] sm:h-[18px]" src="./assets/delete.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>
