@@ -10,6 +10,6 @@ body {
   width: 100%;
 }
 
-.list-container::-webkit-scrollbar{
-    
+.list-container::-webkit-scrollbar {
+  display: none;
 }
