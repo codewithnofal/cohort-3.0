@@ -13,3 +13,25 @@ body {
 .list-container::-webkit-scrollbar {
   display: none;
 }
+.list li {
+  list-style: none;
+  font-size: 17px;
+}
+.edit{
+  height: 18px;
+}
+.delete{
+  height: 18px;
+}
+
+@media (max-width: 480px) {
+  .list li{
+    font-size: 13px;
+  }
+  .edit{
+  height: 15px;
+}
+.delete{
+  height: 15px;
+}
+}
