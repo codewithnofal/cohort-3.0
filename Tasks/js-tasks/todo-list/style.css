@@ -13,25 +13,57 @@ body {
 .list-container::-webkit-scrollbar {
   display: none;
 }
-.list li {
+.todo-list li {
   list-style: none;
   font-size: 17px;
 }
-.edit{
+.edit {
   height: 18px;
 }
-.delete{
+.delete {
   height: 18px;
 }
 
+.todo-list {
+  flex-shrink: 0;
+  height: 50px;
+  padding-left: 8px;
+  padding-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #eceef0;
+  border-radius: 5px;
+  width: 90%;
+}
+.todo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.edit-del {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 @media (max-width: 480px) {
-  .list li{
+  .todo-list li {
     font-size: 13px;
   }
-  .edit{
-  height: 15px;
-}
-.delete{
-  height: 15px;
-}
+  .edit {
+    height: 15px;
+    src: url(./assets/pencil.png);
+  }
+  .delete {
+    height: 15px;
+  }
+  .todo-list {
+    height: 40px;
+  }
+  .edit-del {
+    gap: 12px;
+  }
 }
