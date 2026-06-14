@@ -36,9 +36,15 @@ let addTodoList = () => {
   todoList.appendChild(todo);
 
   let li = document.createElement("li");
+  li.classList.add("list");
   todo.appendChild(li);
 
   li.textContent = inpValue;
+
+  let read = document.createElement("img");
+  read.classList.add("readimg");
+  read.src = "./assets/check-mark.png";
+  todo.appendChild(read);
 
   let update = document.createElement("div");
   update.classList.add("edit-del");
@@ -69,6 +75,22 @@ let addTodoList = () => {
 };
 
 let updateTodoList = (e) => {
+  if (e.target.classList.contains("list")) {
+    e.target.classList.toggle("active");
+
+    if (e.target.classList.contains("active")) {
+      e.target.parentElement.parentElement.querySelector(
+        ".readimg",
+      ).style.display = "block";
+    } else {
+      e.target.parentElement.parentElement.querySelector(
+        ".readimg",
+      ).style.display = "none";
+    }
+
+    localStorage.setItem("todos", listContainer.innerHTML);
+  }
+
   if (e.target.classList.contains("delete")) {
     e.target.parentElement.parentElement.remove();
 

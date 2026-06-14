@@ -16,6 +16,7 @@ body {
 .todo-list li {
   list-style: none;
   font-size: 17px;
+  cursor: pointer;
 }
 .edit {
   height: 18px;
@@ -39,7 +40,7 @@ body {
 .todo {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
 }
 
 .edit-del {
@@ -48,10 +49,18 @@ body {
   align-items: center;
   gap: 20px;
 }
+.readimg {
+  height: 20px;
+  display: none;
+}
+.active {
+  text-decoration: line-through;
+  color: rgba(106, 105, 105, 0.788);
+}
 
 @media (max-width: 480px) {
   .todo-list li {
-    font-size: 13px;
+    font-size: 15px;
   }
   .edit {
     height: 15px;
@@ -65,5 +74,9 @@ body {
   }
   .edit-del {
     gap: 12px;
+  }
+  .readimg {
+    height: 18px;
+    display: none;
   }
 }
