@@ -65,16 +65,39 @@ let addTodoList = () => {
   notify.style.color = "green";
 
   notify.textContent = "Todo item Created Successfully!";
+  localStorage.setItem("todos", listContainer.innerHTML);
 
   setTimeout(() => {
     notify.textContent = "";
   }, 700);
 
   inp.value = "";
-  localStorage.setItem("todos", listContainer.innerHTML);
 };
 
 let updateTodoList = (e) => {
+  if (e.target.classList.contains("delete")) {
+    e.target.parentElement.parentElement.remove();
+
+    notify.style.color = "red";
+    notify.textContent = "Todo item Deletd Successfully!";
+
+    setTimeout(() => {
+      notify.textContent = "";
+    }, 700);
+    localStorage.setItem("todos", listContainer.innerHTML);
+
+    const allTodos = document.querySelectorAll(".todo-list");
+    if (allTodos.length === 0) {
+      localStorage.clear("todos");
+      emptyState.style.display = "block";
+    }
+  }
+  if (e.target.classList.contains("edit")) {
+    editTodo = e.target.parentElement.parentElement;
+    inp.value = editTodo.childNodes[0].textContent;
+    addImg.src = "./assets/refresh.png";
+  }
+
   if (e.target.classList.contains("list")) {
     e.target.classList.toggle("active");
 
@@ -89,29 +112,6 @@ let updateTodoList = (e) => {
     }
 
     localStorage.setItem("todos", listContainer.innerHTML);
-  }
-
-  if (e.target.classList.contains("delete")) {
-    e.target.parentElement.parentElement.remove();
-
-    notify.style.color = "red";
-    notify.textContent = "Todo item Deletd Successfully!";
-
-    setTimeout(() => {
-      notify.textContent = "";
-    }, 700);
-    localStorage.setItem("todos", listContainer.innerHTML);
-    localStorage.clear("todos");
-
-    const allTodos = document.querySelectorAll(".todo-list");
-    if (allTodos.length === 0) {
-      emptyState.style.display = "block";
-    }
-  }
-  if (e.target.classList.contains("edit")) {
-    editTodo = e.target.parentElement.parentElement;
-    inp.value = editTodo.childNodes[0].textContent;
-    addImg.src = "./assets/refresh.png";
   }
 };
 
