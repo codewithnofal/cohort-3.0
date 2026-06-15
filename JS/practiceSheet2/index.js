@@ -107,7 +107,7 @@ class Student {
 // Question 10 — Bank Account (InterviewLevel).
 
 class BankAccount {
-  balance = 0;
+  #balance = 0;
 
   deposite(amount) {
     return (this.#balance += amount);
@@ -126,10 +126,3 @@ class BankAccount {
 // acc1.withdraw(300)
 
 // acc1.getBalance()
-
-
-
-// Library Management System
-class Book {
-
-}
