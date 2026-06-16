@@ -105,24 +105,49 @@
 // let st1 = new CreateStudens("Nofal", 22, "A+", "Ahmedabad");
 // st1.greet()
 
+// 1st uproach
+// let nums1 = [1, 2, 3];
+// let nums2 = [2, 5, 6, 12];
+
+// let m = 3;
+// let n = 4;
+
+// let p1 = 0;
+// let p2 = 0;
+
+// let nums1Copy = nums1.slice(0, m);
+
+// for (let i = 0; i < m + n; i++) {
+//   if (p2 >= n || (p1 < m && nums1Copy[p1] < nums2[p2])) {
+//     nums1[i] = nums1Copy[p1];
+//     p1++;
+//   } else {
+//     nums1[i] = nums2[p2];
+//     p2++;
+//   }
+// }
+// console.log(nums1);
+
+// 2nd uproach optimized
+
 let nums1 = [1, 2, 3];
-let nums2 = [2, 5, 6, 12];
+let nums2 = [2, 5, 6];
 
 let m = 3;
-let n = 4;
+let n = 3;
 
-let p1 = 0;
-let p2 = 0;
+let p1 = m - 1;
+let p2 = n - 1;
 
-let nums1Copy = nums1.slice(0, m);
+for (let i = m + n - 1; i >= 0; i--) {
+  if (p2 < 0) break;
 
-for (let i = 0; i < m + n; i++) {
-  if (p2 >= n || (p1 < m && nums1Copy[p1] < nums2[p2])) {
-    nums1[i] = nums1Copy[p1];
-    p1++;
+  if (p1 >= 0 && nums1[p1] > nums2[p2]) {
+    nums1[i] = nums1[p1];
+    p1--;
   } else {
     nums1[i] = nums2[p2];
-    p2++;
+    p2--;
   }
 }
-console.log(nums1);
+console.log(nums1)
