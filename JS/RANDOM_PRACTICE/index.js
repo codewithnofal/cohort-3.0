@@ -105,5 +105,24 @@
 // let st1 = new CreateStudens("Nofal", 22, "A+", "Ahmedabad");
 // st1.greet()
 
+let nums1 = [1, 2, 3];
+let nums2 = [2, 5, 6, 12];
 
+let m = 3;
+let n = 4;
 
+let p1 = 0;
+let p2 = 0;
+
+let nums1Copy = nums1.slice(0, m);
+
+for (let i = 0; i < m + n; i++) {
+  if (p2 >= n || (p1 < m && nums1Copy[p1] < nums2[p2])) {
+    nums1[i] = nums1Copy[p1];
+    p1++;
+  } else {
+    nums1[i] = nums2[p2];
+    p2++;
+  }
+}
+console.log(nums1);
