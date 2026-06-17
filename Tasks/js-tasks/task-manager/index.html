@@ -18,7 +18,7 @@
           <h1>Welcome , <span>Developer! 👋</span></h1>
         </div>
         <div class="part2">
-          []
+          <button class="theme-toggle">🌙</button>
           <div class="create">
             <button class="create-btn">Create Task</button>
           </div>
@@ -51,27 +51,27 @@
         <div class="status">
           <div class="total count-box">
             <i class="ri-todo-fill"></i>
-            <p>Total : <span>6</span></p>
+            <p>Total: <span class="totalc">0</span></p>
           </div>
           <div class="completed count-box">
             <i class="ri-checkbox-circle-line"></i>
 
-            <p>Completed : <span>3</span></p>
+            <p>Completed: <span class="completedc">0</span></p>
           </div>
           <div class="pending count-box">
             <i class="ri-time-line"></i>
-            <p>Pending : <span>3</span></p>
+            <p>Pending: <span class="pendingc">0</span></p>
           </div>
         </div>
         <div class="filtering">
-          <input type="text" placeholder="🔍 Search Tasks" />
+          <!-- <input type="text" placeholder="🔍 Search Tasks" />
           <div>
             <select>
               <option value="All Categories">All Categories</option>
               <option value="Study">🟢Study</option>
               <option value="Work">🟣Work</option>
               <option value="Personal">⚫Personal</option>
-            </select>
+            </select> -->
           </div>
         </div>
       </div>
@@ -82,8 +82,111 @@
         <p>
           <span><i class="ri-calendar-todo-fill"></i></span>Your Tasks
         </p>
-        <div class="tasks"></div>
+        <div class="tasks">
+          <img class="task-img" src="./no-task.avif" alt="">
+        </div>
       </div>
+
+
+      <!--  -->
+    
+<section class="event-demo">
+
+  <h2>Event Propagation Visualizer</h2>
+
+  <div class="controls">
+    <button class="bubble-btn">
+      Start Bubbling
+    </button>
+
+    <button class="capture-btn">
+      Start Capturing
+    </button>
+  </div>
+
+  <div class="visualizer">
+
+    <div class="grandparent">
+      Grandparent
+
+      <div class="parent">
+        Parent
+
+        <div class="child">
+          Child
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="output">
+    Click a button to visualize event flow
+  </div>
+
+</section>
+
+<section class="render-section">
+
+  <h2>How Browser Renders a Webpage</h2>
+
+  <div class="pipeline">
+
+    <div class="step">
+      HTML
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="step">
+      Parsing
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="step">
+      Tokenization
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="step">
+      DOM Tree
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="step">
+      CSS
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="step">
+      CSSOM Tree
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="merge">
+      DOM + CSSOM
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="render-tree">
+      Render Tree
+    </div>
+
+  </div>
+
+  <div class="result">
+    Final Render Tree is Created
+  </div>
+
+</section>
     </main>
     <script src="script.js"></script>
   </body>
