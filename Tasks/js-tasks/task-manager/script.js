@@ -10,6 +10,7 @@ const taskImg = document.querySelector(".task-img");
 const filterInp = document.querySelector(".filtering input");
 const themeToggle = document.querySelector(".theme-toggle");
 
+
 let Tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 ui();
 updateCounters();
@@ -94,7 +95,7 @@ let completedTask = (index) => {
 };
 
 let searchTasks = () => {};
-taskImg.style.display = "block";
+// taskImg.style.display = "block";
 
 createBtn.addEventListener("click", () => {
   formContainer.style.display = "flex";
