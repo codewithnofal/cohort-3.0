@@ -14,5 +14,132 @@ body {
 main {
   height: 100%;
   width: 100%;
-  background: whitesmoke;
+  background: rgb(231, 231, 231);
+  padding: 0 2vw;
+  position: relative;
+}
+.nav {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav .part1 h1 {
+  font-size: 27px;
+  font-weight: 600;
+}
+.nav .part2 {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.nav .part2 button {
+  padding: 10px 12px;
+  border: none;
+  border-radius: 10px;
+  background: #000;
+  color: white;
+  cursor: pointer;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: none;
+  align-items: center;
+  position: absolute;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  background: #00000044;
+  transition: all 0.5s linear;
+}
+.container form {
+  height: 50%;
+  width: 35%;
+  position: relative;
+  background: white;
+  padding: 20px 25px;
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  border-radius: 12px;
+  box-shadow: 2px 2px 30px 1px rgb(187, 187, 187);
+}
+.container form .close {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 4px 10px;
+  background: #000;
+  color: white;
+  width: fit-content;
+  border-radius: 50%;
+  position: absolute;
+  right: 3%;
+  cursor: pointer;
+}
+.container form h4 {
+  font-size: 25px;
+  font-weight: 600;
+  color: #9011d5;
+}
+.container form p {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0a0a0a;
+}
+.container form .task-title,
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.container form input {
+  width: 100%;
+  padding: 6px;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid grey;
+  font-size: 13px;
+}
+.container form select {
+  width: 100%;
+  padding: 6px;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid grey;
+  font-size: 13px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+}
+.container form select option {
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.container form button {
+  padding: 8px 12px;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 10px;
+  border: none;
+  background: #ab31ed;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .nav {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav .part1 h1 {
+    font-size: 15px;
+    font-weight: 600;
+  }
 }

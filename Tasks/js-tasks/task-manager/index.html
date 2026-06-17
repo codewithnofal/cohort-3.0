@@ -8,12 +8,42 @@
   </head>
   <body>
     <main>
+      <!-- NAVBAR  -->
       <div class="nav">
         <div class="part1">
-          <h1>Welcome Back, <span>Developer! 👋</span></h1>
+          <h1>Welcome , <span>Developer! 👋</span></h1>
         </div>
-        <div class="part2">dark mode</div>
+        <div class="part2">
+          dark mode
+          <div class="create">
+            <button class="create-btn">Create Task</button>
+          </div>
+        </div>
       </div>
+
+      <!-- ADD TO TASK -->
+      <div class="container">
+        <form class="create-task">
+          <div class="close">X</div>
+          <h4>Create New Task</h4>
+          <div class="task-title">
+            <p>Task Title</p>
+            <input type="text" placeholder="e.g learn dom" />
+          </div>
+          <div class="category">
+            <p>Category</p>
+            <select>
+              <option value="Study">🟢Study</option>
+              <option value="Work">🟣Work</option>
+              <option value="Personal">⚫Personal</option>
+            </select>
+          </div>
+          <button>Add task</button>
+        </form>
+
+      </div>
+
+      
     </main>
     <script src="script.js"></script>
   </body>
