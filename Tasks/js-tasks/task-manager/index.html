@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task manager</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <main>
@@ -14,7 +18,7 @@
           <h1>Welcome , <span>Developer! 👋</span></h1>
         </div>
         <div class="part2">
-          dark mode
+          []
           <div class="create">
             <button class="create-btn">Create Task</button>
           </div>
@@ -40,10 +44,143 @@
           </div>
           <button>Add task</button>
         </form>
-
       </div>
 
-      
+      <!-- TASK OVERVIEW AND SEARCH FILTER -->
+      <div class="task-overview">
+        <div class="status">
+          <div class="total count-box">
+            <i class="ri-todo-fill"></i>
+            <p>Total : <span>6</span></p>
+          </div>
+          <div class="completed count-box">
+            <i class="ri-checkbox-circle-line"></i>
+
+            <p>Completed : <span>3</span></p>
+          </div>
+          <div class="pending count-box">
+            <i class="ri-time-line"></i>
+            <p>Pending : <span>3</span></p>
+          </div>
+        </div>
+        <div class="filtering">
+          <input type="text" placeholder="🔍 Search Tasks" />
+          <div>
+            <select>
+              <option value="All Categories">All Categories</option>
+              <option value="Study">🟢Study</option>
+              <option value="Work">🟣Work</option>
+              <option value="Personal">⚫Personal</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- TASKS -->
+
+      <div class="task-con">
+        <p>
+          <span><i class="ri-calendar-todo-fill"></i></span>Your Tasks
+        </p>
+        <div class="tasks">
+          <div class="task">
+            <p>Learn Dom API</p>
+            <div class="category">
+              <p>🟢Study</p>
+              <div class="calender">
+                <i class="ri-calendar-line"></i>
+                <span>6-17-2026</span>
+              </div>
+            </div>
+            <!-- <div class="stat">Pending</div> -->
+            <div class="marks">
+              <i class="ri-pencil-line"></i>
+              <i class="ri-check-line"></i>
+              <i class="ri-delete-bin-6-line"></i>
+            </div>
+          </div>
+           <div class="task">
+            <p>Learn Dom API</p>
+            <div class="category">
+              <p>🟢Study</p>
+              <div class="calender">
+                <i class="ri-calendar-line"></i>
+                <span>6-17-2026</span>
+              </div>
+            </div>
+            <!-- <div class="stat">Pending</div> -->
+            <div class="marks">
+              <i class="ri-pencil-line"></i>
+              <i class="ri-check-line"></i>
+              <i class="ri-delete-bin-6-line"></i>
+            </div>
+          </div>
+           <div class="task">
+            <p>Learn Dom API</p>
+            <div class="category">
+              <p>🟢Study</p>
+              <div class="calender">
+                <i class="ri-calendar-line"></i>
+                <span>6-17-2026</span>
+              </div>
+            </div>
+            <!-- <div class="stat">Pending</div> -->
+            <div class="marks">
+              <i class="ri-pencil-line"></i>
+              <i class="ri-check-line"></i>
+              <i class="ri-delete-bin-6-line"></i>
+            </div>
+          </div>
+          <div class="task">
+            <p>Learn Dom API</p>
+            <div class="category">
+              <p>🟢Study</p>
+              <div class="calender">
+                <i class="ri-calendar-line"></i>
+                <span>6-17-2026</span>
+              </div>
+            </div>
+            <!-- <div class="stat">Pending</div> -->
+            <div class="marks">
+              <i class="ri-pencil-line"></i>
+              <i class="ri-check-line"></i>
+              <i class="ri-delete-bin-6-line"></i>
+            </div>
+          </div>
+          <div class="task">
+            <p>Learn Dom API</p>
+            <div class="category">
+              <p>🟢Study</p>
+              <div class="calender">
+                <i class="ri-calendar-line"></i>
+                <span>6-17-2026</span>
+              </div>
+            </div>
+            <!-- <div class="stat">Pending</div> -->
+            <div class="marks">
+              <i class="ri-pencil-line"></i>
+              <i class="ri-check-line"></i>
+              <i class="ri-delete-bin-6-line"></i>
+            </div>
+          </div>
+          <div class="task">
+            <p>Learn Dom API</p>
+            <div class="category">
+              <p>🟢Study</p>
+              <div class="calender">
+                <i class="ri-calendar-line"></i>
+                <span>6-17-2026</span>
+              </div>
+            </div>
+            <!-- <div class="stat">Pending</div> -->
+            <div class="marks">
+              <i class="ri-pencil-line"></i>
+              <i class="ri-check-line"></i>
+              <i class="ri-delete-bin-6-line"></i>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <script src="script.js"></script>
   </body>

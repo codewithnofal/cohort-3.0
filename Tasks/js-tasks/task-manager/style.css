@@ -14,7 +14,7 @@ body {
 main {
   height: 100%;
   width: 100%;
-  background: rgb(231, 231, 231);
+  background: #f3f3f3;
   padding: 0 2vw;
   position: relative;
 }
@@ -54,6 +54,7 @@ main {
   left: 0;
   background: #00000044;
   transition: all 0.5s linear;
+  backdrop-filter: blur(10px);
 }
 .container form {
   height: 50%;
@@ -130,6 +131,184 @@ main {
   cursor: pointer;
 }
 
+.task-overview {
+  height: 16vh;
+  width: 100%;
+  background: #d2a1f136;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.task-overview .status {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.task-overview .count-box {
+  height: 100%;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 12px;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+.task-overview .count-box:nth-child(1) i {
+  font-size: 28px;
+  color: rgb(39, 39, 185);
+}
+.task-overview .count-box:nth-child(2) i {
+  font-size: 30px;
+  color: rgb(46, 181, 136);
+}
+.task-overview .count-box:nth-child(3) i {
+  font-size: 30px;
+  color: rgb(181, 91, 46);
+}
+.task-overview .count-box:nth-child(1) {
+  background: #253ac255;
+}
+.task-overview .count-box:nth-child(2) {
+  background: #25c26662;
+}
+.task-overview .count-box:nth-child(3) {
+  background: #c2252550;
+}
+.task-overview .count-box span {
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+}
+.task-overview .count-box p {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+}
+.task-overview .filtering {
+  width: 40%;
+
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.task-overview .filtering input {
+  width: 60%;
+  padding: 8px;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid grey;
+  font-size: 13px;
+}
+.task-overview .filtering select {
+  width: 100%;
+  padding: 6px;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid grey;
+  font-size: 13px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+}
+.task-overview .filtering select option {
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.task-con {
+  margin-top: 2%;
+  height: 65vh;
+  width: 100%;
+  background: rgb(255, 255, 255);
+  box-shadow: 2px 2px 30px 1px rgb(187, 187, 187);
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+.task-con p {
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+.task-con p i {
+  color: #2472d9;
+}
+.task-con .tasks {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.task-con .task {
+  height: 190px;
+  width: 250px;
+  border: 2px solid gray;
+  border-radius: 10px;
+  border-left: 4px solid #ab31ed;
+  flex-shrink: 0;
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #f0f0f064;
+}
+.task-con .task p {
+  font-size: 21px;
+  font-weight: 500;
+}
+.task-con .task .category p {
+  font-size: 15px;
+  font-weight: 500;
+  color: #9011d5;
+  width: fit-content;
+  padding: 5px 20px;
+  background: #961bbc34;
+  border-radius: 10px;
+}
+.task-con .task .category .calender {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 5px;
+  color: #060606d0;
+}
+.task-con .task .category .calender i {
+  color: #2472d9;
+  font-size: 16px;
+}
+
+.task-con .task .marks {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.task-con .task .marks i {
+  font-size: 20px;
+  border: 1px solid rgb(219, 219, 219);
+  padding: 7px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #0000000f;
+}
+.task-con .task .marks i:nth-child(1) {
+  color: #3198ed;
+}
+.task-con .task .marks i:nth-child(2) {
+  color: #31ed7f;
+}
+.task-con .task .marks i:nth-child(3) {
+  color: #ed3131;
+}
 @media (max-width: 480px) {
   .nav {
     height: 60px;
@@ -139,7 +318,290 @@ main {
     justify-content: space-between;
   }
   .nav .part1 h1 {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 600;
+  }
+  .nav .part2 {
+    gap: 10px;
+  }
+  .nav .part2 button {
+    padding: 10px 8px;
+    border: none;
+    border-radius: 10px;
+    background: #000;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  .task-overview {
+    height: 10vh;
+    width: 100%;
+    background: #d2a1f136;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .task-overview .status {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .task-overview .count-box {
+    height: 100%;
+    width: 110px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    justify-content: space-between;
+    padding: 15px 5px;
+  }
+  .task-overview .count-box:nth-child(1) i {
+    font-size: 18px;
+    color: rgb(39, 39, 185);
+  }
+  .task-overview .count-box:nth-child(2) i {
+    font-size: 20px;
+    color: rgb(46, 181, 136);
+  }
+  .task-overview .count-box:nth-child(3) i {
+    font-size: 20px;
+    color: rgb(181, 91, 46);
+  }
+  .task-overview .count-box:nth-child(1) {
+    background: #253ac255;
+  }
+  .task-overview .count-box:nth-child(2) {
+    background: #25c26662;
+  }
+  .task-overview .count-box:nth-child(3) {
+    background: #c2252550;
+  }
+  .task-overview .count-box span {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .task-overview .count-box p {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .task-overview .filtering {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+  .task-overview .filtering input {
+    width: 60%;
+    padding: 8px;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid grey;
+    font-size: 13px;
+  }
+  .task-overview .filtering select {
+    width: 100%;
+    padding: 6px;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid grey;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .task-overview .filtering select option {
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .container {
+    height: 100%;
+    width: 100%;
+    display: none;
+    align-items: center;
+    position: absolute;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    background: #00000044;
+    transition: all 0.5s linear;
+    backdrop-filter: blur(10px);
+  }
+  .container form {
+    height: 50%;
+    width: 100%;
+    position: relative;
+    background: white;
+    padding: 20px 25px;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    border-radius: 12px;
+    box-shadow: 2px 2px 30px 1px rgb(187, 187, 187);
+  }
+  .container form .close {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 4px 10px;
+    background: #000;
+    color: white;
+    width: fit-content;
+    border-radius: 50%;
+    position: absolute;
+    right: 3%;
+    cursor: pointer;
+  }
+  .container form h4 {
+    font-size: 25px;
+    font-weight: 600;
+    color: #9011d5;
+  }
+  .container form p {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0a0a0a;
+  }
+  .container form .task-title,
+  .category {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .container form input {
+    width: 100%;
+    padding: 6px;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid grey;
+    font-size: 13px;
+  }
+  .container form select {
+    width: 100%;
+    padding: 6px;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid grey;
+    font-size: 13px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .container form select option {
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .container form button {
+    padding: 8px 12px;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 10px;
+    border: none;
+    background: #ab31ed;
+    color: white;
+    cursor: pointer;
+  }
+
+  .task-con {
+    margin-top: 20%;
+    height: 65vh;
+    width: 100%;
+    background: rgb(255, 255, 255);
+    box-shadow: 2px 2px 30px 1px rgb(187, 187, 187);
+    border-radius: 10px;
+    padding: 10px 8px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .task-con p {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+  }
+  .task-con p i {
+    color: #2472d9;
+  }
+  .task-con .tasks {
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 12px;
+
+    flex-wrap: wrap;
+  }
+
+  .task-con .task {
+    height: 150px;
+    width: 160px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    border-left: 4px solid #ab31ed;
+    flex-shrink: 0;
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: #f0f0f064;
+  }
+  .task-con .task p {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .task-con .task .category p {
+    font-size: 13px;
+    font-weight: 500;
+    color: #9011d5;
+    width: fit-content;
+    padding: 3px 18px;
+    background: #961bbc34;
+    border-radius: 10px;
+  }
+  .task-con .task .category .calender {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    margin-top: 5px;
+    color: #060606d0;
+  }
+  .task-con .task .category .calender i {
+    color: #2472d9;
+    font-size: 14px;
+  }
+
+  .task-con .task .marks {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .task-con .task .marks i {
+    font-size: 15px;
+    border: 1px solid rgb(219, 219, 219);
+    padding: 7px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #0000000f;
+  }
+  .task-con .task .marks i:nth-child(1) {
+    color: #3198ed;
+  }
+  .task-con .task .marks i:nth-child(2) {
+    color: #31ed7f;
+  }
+  .task-con .task .marks i:nth-child(3) {
+    color: #ed3131;
   }
 }
