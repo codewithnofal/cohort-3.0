@@ -790,5 +790,19 @@ function maxConsacativeOnce() {
   }
   return maxCount;
 }
-let max = maxConsacativeOnce();
-console.log(max);
+// let max = maxConsacativeOnce();
+// console.log(max);
+
+function missingNumber() {
+  let arr = [9, 6, 4, 2, 3, 5, 7, 0, 1];
+  let n = arr.length;
+  let totalSum = (n * (n + 1)) / 2;
+  let partialSum = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    partialSum += arr[i];
+  }
+  return totalSum - partialSum;
+}
+let missingN = missingNumber();
+console.log(missingN);
