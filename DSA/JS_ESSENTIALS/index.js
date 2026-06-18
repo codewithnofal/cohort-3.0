@@ -757,3 +757,24 @@ function bestTimeToBuyAndSellStock() {
   console.log(maxProfit);
 }
 bestTimeToBuyAndSellStock();
+
+function moveZeros() {
+  let arr = [1, 2, 3, 0, 0, 5, 0, 5, 9, 0, 7, 0, 8, 0, 0, 7];
+  let x = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== 0) {
+      arr[x] = arr[i];
+      x++;
+    }
+  }
+  for (let i = x; i < arr.length; i++) {
+    arr[i] = 0;
+  }
+  console.log(arr);
+}
+moveZeros();
+
+function maxConsacativeOnce(){
+  
+}
