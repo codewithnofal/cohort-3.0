@@ -756,7 +756,7 @@ function bestTimeToBuyAndSellStock() {
   }
   console.log(maxProfit);
 }
-bestTimeToBuyAndSellStock();
+// bestTimeToBuyAndSellStock();
 
 function moveZeros() {
   let arr = [1, 2, 3, 0, 0, 5, 0, 5, 9, 0, 7, 0, 8, 0, 0, 7];
@@ -773,8 +773,22 @@ function moveZeros() {
   }
   console.log(arr);
 }
-moveZeros();
+// moveZeros();
 
-function maxConsacativeOnce(){
-  
+function maxConsacativeOnce() {
+  let arr = [1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1];
+  let currCount = 0;
+  let maxCount = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 1) {
+      currCount++;
+    } else {
+      maxCount = Math.max(maxCount, currCount);
+      currCount = 0;
+    }
+  }
+  return maxCount;
 }
+let max = maxConsacativeOnce();
+console.log(max);
