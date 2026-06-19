@@ -833,5 +833,8 @@ function singleNumber() {
     }
   }
 }
-let ans = singleNumber();
-console.log(ans)
+// let ans = singleNumber();
+// console.log(ans)
+
+
+//  Another uproach with XOR 
