@@ -813,7 +813,25 @@ function missingNumber() {
 let missingN = missingNumber();
 // console.log(missingN);
 
-
 // 14. Single Number.
 
+function singleNumber() {
+  let arr = [1, 2, 5, 1, 5, 2, 4, 7, 4];
 
+  let hash = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    if (!hash[arr[i]]) {
+      hash[arr[i]] = 1;
+    } else {
+      hash[arr[i]]++;
+    }
+  }
+  for (let i = 0; i < arr.length; i++) {
+    if (hash[arr[i]] == 1) {
+      return arr[i];
+    }
+  }
+}
+let ans = singleNumber();
+console.log(ans)
