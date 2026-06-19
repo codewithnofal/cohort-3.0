@@ -836,5 +836,15 @@ function singleNumber() {
 // let ans = singleNumber();
 // console.log(ans)
 
+//  Another uproach with XOR
 
-//  Another uproach with XOR 
+function withXOR() {
+  let arr = [1, 2, 5, 1, 5, 2, 4, 7, 4];
+  let xor = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    xor = xor ^ arr[i];
+  }
+  console.log(xor)
+}
+withXOR();
