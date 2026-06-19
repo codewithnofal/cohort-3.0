@@ -758,6 +758,8 @@ function bestTimeToBuyAndSellStock() {
 }
 // bestTimeToBuyAndSellStock();
 
+// 11. Move zeros.
+
 function moveZeros() {
   let arr = [1, 2, 3, 0, 0, 5, 0, 5, 9, 0, 7, 0, 8, 0, 0, 7];
   let x = 0;
@@ -774,6 +776,8 @@ function moveZeros() {
   console.log(arr);
 }
 // moveZeros();
+
+// 12. Max Consactive once
 
 function maxConsacativeOnce() {
   let arr = [1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1];
@@ -793,6 +797,8 @@ function maxConsacativeOnce() {
 // let max = maxConsacativeOnce();
 // console.log(max);
 
+// 13. Missing number.
+
 function missingNumber() {
   let arr = [9, 6, 4, 2, 3, 5, 7, 0, 1];
   let n = arr.length;
@@ -805,4 +811,9 @@ function missingNumber() {
   return totalSum - partialSum;
 }
 let missingN = missingNumber();
-console.log(missingN);
+// console.log(missingN);
+
+
+// 14. Single Number.
+
+
