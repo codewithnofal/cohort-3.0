@@ -214,9 +214,29 @@ function step3() {
     }, 3000);
   });
 }
-async function sequentialTaskRunner() {
-  await step1();
-  await step2();
-  await step3();
+// async function sequentialTaskRunner() {
+//   await step1();
+//   await step2();
+//   await step3();
+// }
+// sequentialTaskRunner();
+
+// 9. API Data Cleaner.
+
+async function apiDataCleaner() {
+  try {
+    let res = await fetch(`https://jsonplaceholder.typicode.com/users`);
+    let data = await res.json();
+
+    let newData = data.map((d) => {
+      return {
+        id: d.id,
+        name: d.name,
+      };
+    });
+    console.log(newData);
+  } catch (error) {
+    console.log(error);
+  }
 }
-sequentialTaskRunner();
+// apiDataCleaner();
