@@ -71,6 +71,25 @@ function productDataProcesor() {
   console.log(filterP);
 
   let total = product.reduce((acc, val) => acc + val.price, 0);
-  console.log(total)
+  console.log(total);
 }
-productDataProcesor();
+// productDataProcesor();
+
+// 7. Debounce Utility from Scratch.
+function search() {
+  console.log("searching");
+}
+
+function debounce(fnc, delay) {
+  let timerId;
+  return function () {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      fnc();
+    }, delay);
+  };
+}
+// let debounceSearch = debounce(search, 1000);
+// debounceSearch()
+
+
