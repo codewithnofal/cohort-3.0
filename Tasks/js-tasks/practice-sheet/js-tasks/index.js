@@ -279,12 +279,20 @@ const emitter = {
   },
 };
 
-(emitter.on("login", welcome),
-  emitter.on("login", sendEmail),
-  emitter.on("login", isLoggedin));
+// (emitter.on("login", welcome),
+//   emitter.on("login", sendEmail),
+//   emitter.on("login", isLoggedin));
 
-emitter.emit("login");
+// emitter.emit("login");
 
-emitter.off("login", sendEmail);
+// emitter.off("login", sendEmail);
 
-emitter.emit("login");
+// emitter.emit("login");
+
+
+
+
+// ****************************************************** HARD LEVEL ***************************************************
+
+
+
