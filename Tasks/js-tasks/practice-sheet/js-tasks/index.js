@@ -312,6 +312,6 @@ function memoization(fn) {
     return result;
   };
 }
-let ans = memoization(multiply);
-console.log(ans(10, 20));
-console.log(ans(10, 20));
+// let ans = memoization(multiply);
+// console.log(ans(10, 20));
+// console.log(ans(10, 20));
