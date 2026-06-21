@@ -240,3 +240,51 @@ async function apiDataCleaner() {
   }
 }
 // apiDataCleaner();
+
+// 10. Mini Event Emitter.
+
+function welcome() {
+  console.log("Welcome User");
+}
+
+function sendEmail() {
+  console.log("Email Sent");
+}
+function isLoggedin() {
+  console.log("Login Successfully!");
+}
+
+const emitter = {
+  events: {},
+
+  on(eventName, callback) {
+    if (!this.events[eventName]) {
+      this.events[eventName] = [];
+    }
+    this.events[eventName].push(callback);
+  },
+  emit(eventName) {
+    const callback = this.events[eventName];
+
+    if (!callback) return;
+
+    callback.forEach((cb) => cb());
+  },
+  off(eventName, callback) {
+    if (!this.events[eventName]) return;
+
+    this.events[eventName] = this.events[eventName].filter(
+      (cb) => cb !== callback,
+    );
+  },
+};
+
+(emitter.on("login", welcome),
+  emitter.on("login", sendEmail),
+  emitter.on("login", isLoggedin));
+
+emitter.emit("login");
+
+emitter.off("login", sendEmail);
+
+emitter.emit("login");
