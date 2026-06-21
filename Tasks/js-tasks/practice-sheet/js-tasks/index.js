@@ -289,10 +289,29 @@ const emitter = {
 
 // emitter.emit("login");
 
-
-
-
 // ****************************************************** HARD LEVEL ***************************************************
 
+// 11. Memoization Utility.
 
+function multiply(a, b) {
+  console.log("calculating...");
+  return a * b;
+}
 
+function memoization(fn) {
+  let cache = {};
+  return function (...args) {
+    const key = args.toString();
+
+    if (cache[key] !== undefined) {
+      console.log("From cache");
+      return cache[key];
+    }
+    const result = fn(...args);
+    cache[key] = result;
+    return result;
+  };
+}
+let ans = memoization(multiply);
+console.log(ans(10, 20));
+console.log(ans(10, 20));
