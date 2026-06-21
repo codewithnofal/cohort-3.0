@@ -168,4 +168,21 @@ for (let i = x; i < arr.length; i++) {
   arr[i] = 0;
 }
 
-console.log(arr)
+// console.log(arr)
+
+let nums = [2,14,18,22,22];
+
+let hash = {};
+
+for (let i = 0; i < nums.length; i++) {
+  if (!hash[nums[i]]) {
+    hash[nums[i]] = 1;
+  } else {
+    hash[nums[i]]++;
+    
+  }
+}
+
+for (let key in hash) {
+  hash[key] > 1 ? console.log(true) : console.log(false);
+}
