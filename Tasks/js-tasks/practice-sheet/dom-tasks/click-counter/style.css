@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.container {
+  text-align: center;
+}
+
+.count {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 18px;
+}
