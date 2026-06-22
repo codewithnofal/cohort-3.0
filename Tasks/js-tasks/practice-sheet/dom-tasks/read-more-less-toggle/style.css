@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.container {
+  max-width: 500px;
+  padding: 20px;
+}
+
+.text {
+  line-height: 1.6;
+}
+
+.extra-text {
+  display: none;
+}
+
+.extra-text.show {
+  display: inline;
+}
+
+.toggle-btn {
+  margin-top: 15px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
