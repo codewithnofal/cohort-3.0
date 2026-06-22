@@ -170,19 +170,43 @@ for (let i = x; i < arr.length; i++) {
 
 // console.log(arr)
 
-let nums = [2,14,18,22,22];
+// let nums = [2,14,18,22,22];
 
-let hash = {};
+// let hash = {};
 
-for (let i = 0; i < nums.length; i++) {
-  if (!hash[nums[i]]) {
-    hash[nums[i]] = 1;
-  } else {
-    hash[nums[i]]++;
-    
-  }
-}
+// for (let i = 0; i < nums.length; i++) {
+//   if (!hash[nums[i]]) {
+//     hash[nums[i]] = 1;
+//   } else {
+//     hash[nums[i]]++;
 
-for (let key in hash) {
-  hash[key] > 1 ? console.log(true) : console.log(false);
-}
+//   }
+// }
+
+// for (let key in hash) {
+//   hash[key] > 1 ? console.log(true) : console.log(false);
+// }
+
+// let text = "loonbalxballpoon";
+// text = text.split("");
+
+// let hash = {};
+// for (let i = 0; i < text.length; i++) {
+//   if (!hash[text[i]]) {
+//     hash[text[i]] = 1;
+//   } else {
+//     hash[text[i]]++;
+//   }
+// }
+// console.log(hash);
+
+// let count = Math.min(
+//   hash.b,
+//   hash.a,
+//   Math.floor(hash.l / 2),
+//   Math.floor(hash.o / 2),
+//   hash.n,
+// )
+// console.log(count)
+
+
