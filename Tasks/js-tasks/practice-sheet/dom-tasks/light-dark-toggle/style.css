@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+
+  background: white;
+  color: black;
+
+  transition: 0.3s;
+}
+
+.dark {
+  background: black;
+  color: white;
+}
+
+.container {
+  text-align: center;
+}
+
+.theme-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
