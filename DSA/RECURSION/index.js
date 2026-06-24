@@ -26,4 +26,13 @@ function sum(n) {
   }
   return (isOdd ? arr[n] : 0) + sum(n - 1);
 }
-console.log(sum(arr.length - 1))
+// console.log(sum(arr.length - 1))
+
+// 4. factorial of N numbers.
+
+function fact(n) {
+  if (n === 0) return 1;
+
+  return n * fact(n - 1);
+}
+console.log(fact(5));
