@@ -35,4 +35,15 @@ function fact(n) {
 
   return n * fact(n - 1);
 }
-console.log(fact(5));
+// console.log(fact(5));
+
+// 5. Power of two.
+
+function power(n) {
+  let isOdd = n % 2 !== 0;
+  if (n == 1) {
+    return true;
+  } else if (n < 1 || isOdd) return false;
+  return power(n / 2);
+}
+// console.log(power(6));
