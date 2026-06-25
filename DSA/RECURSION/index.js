@@ -47,3 +47,5 @@ function power(n) {
   return power(n / 2);
 }
 // console.log(power(6));
+
+
