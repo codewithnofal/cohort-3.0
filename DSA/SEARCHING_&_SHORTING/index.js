@@ -21,5 +21,5 @@ function bSearch(n, target) {
 
   return -1;
 }
-let ans = bSearch(nums, target);
-console.log(ans);
+// let ans = bSearch(nums, target);
+// console.log(ans);
