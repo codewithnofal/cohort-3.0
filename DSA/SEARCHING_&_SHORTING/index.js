@@ -1,7 +1,7 @@
 // Binary Search.
 
-let nums = [12];
-let target = 12;
+let nums = [-1, 0, 3, 5, 9, 12];
+let target = 9;
 
 function bSearch(n, target) {
   let left = 0;
