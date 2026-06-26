@@ -852,7 +852,7 @@ function withXOR() {
 // Plus One.
 
 function plusOne() {
-  let digits = [1, 2, 3];
+  let digits = [9];
 
   for (let i = digits.length - 1; i >= 0; i--) {
     if (digits[i] < 9) {
