@@ -845,6 +845,23 @@ function withXOR() {
   for (let i = 0; i < arr.length; i++) {
     xor = xor ^ arr[i];
   }
-  console.log(xor)
+  console.log(xor);
 }
-withXOR();
+// withXOR();
+
+// Plus One.
+
+function plusOne() {
+  let digits = [4,3,2,1];
+
+  for (let i = digits.length - 1; i >= 0; i--) {
+    if (digits[i] < 9) {
+      digits[i]++;
+      return digits;
+    }
+    digits[i] = 0;
+  }
+  digits.unshift(1);
+  return digits;
+}
+console.log(plusOne())
