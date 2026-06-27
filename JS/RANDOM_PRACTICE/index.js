@@ -209,4 +209,10 @@ for (let i = x; i < arr.length; i++) {
 // )
 // console.log(count)
 
+// Fibonacci number revison.
 
+function fib(n) {
+  if (n <= 1) return n;
+  return fib(n - 1) + fib(n - 2);
+}
+console.log(fib(3));
