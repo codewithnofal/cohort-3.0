@@ -211,8 +211,32 @@ for (let i = x; i < arr.length; i++) {
 
 // Fibonacci number revison.
 
-function fib(n) {
-  if (n <= 1) return n;
-  return fib(n - 1) + fib(n - 2);
+// function fib(n) {
+//   if (n <= 1) return n;
+//   return fib(n - 1) + fib(n - 2);
+// }
+// console.log(fib(3));
+
+// Binary search.
+
+let nums = [-1, 0, 3, 5, 9, 12];
+let target = 9;
+
+function binary(nums, target) {
+  let L = 0;
+  let R = nums.length - 1;
+
+  while (R >= L) {
+    let mid = Math.floor((L + R) / 2);
+
+    if (nums[mid] === target) {
+      return mid;
+    } else if (target < nums[mid]) {
+      R = mid - 1;
+    } else {
+      L = mid + 1;
+    }
+  }
+  return -1;
 }
-console.log(fib(3));
+console.log(binary(nums, target));
