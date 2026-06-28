@@ -10,8 +10,208 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
+    <main class="h-screen relative w-full flex">
+        <div class="left fixed  flex flex-col justify-between p-6 h-full w-[17%] border-r border-[#E5E7EB] bg-[#FFFFFF] ">
+          <div class="top flex flex-col  gap-11 h-[35%]">
+              <div class="logo flex items-center gap-2 ">
+                
+                <i class="fa-solid fa-layer-group text-[#1A1D21] text-[23px] font-bold"></i>
+                <h1 class="text-[18px] text-[#1A1D21] leading-4 tracking-normal font-semibold">FinTrack Pro <br><span class="text-[12px] text-[#6B7280] tracking-wide font-light">Enterprise finance</span></h1>
+              </div>
+              <div class="tabs flex flex-col gap-5 pl-4 pr-4 text-[17px] text-[#6B7280] font-normal">
+                <div class="dt flex items-center gap-2 ">
+                  <i class="fa-solid fa-border-all"></i>
+                  <p>Dashboard</p>
+                </div>
+                <div class="st">
+                  <div class="dt flex items-center gap-2 ">
+                  <i class="fa-solid fa-gear"></i>
+                  <p>Settings</p>
+                </div>
+                </div>
+              </div>
+          </div>
+          <div class="btm">
+            <div class="add">
+              <button id="add-btn" class="p-2.5 bg-[#000000] rounded-md w-full cursor-pointer text-white text-[14px] ">+ Add Transaction</button>
+            </div>
+          </div>
+        </div>
+        <div class="right ml-[17%] h-full w-[83%]">
+            <div class="nav  flex justify-between items-center pr-10 h-[65px] border-[#E5E7EB] w-full border-b ">
+                <div></div>
+                <div class="right flex items-center gap-10">
+                    <div class="name pl-4 font-medium tracking-wide text-[14px] border-l border-[#E5E7EB] ">Nofal</div>
+                    <button class="py-1.5 px-3.5 border border-[#d4d5d7] cursor-pointer rounded-md text-[14px] flex items-center gap-1  font-medium "><i class="fa-solid fa-right-from-bracket "></i>Logout</button>
+                </div>
+            </div>
+            <div class="content min-h-[80vh] px-10 py-8 bg-[#F8F9FB]">
+
+
+              <!-- Financial Overview -->
+              <div class="top">
+                <h1 class="text-3xl font-semibold">Financial Overview</h1>
+                <p class="text-[#6B7284] text-[15px]">Real-time tracking application</p>
+              </div>
+
+              <!-- status -->
+               <div class="cards mt-5 h-[150px] flex items-center justify-between w-full">
+                <div class="card h-full w-[24%] p-5 rounded-lg bg-white border border-[#E5E7EB]  ">
+                  <div class="p-2 rounded-md w-fit bg-[#DBEAFE]">
+                    <i class="fa-solid fa-building-columns text-[#3053B4]   text-[17px]"></i>
+                  </div>
+                  <div class="mt-3">
+                    <p class="text-[15px] text-[#6B7284] ">Current Balance</p>
+                    <h1 class="text-[25px] font-bold  ">$200000.00</h1>
+                  </div>
+                </div>
+                <div class="card h-full w-[24%] p-5 rounded-lg bg-white border border-[#E5E7EB]  ">
+                  <div class="p-2 rounded-md w-fit bg-[#DCFCE7]">
+                    <i class="fa-solid fa-arrow-trend-up text-[#166534]   text-[17px]" ></i>
+                  </div>
+                  <div class="mt-3">
+                    <p class="text-[15px] text-[#6B7284] ">Total Income</p>
+                    <h1 class="text-[25px] font-bold text-[#166534]  ">$200000.00</h1>
+                  </div>
+                </div>
+                <div class="card h-full w-[24%] p-5 rounded-lg bg-white border border-[#E5E7EB]  ">
+                  <div class="p-2 rounded-md w-fit bg-[#FEE2E2]">
+                    <i class="fa-solid fa-arrow-trend-down text-[#991B1B]   text-[17px]" ></i>
+                  </div>
+                  <div class="mt-3">
+                    <p class="text-[15px] text-[#6B7284] ">Total Expense</p>
+                    <h1 class="text-[25px] font-bold text-[#991B1B] ">$200000.00</h1>
+                  </div>
+                </div>
+                <div class="card h-full w-[24%] p-5 rounded-lg bg-white border border-[#E5E7EB]  ">
+                  <div class="p-2 rounded-md w-fit bg-[#DBEAFE]">
+                    <i class="fa-solid fa-piggy-bank text-[#3053B4]   text-[17px]" ></i>
+                  </div>
+                  <div class="mt-3">
+                    <p class="text-[15px] text-[#6B7284] ">Total Transactions</p>
+                    <h1 class="text-[25px] font-bold  ">2</h1>
+                  </div>
+                </div>
+               </div>
+
+               <!-- Cash Flow Analysis & Preferences-->
+               <div class="cont mt-6 h-[45vh] flex  justify-between w-full ">
+                  <div class="chart p-5 h-full w-[65%] rounded-md border bg-white border-[#E5E7EB] ">
+                      <h1 class="text-2xl font-semibold" >Cash Flow Analysis</h1>
+                  </div>
+                  <div class="preference p-5 h-[58%] w-[33%] border border-[#E5E7EB] bg-white">
+                      <h1 class="text-2xl font-semibold" >Preferences</h1>
+                      <div class="dark-btn flex items-center border-b pb-4 border-[#E5E7EB] mt-6 justify-between">
+                        <p>Dark Mode</p>
+                        <div class="toggle" id="toggle">
+                           <div class="circle"></div>
+                        </div>
+                      </div>
+                      <button class=" w-full p-1.5 text-[13px] border border-[#FFCCCC] mt-3 rounded-lg text-[#991B1B] cursor-pointer font-semibold bg-[#FFF5F5] flex items-center justify-center gap-1  "><i class="fa-solid fa-trash"></i>Reset All Data</button>
+                  </div>
+               </div>
+
+
+               <!-- Transactions -->
+  
+               <div class="tc min-h-[30vh] mt-5 p-5 w-[65%] bg-white border-[#E5E7EB] border rounded-md ">
+                  <h1 class="text-2xl font-semibold">All Transactions</h1>
+                  <div class="filter flex justify-between w-full mt-3">
+                    <div class="search p-1.5 w-[40%] rounded-lg border border-[#E5E7EB] bg-[#F8F9FB] ">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                      <input class="outline-0 text-[14px] w-[90%] " type="text" placeholder="Search...">
+                    </div>
+                    <div class="catedory p-1.5 w-[55%] rounded-lg border border-[#E5E7EB] bg-[#F8F9FB]">
+                      <select class="w-full cursor-pointer outline-0 text-[14px]">
+                        <option  value="All Types">All Types</option>
+                        <option value="Income Only">Income Only</option>
+                        <option value="Expense Only">Expense Only</option>
+                      </select>
+                    </div>
+                  </div>
+
+
+                  <!-- actual transactions -->
+                   <div class="w-full  mt-2">
+                    <div class="name p-3 w-full flex justify-between text-[14px] border-b border-[#E5E7EB] text-[#6B7280] font-medium">
+                      <p>DATE</p>
+                      <p>DESCRIPTION</p>
+                      <p>CATEGORY</p>
+                      <p>AMOUNT</p>
+                      <p>ACTIONS</p>
+                    </div>
+
+                    <div class="transactions-status ">
+                     
+                    </div>
+                   </div>
+
+
+                   <!-- add transaction btn by default hidden  -->
+
+                   <div id="form" class="absolute  flex top-0 left-0  items-center justify-center  h-screen w-full bg-black/30">
+                          <form class="h-[70%] p-5 w-[28%] rounded-lg shadow-md bg-white">
+                            <div class="top flex items-center justify-between">
+                            <h1 class="text-[20px] font-semibold  ">Add Transaction</h1> 
+                            <span class="close text-[26px] text-gray-500 cursor-pointer hover:text-black">×</span>
+                            </div>
+
+                            <div class="type mt-3">
+                              <p class="text-[15px] font-medium">Type</p>
+                               <div class="catedory p-1.5 w-[100%] mt-3 cursor-pointer rounded-md border border-[#E5E7EB] bg-[#F8F9FB]">
+                                  <select required class="w-full cursor-pointer outline-0 text-[14px]">
+                                     <option  value="Expense">Expense</option>
+                                     <option value="Income">Income</option>
+                                  </select>
+                               </div>
+                            </div>
+
+                            <div class="desc mt-3">
+                              <p class="text-[15px] font-medium">Description</p>
+                               <div class="search p-1.5 mt-2 w-[100%] rounded-md border border-[#E5E7EB] bg-[#F8F9FB] ">
+                                   <input required class="outline-0 text-[14px] w-[90%] pl-1 " type="text" placeholder="e.g. Amazon, Salary, Coffee">
+                               </div>
+                            </div>
+
+                            <div class="amount-date w-full flex justify-between mt-3">
+                              <div class="w-full">
+                                <p class="text-[15px] font-medium">Amount</p>
+                                <input required class="p-1.5 rounded-md border w-[95%] mt-2  border-[#E5E7EB] bg-[#F8F9FB]" type="number">
+                              </div>
+                              <div class="w-full">
+                                <p class="text-[15px] font-medium">Date</p>
+                                <input id="date" required class="p-1.5 rounded-md border w-[100%] mt-2 border-[#E5E7EB] bg-[#F8F9FB]" type="date">
+                              </div>
+                            </div>
+
+
+                            <div class="mt-8">
+                                <p class="text-[15px] font-medium">Category</p>
+                                <div class="catedory p-1.5 w-[100%] mt-2 cursor-pointer rounded-md border border-[#E5E7EB] bg-[#F8F9FB]">
+                                  <select required class="w-full cursor-pointer outline-0 text-[14px]">
+                                     <option hidden value="Expense">Select a category</option>
+                                     <option value="Food & Dining">Food & Dining</option>
+                                     <option value="Shopping">Shopping</option>
+                                     <option value="Recharge & Bills">Recharge & Bills</option>
+                                     <option value="Petrol & Auto">Petrol & Auto</option>
+                                     <option value="Utilities">Utilities</option>
+                                     <option value="Salary">Salary</option>
+                                     <option value="Entertainment">Entertainment</option>
+                                     <option value="Other">Other</option>
+                                  </select>
+                               </div>
+
+                               <button  class="w-full p-2 bg-black text-white mt-4 text-[15px] rounded-md cursor-pointer">Save Transaction</button>
+                            </div>
+                          </form>
+                   </div>
+               </div>
+            </div>
+        </div>
+    </main>
     <script src="./js/dashboard.js"></script>
   </body>
 </html>

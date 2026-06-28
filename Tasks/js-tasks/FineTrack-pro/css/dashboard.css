@@ -1,0 +1,41 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@font-face {
+  font-family: inter;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2)
+    format("woff2");
+}
+
+* {
+  font-family: inter, sans-serif;
+}
+
+.toggle {
+  width: 45px;
+  height: 24px;
+  background: #d1d5db;
+  border-radius: 9999px;
+  padding: 3px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.circle {
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.toggle.active {
+  background: #3b82f6;
+}
+
+.toggle.active .circle {
+  transform: translateX(20px);
+}
+
+#form{
+  display: none;
+}
