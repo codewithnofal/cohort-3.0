@@ -3,12 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>login</title>
+    <title>register</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <link rel="stylesheet" href="./css/login.css" />
   </head>
   <body>
-    <script src="./js/login.js"></script>
+    <main class="h-screen w-full bg-[#F4F7F6] flex items-center justify-center relative">
+      <form class="w-[300px] sm:w-[400px] h-[400px] rounded-lg shadow-lg pt-12 pl-6 pr-6 bg-white">
+        <h2 class="text-2xl text-center font-semibold mb-4 text-[#020202] ">Welcome Back</h2>
+        <p class=" text-sm sm:text-[16px] text-center">Login to FinTrack Pro</p>
+        <div class="inputs flex flex-col gap-4 mt-4">
+          <div class="username">
+            <p class="text-[16px]">Username</p>
+            <input class="p-1.5 w-full border rounded-md border-gray-300" type="text"  />
+          </div>
+          <div class="password">
+            <p class="text-[16px]">Password</p>
+            <input class="p-1.5 w-full border rounded-md border-gray-300" type="text"  type="text" />
+          </div>
+        </div>
+        <button class="p-1.5 bg-blue-500 w-full mt-4 rounded-md text-[15px] font-medium text-white cursor-pointer hover:bg-blue-600 transition ">Login</button>
+        <p class="text-center text-[12px] sm:text-[14px] mt-2">Don't have an account? <span class="text-blue-600 cursor-pointer">Register here</span></p>
+      </form>
+    </main>
+    <script src="./js/register.js"></script>
   </body>
 </html>
