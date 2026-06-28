@@ -239,4 +239,4 @@ function binary(nums, target) {
   }
   return -1;
 }
-console.log(binary(nums, target));
+// console.log(binary(nums, target));
