@@ -156,7 +156,6 @@ function applyTheme() {
     });
 
     inputs.forEach((input) => {
-      input.style.background = "#1F2937";
       input.style.color = "white";
       input.style.borderColor = "#374151";
     });
