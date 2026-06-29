@@ -41,9 +41,9 @@ window.addEventListener("DOMContentLoaded", () => {
 let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 let users = JSON.parse(localStorage.getItem("users")) || [];
 
-if (!currentUser) {
-  window.location.href = "login.html";
-}
+// if (!currentUser) {
+//   window.location.href = "login.html";
+// }
 
 applyTheme();
 loadSettings();
@@ -342,7 +342,7 @@ function renderDashboard() {
 
   transactionStatus.innerHTML = "";
   filteredTransactions.forEach((u) => {
-    return (transactionStatus.innerHTML += ` <div class="trans p-3 flex border-b border-[#E5E7EB] justify-between items-start text-[13px]">
+    return (transactionStatus.innerHTML += ` <div class="trans p-3 min-w-[480px] flex justify-between text-[15px] sm:text-[14px] border-b border-[#E5E7EB] text-[#6B7280] theme-text font-medium">
                       <p class="text-[14px]">${u.date}</p>
                       <p class="font-semibold">${u.description}</p>
                       <p>${u.category}</p>
