@@ -268,10 +268,10 @@ function addTransaction() {
 
       localStorage.setItem("currentUser", JSON.stringify(currentUser));
 
-      e.target[0].value = "";
+      // e.target[0].value = "";
       e.target[1].value = "";
       e.target[2].value = "";
-      e.target[4].value = "";
+      // e.target[4].value = "Select a category";
 
       formOpen.style.display = "none";
     }
