@@ -1,6 +1,12 @@
 const form = document.querySelector("form");
+const register = document.querySelector("#register")
+
 
 let users = JSON.parse(localStorage.getItem("users")) || [];
+
+register.addEventListener("click", ()=>{
+  window.location.href = "register.html"
+})
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();

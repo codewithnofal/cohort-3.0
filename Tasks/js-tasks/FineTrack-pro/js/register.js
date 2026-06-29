@@ -1,4 +1,10 @@
 const form = document.querySelector("form");
+const login = document.querySelector("#login")
+
+login.addEventListener("click", ()=>{
+  window.location.href = "login.html"
+})
+
 
 let Users = JSON.parse(localStorage.getItem("users")) || [];
 
