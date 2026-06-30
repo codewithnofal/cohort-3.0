@@ -243,21 +243,41 @@ function binary(nums, target) {
 
 // binary search.
 
-let arr2 = [5,4,2,1]
+let arr2 = [5, 4, 2, 1];
 function bubbleSort(arr) {
   let n = arr.length;
-      for(let i=0; i<n-1; i++){
-        let isSwapped = false;
-        for(let j=0; j<n-1-i; j++){
-          if(arr[j] > arr[j+1]){
-            let temp = arr[j];
-            arr[j] = arr[j+1]
-            arr[j+1] = temp
-            isSwapped = true
-          }
-        }
-        if(!isSwapped) break;
+  for (let i = 0; i < n - 1; i++) {
+    let isSwapped = false;
+    for (let j = 0; j < n - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        let temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+        isSwapped = true;
       }
-      return arr
+    }
+    if (!isSwapped) break;
+  }
+  return arr;
 }
-console.log(bubbleSort(arr2));
+// console.log(bubbleSort(arr2));
+
+let arr3 = [7, 1, 5, 4, 3, 2];
+
+function selectionSort(arr) {
+  let n = arr.length;
+
+  for (let i = 0; i < n - 1; i++) {
+    let min = i;
+    for (let j = i + 1; j < n; j++) {
+      if (arr[j] < arr[min]) {
+        min = j;
+      }
+    }
+    let temp = arr[min];
+    arr[min] = arr[i];
+    arr[i] = temp;
+  }
+  return arr
+}
+console.log(selectionSort(arr3));
