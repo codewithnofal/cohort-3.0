@@ -240,3 +240,10 @@ function binary(nums, target) {
   return -1;
 }
 // console.log(binary(nums, target));
+
+// binary search.
+
+// function binarySearch() {
+
+// }
+// console.log(binarySearch());
