@@ -14,4 +14,4 @@ function insertionSort(a) {
   }
   return a
 }
-console.log(insertionSort(arr));
+// console.log(insertionSort(arr));
