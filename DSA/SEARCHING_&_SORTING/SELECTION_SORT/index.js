@@ -30,4 +30,4 @@ function heightChecker() {
   }
   return count;
 }
-console.log(heightChecker());
+// console.log(heightChecker());
