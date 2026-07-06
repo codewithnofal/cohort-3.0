@@ -46,6 +46,13 @@ body {
   background-size: cover;
   background-position: center;
 }
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #00000033;
+  backdrop-filter: blur(8px);
+}
 @media (max-width: 767px) {
   .bg-scene {
     position: absolute;
@@ -115,5 +122,76 @@ main {
     height: 100vh;
     display: flex;
     flex-direction: column;
+  }
+}
+
+.list-container::-webkit-scrollbar {
+  display: none;
+}
+.todo-list li {
+  list-style: none;
+  font-size: 17px;
+  cursor: pointer;
+}
+.edit {
+  height: 18px;
+}
+.delete {
+  height: 18px;
+}
+
+.todo-list {
+  flex-shrink: 0;
+  height: 50px;
+  padding-left: 8px;
+  padding-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #eceef0;
+  border-radius: 5px;
+  width: 90%;
+}
+.todo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.edit-del {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.readimg {
+  height: 20px;
+  display: none;
+}
+.active {
+  text-decoration: line-through;
+  color: rgba(106, 105, 105, 0.788);
+}
+
+@media (max-width: 480px) {
+  .todo-list li {
+    font-size: 15px;
+  }
+  .edit {
+    height: 15px;
+    src: url(./assets/pencil.png);
+  }
+  .delete {
+    height: 15px;
+  }
+  .todo-list {
+    height: 40px;
+  }
+  .edit-del {
+    gap: 12px;
+  }
+  .readimg {
+    height: 18px;
+    display: none;
   }
 }

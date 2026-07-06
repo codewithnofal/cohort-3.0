@@ -11,7 +11,9 @@
 </head>
 <body>
 
-<div id="hero" class="bg-scene"></div>
+<div id="hero" class="bg-scene relative">
+  <div class="overlay"></div>
+</div>
 
 <main class="px-5 md:px-8 py-4 gap-4 flex flex-col md:h-screen">
 
@@ -29,7 +31,7 @@
   </header>
 
   <!-- ============ MAIN SPLIT: greeting+weather (left) / hub (right) ============ -->
-  <div class="flex-1 h-screen flex flex-col lg:flex-row gap-6 pt-2">
+  <div id="home-container" class="flex-1  h-screen flex flex-col lg:flex-row gap-6 pt-2">
 
     <!-- LEFT: greeting, date, weather -->
     <div class="flex-1 min-w-0 flex h-full flex-col  sm:pt-10 gap-4 sm:gap-10">
@@ -88,7 +90,7 @@
 
       <div class="grid grid-cols-2 gap-3 flex-1 min-h-0">
 
-        <div class="hub-card cursor-pointer glass rounded-2xl p-3.5 flex flex-col justify-between"
+        <div id="todo" class="hub-card cursor-pointer glass rounded-2xl p-3.5 flex flex-col justify-between"
              style="background:linear-gradient(160deg,rgba(74,47,122,.55) 0%,rgba(22,15,40,.6) 100%);">
           <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#b48bff,#7c3fe0)">📋</span>
           <div class="mt-2">
@@ -98,7 +100,7 @@
           <div class="flex justify-end"><span class="arrow-btn">→</span></div>
         </div>
 
-        <div class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between"
+        <div id="daily-planner" class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between"
              style="background:linear-gradient(160deg,rgba(31,90,138,.5) 0%,rgba(10,28,48,.6) 100%);">
           <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#5cb6f5,#1f7fd1)">🗂️</span>
           <div class="mt-2">
@@ -108,7 +110,7 @@
           <div class="flex justify-end"><span class="arrow-btn">→</span></div>
         </div>
 
-        <div class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between"
+        <div id="daily-goals" class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between"
              style="background:linear-gradient(160deg,rgba(20,107,90,.5) 0%,rgba(8,34,30,.6) 100%);">
           <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#5be0c2,#12a583)">🎯</span>
           <div class="mt-2">
@@ -118,7 +120,7 @@
           <div class="flex justify-end"><span class="arrow-btn">→</span></div>
         </div>
 
-        <div class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between"
+        <div id="pomodoro" class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between"
              style="background:linear-gradient(160deg,rgba(122,44,31,.5) 0%,rgba(36,12,8,.6) 100%);">
           <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#ff8a65,#e0442a)">🍅</span>
           <div class="mt-2">
@@ -128,7 +130,7 @@
           <div class="flex justify-end"><span class="arrow-btn">→</span></div>
         </div>
 
-        <div class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between col-span-2"
+        <div id="quote" class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between col-span-2"
              style="background:linear-gradient(160deg,rgba(49,42,110,.5) 0%,rgba(15,12,30,.6) 100%);">
           <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#8b93ff,#4a4de0)">🕐</span>
           <div class="mt-2 flex items-end justify-between">
@@ -144,12 +146,100 @@
     </div>
 
   </div>
+
+  <div class="h-screen todo hidden w-full m-auto flex bg-green-200 ">
+    
+    
+      <!--  MAIN CONTAINER -->
+      <div
+        class="container h-[65%] sm:h-[80%] w-[80%] sm:w-[35%] rounded-xl bg-[#FFFFFF]"
+      >
+        <!-- NAV SECTION -->
+        <div
+          class="nav h-[100px] w-full flex items-center justify-center gap-2"
+        >
+          <div class="nav-part1 text-[20px] sm:text-[32px] font-bold">
+            TODO List
+          </div>
+          <div class="nav-part2">
+            <img
+              class="h-[35px] sm:h-[55px]"
+              src="./assets/images/notebook.gif"
+              alt="gif"
+            />
+          </div>
+        </div>
+
+        <!-- ADD TODO SECTION -->
+        <div
+          class="add-todo h-60px md:h-[80px] flex items-center justify-center w-full"
+        >
+          <div
+            class="search flex items-center justify-between h-[60%] sm:h-[80%] w-[90%] rounded-full bg-[#ECEEF0]"
+          >
+            <input
+              class="p-2 h-full w-[80%] outline-0 ml-2 placeholder:text-[#717574] placeholder:font-normal text-[17px] sm:text-[20px] font-medium placeholder:text-[15px] sm:placeholder:text-[20px]"
+              type="text"
+              placeholder="Add your items"
+            />
+            <div
+              class="add h-[45px] sm:h-[100%] cursor-pointer w-[19%] sm:w-[13%] rounded-full flex items-center hover:bg-green-500 transition duration-200 justify-center bg-green-400"
+            >
+              <img
+                class=" add-img h-[22px] sm:h-[30px]"
+                src="./assets/images/plus.png"
+                alt="add"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- TODO MESSAGE -->
+
+        <p
+          class=" notification-msg text-center   h-[40px] font-medium text-[13px] sm:text-[15px] mt-2 "
+        >
+          <!-- Todo item Created Successfully! -->
+        </p>
+
+        <!-- TODO LISTS -->
+
+        <div
+          class="list-container flex flex-nowrap items-center flex-col gap-3 h-[55%] sm:h-[58%] w-[100%] overflow-y-scroll"
+        >
+          <!-- <div class="todo-list">
+            <div class="todo">
+              <li>task 1</li>
+              <img
+                class="h-[15px] hidden sm:h-[20px]"
+                src="./assets/check-mark.png"
+                alt=""
+              />
+            </div>
+            <div class="edit-del">
+              <img class="edit" src="./assets/pencil.png" alt="" />
+              <img class="delete" src="./assets/delete.png" alt="" />
+            </div>
+          </div> -->
+
+          <div class="emptystate"> 
+            <p class="text-center font-semibold text-[20px] sm:text-[30px] text-[#000000ba]">No Items in todo !</p>
+            <img class="no-itemsgif" width="400px" src="./assets/images/noitems.gif"/>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="daily-planner h-screen w-full hidden text-2xl text-white bg-amber-600">daily-planner</div>
+  <div class="daily-goals h-screen w-full hidden text-2xl text-white bg-amber-600">daily-goals</div>
+  <div class="pomodoro h-screen w-full hidden text-2xl text-white bg-amber-600">pomodoro</div>
+  <div class="quote h-screen w-full hidden text-2xl text-white bg-amber-600">quote</div>
 </main>
 
-
+<script src="script.js"></script>
 <script src="./js/date.js"></script>
 <script src="./js/time.js"></script>
 <script src="./js/greeting.js"></script>
 <script src="./js/weather.js"></script>
+<script src="./js/todo.js"></script>
 </body>
 </html>

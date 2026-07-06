@@ -117,6 +117,27 @@ const weatherMap = {
   },
 };
 
+function getTimeOfDay() {
+  const currentHour = new Date().getHours();
+
+  if (currentHour >= 5 && currentHour < 12) {
+    return "morning";
+  } else if (currentHour >= 17 && currentHour < 20) {
+    return "evening";
+  } else {
+    return "night";
+  }
+}
+
+function updateHeroBackground(weather) {
+  const time = getTimeOfDay();
+
+  const backgroundImage = `${time}-${weather.background}.jpg`;
+  console.log(backgroundImage)
+
+  hero.style.backgroundImage = `url(/assets/bg-images/${backgroundImage})`;
+}
+
 async function getLocationName(latitude, longitude) {
   try {
     const response = await fetch(
@@ -155,6 +176,7 @@ async function getWeather(latitude, longitude) {
     const visibility = data.current.visibility;
     const weather = weatherMap[weatherCode];
     const feelsLike = data.current.apparent_temperature;
+    updateHeroBackground(weather);
 
     weatherCondition.textContent = weather.text;
     weatherImage.src = `./assets/images/${weather.icon}`;
@@ -165,7 +187,6 @@ async function getWeather(latitude, longitude) {
     pressureEl.textContent = `${pressure} hPa`;
     visibilityEl.textContent = `${visibility / 1000} km`;
     feelsLikeEl.textContent = `${Math.floor(feelsLike)}°C`;
-
   } catch (error) {
     console.log(error);
   }
