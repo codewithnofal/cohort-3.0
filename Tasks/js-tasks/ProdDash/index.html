@@ -1,28 +1,154 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <main class="h-screen relative w-full ">
-      <div class="home h-screen w-full relative">
-        <div class="overlay">
-        <div class="nav flex h-[50px] w-full px-10 items-center justify-between">
-          <div class="part1 ">
-              <h1 class="text-white text-2xl   font-semibold ">ProdDash</h1>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProdDash — Productivity Dashboard</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-scene"></div>
+
+<main class="px-5 md:px-8 py-4 gap-4 flex flex-col md:h-screen">
+
+  <!-- ============ TOP BAR ============ -->
+  <header class="flex items-center justify-between shrink-0">
+    <div class="flex items-center gap-2">
+      <span class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#a679ff,#6a3dfa)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" fill="white"/></svg>
+      </span>
+      <span class="text-lg font-bold tracking-tight">ProdDash</span>
+    </div>
+    <div class="bg-white/65 p-1 cursor-pointer rounded-md backdrop:blur-2xl">
+      <img class="h-5 sm:h-7  " src="https://img.icons8.com/?size=100&id=45475&format=png&color=000000" alt="">
+    </div>
+  </header>
+
+  <!-- ============ MAIN SPLIT: greeting+weather (left) / hub (right) ============ -->
+  <div class="flex-1 h-screen flex flex-col lg:flex-row gap-6 pt-2">
+
+    <!-- LEFT: greeting, date, weather -->
+    <div class="flex-1 min-w-0 flex h-full flex-col  sm:pt-10 gap-4 sm:gap-10">
+      <div>
+        <h1 id="greeting" class="text-2xl md:text-3xl font-bold drop-shadow-sm">Good Evening, Nofal 👋</h1>
+        <p id="greeting-message" class="text-white/85 text-sm mt-1">Stay focused. Finish what you started.</p>
+      </div>
+
+     <div class="flex items-center gap-4 sm:gap-6">
+       <div class="glass rounded-xl px-4 py-2.5 w-[160px] sm:w-[180px] flex items-center gap-2">
+        <img class=" h-5 sm:h-7" src="https://img.icons8.com/?size=100&id=8yG2a6v2mm3S&format=png&color=ffffff" alt="">
+        <div class="text-sm leading-tight">
+          <p id="current-date" >27 June, 2025</p>
+          <p id="current-day" class="text-white/60 text-xs">Friday</p>
+        </div>
+      </div>
+
+       <div class="glass rounded-xl px-3 py-2 flex items-center gap-2 w-[140px] sm:w-[180px] shrink-0">
+          <img class=" h-5 sm:h-7" src="https://img.icons8.com/?size=100&id=6Z5IUAh18Fuc&format=png&color=ffffff" alt="">
+          <div class="leading-tight">
+            <p  class="text-[10px] text-white/60">Current Time</p>
+            <p id="current-time" class="text-sm font-bold">07:45 PM</p>
           </div>
-          <div class="part2 ">
-              
+        </div>
+     </div>
+
+      <div class="glass rounded-2xl p-4 w-full max-w-sm">
+        <div class="flex items-center justify-between mb-2">
+          <p class=" text-xs sm:text-sm text-white/80 flex items-center gap-1">📍 New Delhi, India</p>
+          <!-- <span class="text-white/60 text-sm">⋯</span> -->
+        </div>
+        <div class="flex items-center gap-10">
+          <img class=" h-[80px] sm:h-[100px]" src="./assets/images/cloudy.webp"></img>
+          <div>
+            <p class="text-4xl font-bold text-white">32°C</p>
+            <p class="text-sm text-white/70">Partly Cloudy</p>
+            <p class="text-[13px] text-white/50">Feels like 34°C</p>
           </div>
+        </div>
+        <div class="grid grid-cols-4 gap-1 mt-3 pt-3 border-t border-white/10 text-[10px] text-white/70 text-center">
+          <div><p class=" text-xl sm:text-2xl">💧</p><p class="mt-0.5 text-xs">Humidity</p><p class="text-white font-medium">60%</p></div>
+          <div><p class=" text-xl sm:text-2xl">🌬️</p><p class="mt-0.5 text-xs">Wind</p><p class="text-white font-medium">12 km/h</p></div>
+          <div><p class=" text-xl sm:text-2xl">📊</p><p class="mt-0.5 text-xs">Pressure</p><p class="text-white font-medium">1012 hPa</p></div>
+          <div><p class=" text-xl sm:text-2xl">👁️</p><p class="mt-0.5 text-xs">Visibility</p><p class="text-white font-medium">10 km</p></div>
+        </div>
       </div>
+    </div>
+
+    <!-- RIGHT: current time (small) + productivity hub -->
+    <div class="flex-1 min-w-0 flex flex-col gap-3 min-h-0 pb-2">
+
+      <div class="flex items-center justify-between shrink-0 gap-3">
+        <h2 class="text-base font-semibold">Your Productivity Hub</h2>
+       
       </div>
+
+      <div class="grid grid-cols-2 gap-3 flex-1 min-h-0">
+
+        <div class="hub-card cursor-pointer glass rounded-2xl p-3.5 flex flex-col justify-between"
+             style="background:linear-gradient(160deg,rgba(74,47,122,.55) 0%,rgba(22,15,40,.6) 100%);">
+          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#b48bff,#7c3fe0)">📋</span>
+          <div class="mt-2">
+            <p class="font-semibold text-sm sm:text-lg">Todo List</p>
+            <p class="text-[10px] text-white/60 leading-snug">Manage your tasks and get things done</p>
+          </div>
+          <div class="flex justify-end"><span class="arrow-btn">→</span></div>
+        </div>
+
+        <div class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between"
+             style="background:linear-gradient(160deg,rgba(31,90,138,.5) 0%,rgba(10,28,48,.6) 100%);">
+          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#5cb6f5,#1f7fd1)">🗂️</span>
+          <div class="mt-2">
+            <p class="font-semibold text-sm sm:text-lg">Daily Planner</p>
+            <p class="text-[10px] text-white/60 leading-snug">Plan your day and stay organized</p>
+          </div>
+          <div class="flex justify-end"><span class="arrow-btn">→</span></div>
+        </div>
+
+        <div class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between"
+             style="background:linear-gradient(160deg,rgba(20,107,90,.5) 0%,rgba(8,34,30,.6) 100%);">
+          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#5be0c2,#12a583)">🎯</span>
+          <div class="mt-2">
+            <p class="font-semibold text-sm sm:text-lg">Daily Goals</p>
+            <p class="text-[10px] text-white/60 leading-snug">Set goals and achieve more</p>
+          </div>
+          <div class="flex justify-end"><span class="arrow-btn">→</span></div>
+        </div>
+
+        <div class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between"
+             style="background:linear-gradient(160deg,rgba(122,44,31,.5) 0%,rgba(36,12,8,.6) 100%);">
+          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#ff8a65,#e0442a)">🍅</span>
+          <div class="mt-2">
+            <p class="font-semibold text-sm sm:text-lg">Pomodoro Timer</p>
+            <p class="text-[10px] text-white/60 leading-snug">Focus better with Pomodoro technique</p>
+          </div>
+          <div class="flex justify-end"><span class="arrow-btn">→</span></div>
+        </div>
+
+        <div class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between col-span-2"
+             style="background:linear-gradient(160deg,rgba(49,42,110,.5) 0%,rgba(15,12,30,.6) 100%);">
+          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#8b93ff,#4a4de0)">🕐</span>
+          <div class="mt-2 flex items-end justify-between">
+            <div>
+              <p class="font-semibold text-sm sm:text-lg">Date &amp; Time</p>
+              <p class="text-[10px] text-white/60 leading-snug">Check time, date and stay on track</p>
+            </div>
+            <span class="arrow-btn shrink-0">→</span>
+          </div>
+        </div>
+
       </div>
-      
-    </main>
-    <script src="script.js"></script>
-  </body>
+    </div>
+
+  </div>
+</main>
+
+
+<script src="./js/date.js"></script>
+<script src="./js/time.js"></script>
+<script src="./js/greeting.js"></script>
+</body>
 </html>
