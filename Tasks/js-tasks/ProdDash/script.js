@@ -4,27 +4,35 @@ const dailyPlanner = document.querySelector(".daily-planner");
 const dailyGoals = document.querySelector(".daily-goals");
 const pomodoro = document.querySelector(".pomodoro");
 const quoteContainer = document.querySelector(".quote");
+const toggleBtn = document.getElementById("theme-toggle");
+const themeIcon = document.getElementById("theme-icon");
+console.log(themeIcon)
 
+const savedTheme = localStorage.getItem("theme");
 
-// let falg = false;
-// homeContainer.addEventListener("click", (e) => {
-//   if (e.target.id == "todo") {
-//     todoContainer.style.display = "block";
-//     homeContainer.style.display = "none";
-//   } else if (e.target.id == "daily-planner") {
-//     homeContainer.style.display = "none";
-//     dailyPlanner.style.display = "block";
-//   } else if (e.target.id == "daily-goals") {
-//     homeContainer.style.display = "none";
-//     dailyPlanner.style.display = "block";
-//   } else if (e.target.id == "pomodoro") {
-//     homeContainer.style.display = "none";
-//     pomodoro.style.display = "block";
-//   } else if (e.target.id == "quote") {
-//     homeContainer.style.display = "none";
-//     quoteContainer.style.display = "block";
-//   }
-// });
+if (savedTheme === "dark") {
+  document.body.classList.add("dark");
+
+  themeIcon.src = "./assets/images/sun.png";
+}
+
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+
+    themeIcon.src =
+      "/assets/images/sun.png";
+  } else {
+    localStorage.setItem("theme", "light");
+
+    themeIcon.src =
+      "/assets/images/moon.png";
+  }
+}
+
+toggleBtn.addEventListener("click", toggleTheme);
 
 function showPage(pageId) {
   document.querySelectorAll(".page").forEach((page) => {
@@ -36,7 +44,6 @@ function showPage(pageId) {
   homeContainer.classList.add("hidden");
 }
 
-
 homeContainer.addEventListener("click", (e) => {
   const card = e.target.closest(".hub-card");
 
@@ -45,15 +52,13 @@ homeContainer.addEventListener("click", (e) => {
   showPage(card.dataset.page);
 });
 
-
 function goBack(e) {
   if (e) e.preventDefault();
-  document.querySelectorAll('.page').forEach((page) => {
-    page.classList.add('hidden');
+  document.querySelectorAll(".page").forEach((page) => {
+    page.classList.add("hidden");
   });
 
-  
   if (homeContainer) {
-    homeContainer.classList.remove('hidden');
+    homeContainer.classList.remove("hidden");
   }
 }

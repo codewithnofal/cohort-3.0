@@ -25,8 +25,8 @@
       </span>
       <span class="text-lg font-bold tracking-tight">ProdDash</span>
     </div>
-    <div class="bg-white/65 p-1 cursor-pointer rounded-md backdrop:blur-2xl">
-      <img class="h-5 sm:h-7  " src="https://img.icons8.com/?size=100&id=45475&format=png&color=000000" alt="">
+    <div id="theme-toggle" class="bg-white/20  border-white/75 p-2 cursor-pointer rounded-full backdrop:blur-2xl">
+      <img id="theme-icon" class="h-5 sm:h-6  " src="/assets/images/moon.png" alt="">
     </div>
   </header>
 
@@ -36,7 +36,7 @@
     <!-- LEFT: greeting, date, weather -->
     <div class="flex-1 min-w-0 flex h-full flex-col  sm:pt-10 gap-4 sm:gap-10">
       <div>
-        <h1 id="greeting" class="text-2xl md:text-3xl font-bold drop-shadow-sm">Good Evening, Nofal 👋</h1>
+        <h1 id="greeting" class="text-2xl md:text-3xl font-bold drop-shadow-sm">Good Evening,</h1>
         <p id="greeting-message" class="text-white/85 text-sm mt-1">Stay focused. Finish what you started.</p>
       </div>
 
@@ -148,11 +148,11 @@
   </div>
 
 <!--  todo list -->
-      <div id="todo-page"
-       class="page hidden flex justify-center  items-center flex-col h-full w-full"
+      <div  id="todo-page"
+       class="page  hidden flex justify-center  items-center flex-col h-full w-full"
       >
 
-      <div class="w-full max-w-2xl bg-[#111722] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl">
+      <div class="w-full todo-bg max-w-2xl bg-[#111722] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl">
 
     <!-- Back link -->
     <a onclick="goBack(event)" href="#" class="inline-flex items-center gap-2 text-slate-400 hover:text-slate-200 text-sm mb-6 sm:mb-8 transition-colors">
@@ -160,7 +160,7 @@
     </a>
 
     <div class="mb-2">
-      <h1 class="text-white text-3xl sm:text-4xl mb-2 font-bold">ToDo List</h1>
+      <h1 class="text-white bg-transparent todo-bg text-3xl sm:text-4xl  font-bold">ToDo List</h1>
     </div>
     
 
@@ -227,7 +227,6 @@
 
     <!-- Header -->
     <div class="mb-6 sm:mb-8">
-      <div class="mono text-emerald-400 text-xs tracking-widest mb-1">SYS.03</div>
       <h1 class="text-white text-3xl sm:text-4xl font-bold">Daily Goals</h1>
     </div>
 

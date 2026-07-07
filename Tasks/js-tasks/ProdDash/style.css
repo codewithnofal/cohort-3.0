@@ -292,17 +292,8 @@ input::placeholder {
   transition: all 0.2s ease;
 }
 
-
-
-
-
-
-
-
-
-
 .mono {
-  font-family: 'Courier New', ui-monospace, monospace;
+  font-family: "Courier New", ui-monospace, monospace;
 }
 
 .ring-progress {
@@ -328,10 +319,8 @@ input::placeholder {
   font-variant-numeric: tabular-nums;
 }
 
-
-
 .mono {
-  font-family: 'Courier New', ui-monospace, monospace;
+  font-family: "Courier New", ui-monospace, monospace;
 }
 
 .fade-quote {
@@ -349,18 +338,14 @@ input::placeholder {
   }
 }
 
-
-
-
-
-
-
 .mono {
-  font-family: 'Courier New', ui-monospace, monospace;
+  font-family: "Courier New", ui-monospace, monospace;
 }
 
 .task-card {
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .task-card:hover {
@@ -415,16 +400,17 @@ input::placeholder {
   color: rgba(255, 255, 255, 0.55);
 }
 
-
-
-
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
   background: #0b0f14;
 }
 
 .mono {
-  font-family: 'Courier New', ui-monospace, monospace;
+  font-family: "Courier New", ui-monospace, monospace;
 }
 
 .planner-row {
@@ -495,7 +481,37 @@ body {
   scrollbar-color: rgba(255, 255, 255, 0.35) rgba(255, 255, 255, 0.04);
 }
 
+body {
+  background: #f4f5f7;
 
-.dark{
-  background-color: #0b0f14;
+  /* color:#111827; */
+
+  transition: 0.35s;
+}
+
+body.dark {
+  /* background:#07111f; */
+
+  color: white;
+  transition: 0.35s;
+}
+
+body.dark .overlay {
+  background: #000000d0;
+  backdrop-filter: blur(8px);
+  transition: 0.35s;
+}
+
+body.dark .glass {
+  background: rgba(255, 255, 255, 0.08);
+  transition: 0.35s;
+}
+
+body.dark .hub-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.dark .todo-bg {
+  background: rgba(227, 227, 227, 0.079);
+  transition: 0.35s;
 }
