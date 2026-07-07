@@ -1,42 +1,75 @@
-const plannerDate = document.getElementById("planner-date");
-const plannerInputs = document.querySelectorAll("#planner-list input");
+// Wrapped in an IIFE so nothing here leaks into the global scope
+// and clashes with other script files on the same page (script.js, goals.js, task.js, etc).
+(function () {
+  const STORAGE_KEY = 'daily-planner-entries';
 
-plannerInputs.forEach((input) => {
-  input.addEventListener("input", savePlanner);
-});
+  const plannerList = document.getElementById('plannerList');
+  if (!plannerList) return;
 
-function updatePlannerDate() {
-  const today = new Date();
+  function loadEntries() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      return {};
+    }
+  }
 
-  const options = {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  };
+  function saveEntries(entries) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+    } catch (e) {
+      console.error('Could not save planner entries', e);
+    }
+  }
 
-  plannerDate.textContent = today.toLocaleDateString("en-IN", options);
-}
+  let entries = loadEntries();
 
-updatePlannerDate();
+  function formatHour(hour) {
+    const period = hour < 12 ? 'AM' : 'PM';
+    let displayHour = hour % 12;
+    if (displayHour === 0) displayHour = 12;
+    return `${displayHour}:00 ${period}`;
+  }
 
-function savePlanner() {
-  const plannerData = {};
+  function buildRows() {
+    plannerList.innerHTML = '';
+    for (let hour = 0; hour < 24; hour++) {
+      const row = document.createElement('div');
+      row.className = 'planner-row';
+      row.dataset.hour = hour;
 
-  plannerInputs.forEach((input) => {
-    plannerData[input.dataset.time] = input.value;
-  });
+      const timeLabel = document.createElement('p');
+      timeLabel.className = 'planner-time mono';
+      timeLabel.textContent = formatHour(hour);
 
-  localStorage.setItem("dailyPlanner", JSON.stringify(plannerData));
-}
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'planner-input';
+      input.placeholder = 'Nothing planned';
+      input.value = entries[hour] || '';
 
-function loadPlanner() {
-  const savedPlanner = JSON.parse(localStorage.getItem("dailyPlanner"));
+      input.addEventListener('input', () => {
+        entries[hour] = input.value;
+        saveEntries(entries);
+      });
 
-  if (!savedPlanner) return;
+      row.appendChild(timeLabel);
+      row.appendChild(input);
+      plannerList.appendChild(row);
+    }
+  }
 
-  plannerInputs.forEach((input) => {
-    input.value = savedPlanner[input.dataset.time] || "";
-  });
-}
+  function highlightCurrentHour() {
+    const currentHour = new Date().getHours();
+    document.querySelectorAll('.planner-row').forEach((row) => {
+      row.classList.toggle('current-hour', Number(row.dataset.hour) === currentHour);
+    });
+  }
 
-loadPlanner();
+  buildRows();
+  highlightCurrentHour();
+
+  // Re-check every minute in case the hour rolls over while the page is open.
+  setInterval(highlightCurrentHour, 60 * 1000);
+})();

@@ -5,6 +5,7 @@ const dailyGoals = document.querySelector(".daily-goals");
 const pomodoro = document.querySelector(".pomodoro");
 const quoteContainer = document.querySelector(".quote");
 
+
 // let falg = false;
 // homeContainer.addEventListener("click", (e) => {
 //   if (e.target.id == "todo") {
@@ -36,15 +37,6 @@ function showPage(pageId) {
 }
 
 
-
-// const card = e.target.closest(".hub-card");
-
-// if (!card) return;
-
-// showPage(card.dataset.page);
-
-
-
 homeContainer.addEventListener("click", (e) => {
   const card = e.target.closest(".hub-card");
 
@@ -52,3 +44,16 @@ homeContainer.addEventListener("click", (e) => {
 
   showPage(card.dataset.page);
 });
+
+
+function goBack(e) {
+  if (e) e.preventDefault();
+  document.querySelectorAll('.page').forEach((page) => {
+    page.classList.add('hidden');
+  });
+
+  
+  if (homeContainer) {
+    homeContainer.classList.remove('hidden');
+  }
+}

@@ -100,7 +100,7 @@
           <div class="flex justify-end"><span class="arrow-btn">→</span></div>
         </div>
 
-        <div id="daily-planner-card" data-page="planner-page" class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between"
+        <div id="daily-planner-card" data-page="planner-page" class="hub-card glass cursor-pointer rounded-2xl p-3.5 flex flex-col justify-between"
              style="background:linear-gradient(160deg,rgba(31,90,138,.5) 0%,rgba(10,28,48,.6) 100%);">
           <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#5cb6f5,#1f7fd1)">🗂️</span>
           <div class="mt-2">
@@ -110,7 +110,7 @@
           <div class="flex justify-end"><span class="arrow-btn">→</span></div>
         </div>
 
-        <div id="daily-goals-card" data-page="goals-page" class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between"
+        <div id="daily-goals-card" data-page="goals-page" class="hub-card glass cursor-pointer rounded-2xl p-3.5 flex flex-col justify-between"
              style="background:linear-gradient(160deg,rgba(20,107,90,.5) 0%,rgba(8,34,30,.6) 100%);">
           <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#5be0c2,#12a583)">🎯</span>
           <div class="mt-2">
@@ -120,7 +120,7 @@
           <div class="flex justify-end"><span class="arrow-btn">→</span></div>
         </div>
 
-        <div id="pomodoro-card" data-page="pomodoro-page" class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between"
+        <div id="pomodoro-card" data-page="pomodoro-page" class="hub-card glass cursor-pointer rounded-2xl p-3.5 flex flex-col justify-between"
              style="background:linear-gradient(160deg,rgba(122,44,31,.5) 0%,rgba(36,12,8,.6) 100%);">
           <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#ff8a65,#e0442a)">🍅</span>
           <div class="mt-2">
@@ -130,7 +130,7 @@
           <div class="flex justify-end"><span class="arrow-btn">→</span></div>
         </div>
 
-        <div id="quote-card" class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between col-span-2"
+        <div id="quote-card" data-page="quote-page" class="hub-card glass cursor-pointer rounded-2xl p-3.5 flex flex-col justify-between col-span-2"
              style="background:linear-gradient(160deg,rgba(49,42,110,.5) 0%,rgba(15,12,30,.6) 100%);">
           <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#8b93ff,#4a4de0)">🕐</span>
           <div class="mt-2 flex items-end justify-between">
@@ -147,407 +147,213 @@
 
   </div>
 
-<!--  MAIN CONTAINER -->
+<!--  todo list -->
       <div id="todo-page"
        class="page hidden flex justify-center  items-center flex-col h-full w-full"
       >
 
-      <div class="container h-[80%] w-[50%] overflow-hidden bg-violet-600/20 rounded-lg border border-violet-300 backdrop:blur-lg">
-          <!-- NAV SECTION -->
-        <div
-          class="nav h-[100px] w-full flex items-center justify-center gap-2"
-        >
-          <div class="nav-part1 text-[20px] sm:text-[32px] font-bold">
-            TODO List
-          </div>
-          <div class="nav-part2">
-            <!-- <img
-              class="h-[35px] sm:h-[55px]"
-              src="./assets/images/notebook.gif"
-              alt="gif"
-            /> -->
-          </div>
-        </div>
+      <div class="w-full max-w-2xl bg-[#111722] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl">
 
-        <!-- ADD TODO SECTION -->
-        <div
-          class="add-todo h-60px md:h-[80px] flex items-center justify-center w-full"
-        >
-          <div
-            class="search outline-0 flex items-center justify-between h-[60%] sm:h-[80%] w-[90%] rounded-full bg-[#ECEEF0]"
-          >
-            <input
-              class="p-2 h-full w-[80%] outline-0 bg-transparent overflow-hidden border-0 ml-2 placeholder:text-[#717574] placeholder:font-normal text-[17px] sm:text-[20px] text-black font-medium placeholder:text-[15px] sm:placeholder:text-[20px]"
-              type="text"
-              placeholder="Add your items"
-            />
-            <div
-              class="add h-[45px] sm:h-[100%] cursor-pointer w-[19%] sm:w-[13%] rounded-full flex items-center hover:bg-green-500 transition duration-200 justify-center bg-green-400"
-            >
-              <img
-                class=" add-img h-[22px] sm:h-[30px]"
-                src="./assets/images/plus.png"
-                alt="add"
-              />
-            </div>
-          </div>
-        </div>
+    <!-- Back link -->
+    <a onclick="goBack(event)" href="#" class="inline-flex items-center gap-2 text-slate-400 hover:text-slate-200 text-sm mb-6 sm:mb-8 transition-colors">
+      <span>&#8592;</span> Back to Dashboard
+    </a>
 
-        <!-- TODO MESSAGE -->
+    <div class="mb-2">
+      <h1 class="text-white text-3xl sm:text-4xl mb-2 font-bold">ToDo List</h1>
+    </div>
+    
 
-        <p
-          class=" notification-msg text-center   h-[40px] font-medium text-[13px] sm:text-[15px] mt-2 "
-        >
-          <!-- Todo item Created Successfully! -->
-        </p>
+    <!-- Input row -->
+    <div class="flex gap-3 mb-6 sm:mb-8">
+      <input
+        id="taskInput"
+        type="text"
+        placeholder="Add a task and press Enter..."
+        class="flex-1 min-w-0 bg-[#0d1219] border border-white/10 rounded-lg px-4 py-3 text-slate-200 text-sm sm:text-base focus:outline-none focus:border-violet-400/60 focus:ring-1 focus:ring-orange-400/30"
+      />
+      <button
+        id="addTaskBtn"
+        class="bg-violet-400 hover:bg-violet-300 text-[#111722] font-semibold px-5 sm:px-7 rounded-lg text-sm sm:text-base transition-colors shrink-0"
+      >
+        Add
+      </button>
+    </div>
 
-        <!-- TODO LISTS -->
+    <!-- Task list -->
+    <div id="taskList" class="flex flex-col gap-3"></div>
 
-        <div
-          class="list-container text-black flex flex-nowrap items-center flex-col gap-3 h-[55%] sm:h-[58%] w-[100%] overflow-y-scroll"
-        >
-          <!-- <div class="todo-list">
-            <div class="todo">
-              <li>task 1</li>
-              <img
-                class="h-[15px] hidden sm:h-[20px]"
-                src="./assets/check-mark.png"
-                alt=""
-              />
-            </div>
-            <div class="edit-del">
-              <img class="edit" src="./assets/pencil.png" alt="" />
-              <img class="delete" src="./assets/delete.png" alt="" />
-            </div>
-          </div> -->
+    <!-- Empty state -->
+    <div id="taskEmptyState" class="text-center text-slate-500 text-sm py-8 hidden">
+      No tasks yet — add one above to get started.
+    </div>
 
-          <div class="emptystate"> 
-            <p class="text-center font-semibold text-[20px] sm:text-[30px] text-[#000000ba]">No Items in todo !</p>
-            <!-- <img class="no-itemsgif" width="400px" src="./assets/images/noitems.gif"/> -->
-          </div>
-        </div>
-      </div>
+  </div>
         
       </div>
+
+
+<!-- daily planner -->
   <div id="planner-page" class="daily-planner page h-[100%]  hidden flex justify-center  items-center flex-col h-full w-full">
     
-  <div
-    class="glass w-full max-w-5xl h-[80%] rounded-3xl p-5 md:p-8 border border-white/10"
-  >
+   <div class="w-full max-w-2xl bg-[#111722] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl">
+
+    <!-- Back link -->
+    <a onclick="goBack(event)" href="#" class="inline-flex items-center gap-2 text-slate-400 hover:text-slate-200 text-sm mb-6 sm:mb-8 transition-colors">
+      <span>&#8592;</span> Back to console
+    </a>
+
     <!-- Header -->
-    <div
-      class="flex flex-col sm:flex-row sm:items-center  sm:justify-between gap-4 mb-8"
-    >
-      <div class="flex items-center gap-3">
-        <button
-          id="planner-back"
-          class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 transition"
-        >
-          ←
-        </button>
-
-        <h2 class="text-2xl md:text-3xl font-bold text-white">
-          Daily Planner
-        </h2>
-      </div>
-
-      <div
-        class="glass px-4 py-2 rounded-xl text-sm md:text-base font-medium"
-      >
-        <span id="planner-date"></span>
-      </div>
+    <div class="mb-2">
+      <h1 class="text-white text-3xl sm:text-4xl font-bold">Daily Planner</h1>
     </div>
+    <p class="text-slate-400 text-sm mb-6 sm:mb-8">Plans are stored per hour. The current hour is highlighted automatically.</p>
 
-    <!-- Planner List -->
-
-    <div id="planner-list" class="space-y-4 h-[80%] overflow-y-scroll overflow-y-scroll">
-
-      <div class="planner-row">
-        <p>06:00 AM</p>
-        <input
-          data-time="06:00 AM"
-          type="text"
-          placeholder="Morning Routine & Exercise"
-        />
-      </div>
-
-      <div class="planner-row">
-        <p>08:00 AM</p>
-        <input
-          data-time="08:00 AM"
-          type="text"
-          placeholder="Project Work"
-        />
-      </div>
-
-      <div class="planner-row">
-        <p>10:00 AM</p>
-        <input
-          data-time="10:00 AM"
-          type="text"
-          placeholder="Study JavaScript"
-        />
-      </div>
-
-      <div class="planner-row">
-        <p>01:00 PM</p>
-        <input
-          data-time="01:00 PM"
-          type="text"
-          placeholder="Lunch Break"
-        />
-      </div>
-
-      <div class="planner-row">
-        <p>02:00 PM</p>
-        <input
-          data-time="02:00 PM"
-          type="text"
-          placeholder="UI / UX Practice"
-        />
-      </div>
-
-      <div class="planner-row">
-        <p>05:00 PM</p>
-        <input
-          data-time="05:00 PM"
-          type="text"
-          placeholder="Review & Notes"
-        />
-      </div>
-
-      <div class="planner-row">
-        <p>07:00 PM</p>
-        <input
-          data-time="07:00 PM"
-          type="text"
-          placeholder="Free Time / Hobbies"
-        />
-      </div>
-
-      <div class="planner-row">
-        <p>10:00 PM</p>
-        <input
-          data-time="10:00 PM"
-          type="text"
-          placeholder="Plan Tomorrow & Sleep"
-        />
-      </div>
-      <div class="planner-row">
-        <p>12:00 AM</p>
-        <input
-          data-time="12:00 AM"
-          type="text"
-          placeholder="Plan Tomorrow & Sleep"
-        />
-      </div>
-      <div class="planner-row">
-        <p>12:00 AM</p>
-        <input
-          data-time="12:00 AM"
-          type="text"
-          placeholder="Plan Tomorrow & Sleep"
-        />
-      </div>
-      <div class="planner-row">
-        <p>12:00 AM</p>
-        <input
-          data-time="12:00 AM"
-          type="text"
-          placeholder="Plan Tomorrow & Sleep"
-        />
-      </div>
-      <div class="planner-row">
-        <p>12:00 AM</p>
-        <input
-          data-time="12:00 AM"
-          type="text"
-          placeholder="Plan Tomorrow & Sleep"
-        />
-      </div>
-
-    </div>
+    <!-- Hour list -->
+    <div id="plannerList" class="planner-scroll flex flex-col max-h-[420px] overflow-y-auto pr-2"></div>
 
   </div>
 </div>
   
-  <!-- ================= Daily Goals ================= -->
+  <!-- Daily Goals-->
 
-<div id="goals-page" class="page hidden w-full h-full flex flex-col">
+<div class="flex justify-center  items-center flex-col h-full w-full">
+  <div id="goals-page" class="w-full page hidden max-w-2xl bg-[#111722] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl">
+
+    <!-- Back link -->
+    <a onclick="goBack(event)" id="back" class="inline-flex cursor-pointer items-center gap-2 text-slate-400 hover:text-slate-200 text-sm mb-6 sm:mb-8 transition-colors">
+      <span>&#8592;</span> Back to Dashboard
+    </a>
 
     <!-- Header -->
-
-    <div class="flex items-center justify-between mb-6">
-
-        <div class="flex items-center gap-3">
-
-            <button id="goals-back"
-                class="w-11 h-11 rounded-xl bg-white/10 backdrop-blur-md hover:bg-white/20 transition">
-
-                ←
-
-            </button>
-
-            <h2 class="text-2xl md:text-3xl font-bold">
-
-                Daily Goals
-
-            </h2>
-
-        </div>
-
-        <button id="add-goal-btn"
-            class="px-5 py-3 rounded-xl bg-violet-600 hover:bg-violet-700 transition font-semibold">
-
-            + Add Goal
-
-        </button>
-
+    <div class="mb-6 sm:mb-8">
+      <div class="mono text-emerald-400 text-xs tracking-widest mb-1">SYS.03</div>
+      <h1 class="text-white text-3xl sm:text-4xl font-bold">Daily Goals</h1>
     </div>
 
-
-
-    <!-- Input -->
-
-    <div class="flex flex-col md:flex-row gap-4 mb-6">
-
-        <input id="goal-input"
-            type="text"
-            placeholder="Enter your goal..."
-
-            class="flex-1
-            h-14
-            px-5
-            rounded-xl
-            outline-none
-            bg-white/10
-            backdrop-blur-xl
-            border border-white/10
-            focus:border-violet-500
-            placeholder:text-white/50">
-
-        <button id="goal-add"
-
-            class="h-14
-            px-8
-            rounded-xl
-            bg-violet-600
-            hover:bg-violet-700
-            transition
-            font-semibold">
-
-            Add Goal
-
-        </button>
-
+    <!-- Input row -->
+    <div class="flex gap-3 mb-6 sm:mb-8">
+      <input
+        id="goalInput"
+        type="text"
+        placeholder="Set a goal for today..."
+        class="flex-1 min-w-0 bg-[#0d1219] border border-white/10 rounded-lg px-4 py-3 text-slate-200 text-sm sm:text-base focus:outline-none focus:border-orange-400/60 focus:ring-1 focus:ring-orange-400/30"
+      />
+      <button
+        id="addBtn"
+        class="bg-violet-400 hover:bg-violet-300 text-[#111722] font-semibold px-5 sm:px-7 rounded-lg text-sm sm:text-base transition-colors shrink-0"
+      >
+        Add
+      </button>
     </div>
 
+    <!-- Progress bar -->
+    <div class="mb-2">
+      <div class="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
+        <div id="progressBar" class="progress-gradient h-full rounded-full" style="width: 0%"></div>
+      </div>
+    </div>
+    <div id="progressText" class="mono text-slate-400 text-xs sm:text-sm mb-6 sm:mb-8">0 of 0 completed</div>
 
+    <!-- Goals list -->
+    <div id="goalsList" class="flex flex-col gap-3"></div>
 
-    <!-- Stats -->
-
-    <div class="flex gap-5 mb-5">
-
-        <div class="glass rounded-xl px-5 py-3">
-
-            <p class="text-sm text-white/60">
-
-                Total Goals
-
-            </p>
-
-            <h2 id="total-goals"
-
-                class="text-2xl font-bold">
-
-                0
-
-            </h2>
-
-        </div>
-
-        <div class="glass rounded-xl px-5 py-3">
-
-            <p class="text-sm text-white/60">
-
-                Completed
-
-            </p>
-
-            <h2 id="completed-goals"
-
-                class="text-2xl font-bold text-green-400">
-
-                0
-
-            </h2>
-
-        </div>
-
+    <!-- Empty state -->
+    <div id="emptyState" class="text-center text-slate-500 text-sm py-8 hidden">
+      No goals yet — add one above to get started.
     </div>
 
-
-
-
-    <!-- Goal List -->
-
-    <div id="goal-list"
-
-        class="flex-1
-        overflow-y-auto
-        pr-2
-        space-y-4">
-
-
-        <!-- Empty State -->
-
-        <div id="empty-goals"
-
-            class="h-full
-            flex
-            flex-col
-            items-center
-            justify-center
-            text-center">
-
-            <img
-
-                class="w-52"
-
-                src="./assets/images/noitems.gif">
-
-            <h2 class="text-2xl font-bold mt-4">
-
-                No Goals Yet
-
-            </h2>
-
-            <p class="text-white/60 mt-2">
-
-                Start by adding your first goal.
-
-            </p>
-
-        </div>
-
-
-        <!-- JS Render Here -->
-
-
-        <!--
-
-        <div class="goal-card">
-
-        </div>
-
-        -->
-
-
-    </div>
-
+  </div>
 </div>
-  <div id="pomodoro-page" class="pomodoro h-screen w-full hidden text-2xl text-white bg-amber-600">pomodoro</div>
-  <div  class="quote h-screen w-full hidden text-2xl text-white bg-amber-600">quote</div>
+
+<!-- pomodoro page -->
+
+  <div id="pomodoro-page" class="pomodoro flex page  hidden justify-center items-center flex-col h-[70%] sm:h-[90%] w-full">
+     <div class="w-full  max-w-2xl bg-[#111722] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl">
+
+    <!-- Back link -->
+    <a onclick="goBack(event)" href="#" class="inline-flex cursor-pointer items-center gap-2 text-slate-400 hover:text-slate-200 text-sm mb-6 sm:mb-8 transition-colors">
+      <span>&#8592;</span> Back to Dashboard
+    </a>
+
+    <!-- Timer ring -->
+    <div class="flex justify-center mb-8 sm:mb-10">
+      <div class="relative w-56 h-56 sm:w-64 sm:h-64">
+        <svg class="w-full h-full -rotate-90" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="10" />
+          <circle
+            id="ringProgress"
+            cx="100" cy="100" r="90" fill="none"
+            stroke="#8a2be2" stroke-width="10" stroke-linecap="round"
+            stroke-dasharray="565.48"
+            stroke-dashoffset="0"
+            class="ring-progress"
+          />
+        </svg>
+        <div class="absolute inset-0 flex flex-col items-center justify-center">
+          <span id="sessionLabel" class="mono text-emerald-400 text-xs sm:text-sm tracking-widest mb-1">WORK SESSION</span>
+          <span id="timeDisplay" class="text-white text-4xl sm:text-5xl font-bold tabular-nums">25:00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="flex flex-wrap justify-center gap-3 mb-6 sm:mb-8">
+      <button id="startBtn" class="bg-violet-400 hover:bg-violet-300 text-[#111722] font-semibold px-6 py-2.5 rounded-lg text-sm sm:text-base transition-colors">
+        Start
+      </button>
+      <button id="pauseBtn" class="bg-[#0d1219] border border-white/10 hover:border-white/25 text-slate-200 font-semibold px-6 py-2.5 rounded-lg text-sm sm:text-base transition-colors">
+        Pause
+      </button>
+      <button id="resetBtn" class="bg-[#0d1219] border border-white/10 hover:border-white/25 text-slate-200 font-semibold px-6 py-2.5 rounded-lg text-sm sm:text-base transition-colors">
+        Reset
+      </button>
+    </div>
+
+    <!-- Presets -->
+    <div class="flex flex-wrap justify-center gap-3">
+      <button data-mode="work" data-minutes="25" class="preset-chip active-chip mono text-xs sm:text-sm px-4 py-2 rounded-full border transition-colors">
+        Work &middot; 25m
+      </button>
+      <button data-mode="short" data-minutes="5" class="preset-chip mono text-xs sm:text-sm px-4 py-2 rounded-full border transition-colors">
+        Short break &middot; 5m
+      </button>
+      <button data-mode="long" data-minutes="15" class="preset-chip mono text-xs sm:text-sm px-4 py-2 rounded-full border transition-colors">
+        Long break &middot; 15m
+      </button>
+    </div>
+
+  </div>
+  </div>
+
+  <!-- quote page -->
+
+  <div id="quote-page" class="quote h-screen w-full flex page mb-20 sm:mb-32 hidden justify-start items-center flex-col">
+    <div class="w-full max-w-2xl bg-[#111722] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl">
+
+    <!-- Back link -->
+    <a  onclick="goBack(event)" class="inline-flex cursor-pointer items-center gap-2 text-slate-400 hover:text-slate-200 text-sm mb-6 sm:mb-8 transition-colors">
+      <span>&#8592;</span> Back to Dashboard
+    </a>
+
+    <!-- Quote card -->
+    <div class="bg-[#0d1219] border border-white/10 rounded-2xl p-6 sm:p-8 mb-6 sm:mb-8">
+      <p id="quoteText" class="text-white text-lg sm:text-xl font-semibold leading-relaxed mb-4">
+        &ldquo;Loading a quote...&rdquo;
+      </p>
+      <p id="quoteAuthor" class="mono text-emerald-400 text-sm">&mdash; Unknown</p>
+    </div>
+
+    <!-- New quote button -->
+    <button
+      id="newQuoteBtn"
+      class="bg-violet-400 hover:bg-violet-300 text-[#111722] font-semibold px-6 py-2.5 rounded-lg text-sm sm:text-base transition-colors"
+    >
+      New quote
+    </button>
+
+  </div>
+  </div>
 </main>
 
 <script src="script.js"></script>
@@ -557,5 +363,8 @@
 <script src="./js/weather.js"></script>
 <script src="./js/todo.js"></script>
 <script src="./js/planner.js"></script>
+<script src="./js/goals.js"></script>
+<script src="./js/timer.js"></script>
+<script src="./js/quote.js"></script>
 </body>
 </html>

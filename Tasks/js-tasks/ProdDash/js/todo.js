@@ -1,127 +1,112 @@
-const inp = document.querySelector("input");
-const addTodo = document.querySelector(".add");
-const listContainer = document.querySelector(".list-container");
-const addImg = document.querySelector(".add-img");
-const notify = document.querySelector(".notification-msg");
-let emptyState = document.querySelector(".emptystate");
 
-let editTodo = null;
+(function () {
+  const STORAGE_KEY = 'task-list-items';
 
-let addTodoList = () => {
-  if (editTodo) {
-    editTodo.querySelector("li").textContent = inp.value;
-    localStorage.setItem("todos", listContainer.innerHTML);
+  const taskInput = document.getElementById('taskInput');
+  const addTaskBtn = document.getElementById('addTaskBtn');
+  const taskList = document.getElementById('taskList');
+  const taskEmptyState = document.getElementById('taskEmptyState');
 
-    notify.style.color = "lightSeaGreen";
-    notify.textContent = "Todo updated Successfully!";
+  if (!taskInput || !addTaskBtn || !taskList) return;
 
-    setTimeout(() => {
-      notify.textContent = "";
-    }, 1000);
-    editTodo = null;
-    addImg.src = "./assets/images/plus.png";
-    inp.value = "";
-    return;
-  }
-
-  let inpValue = inp.value.trim();
-  if (!inpValue) return;
-
-  let todoList = document.createElement("div");
-  todoList.classList.add("todo-list");
-  listContainer.appendChild(todoList);
-
-  let todo = document.createElement("div");
-  todo.classList.add("todo");
-  todoList.appendChild(todo);
-
-  let li = document.createElement("li");
-  li.classList.add("list");
-  todo.appendChild(li);
-
-  li.textContent = inpValue;
-
-  let read = document.createElement("img");
-  read.classList.add("readimg");
-  read.src = "/assets/images/check-mark.png";
-  todo.appendChild(read);
-
-  let update = document.createElement("div");
-  update.classList.add("edit-del");
-  todoList.appendChild(update);
-
-  let edit = document.createElement("img");
-  edit.src = "/assets/images/pencil.png";
-  edit.classList.add("edit");
-
-  let del = document.createElement("img");
-  del.src = "/assets/images/delete.png";
-  del.classList.add("delete");
-
-  update.append(edit, del);
-
-  emptyState.style.display = "none";
-
-  notify.style.color = "green";
-
-  notify.textContent = "Todo item Created Successfully!";
-  localStorage.setItem("todos", listContainer.innerHTML);
-
-  setTimeout(() => {
-    notify.textContent = "";
-  }, 700);
-
-  inp.value = "";
-};
-
-let updateTodoList = (e) => {
-  if (e.target.classList.contains("delete")) {
-    e.target.parentElement.parentElement.remove();
-
-    notify.style.color = "red";
-    notify.textContent = "Todo item Deletd Successfully!";
-
-    setTimeout(() => {
-      notify.textContent = "";
-    }, 700);
-    localStorage.setItem("todos", listContainer.innerHTML);
-
-    const allTodos = document.querySelectorAll(".todo-list");
-    if (allTodos.length === 0) {
-      localStorage.clear("todos");
-      emptyState.style.display = "block";
+  function loadTasks() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      return [];
     }
   }
-  if (e.target.classList.contains("edit")) {
-    editTodo = e.target.parentElement.parentElement;
-    inp.value = editTodo.childNodes[0].textContent;
-    addImg.src = "./assets/images/refresh.png";
+
+  function saveTasks(tasks) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+    } catch (e) {
+      console.error('Could not save tasks', e);
+    }
   }
 
-  if (e.target.classList.contains("list")) {
-    e.target.classList.toggle("active");
+  let tasks = loadTasks();
 
-    if (e.target.classList.contains("active")) {
-      e.target.parentElement.parentElement.querySelector(
-        ".readimg",
-      ).style.display = "block";
+  function render() {
+    taskList.innerHTML = '';
+
+    if (tasks.length === 0) {
+      taskEmptyState.classList.remove('hidden');
     } else {
-      e.target.parentElement.parentElement.querySelector(
-        ".readimg",
-      ).style.display = "none";
+      taskEmptyState.classList.add('hidden');
     }
 
-    localStorage.setItem("todos", listContainer.innerHTML);
-  }
-};
+    // Starred/important tasks float to the top, like a priority list.
+    const sorted = [...tasks].sort((a, b) => (b.starred === a.starred ? 0 : b.starred ? 1 : -1));
 
-window.addEventListener("DOMContentLoaded", () => {
-  let savedTodos = localStorage.getItem("todos");
-  if (savedTodos) {
-    listContainer.innerHTML = savedTodos;
-    console.log(savedTodos);
-  }
-});
+    sorted.forEach((task) => {
+      const card = document.createElement('div');
+      card.className = `task-card fade-in flex items-center gap-3 bg-[#0d1219] border border-white/10 rounded-xl px-4 sm:px-5 py-3.5 ${task.starred ? 'starred' : ''}`;
 
-addTodo.addEventListener("click", addTodoList);
-listContainer.addEventListener("click", updateTodoList);
+      const checkbox = document.createElement('button');
+      checkbox.className = `checkbox-circle shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs ${
+        task.done
+          ? 'bg-emerald-400 text-[#0d1219]'
+          : 'border-2 border-white/25 text-transparent hover:border-white/40'
+      }`;
+      checkbox.innerHTML = task.done ? '&#10003;' : '';
+      checkbox.onclick = () => toggleDone(task.id);
+
+      const text = document.createElement('span');
+      text.className = `flex-1 text-sm sm:text-base ${task.done ? 'strike' : 'text-slate-200'}`;
+      text.textContent = task.text;
+
+      const starBtn = document.createElement('button');
+      starBtn.className = `star-btn shrink-0 text-lg leading-none px-1 ${task.starred ? 'filled' : ''}`;
+      starBtn.innerHTML = '&#9733;';
+      starBtn.title = 'Mark as important';
+      starBtn.onclick = () => toggleStar(task.id);
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.className = 'shrink-0 text-slate-500 hover:text-slate-300 text-lg leading-none px-1 transition-colors';
+      deleteBtn.innerHTML = '&times;';
+      deleteBtn.onclick = () => deleteTask(task.id);
+
+      card.appendChild(checkbox);
+      card.appendChild(text);
+      card.appendChild(starBtn);
+      card.appendChild(deleteBtn);
+      taskList.appendChild(card);
+    });
+  }
+
+  function addTask() {
+    const value = taskInput.value.trim();
+    if (!value) return;
+    tasks.push({ id: Date.now().toString(), text: value, done: false, starred: false });
+    taskInput.value = '';
+    saveTasks(tasks);
+    render();
+  }
+
+  function toggleDone(id) {
+    tasks = tasks.map(t => t.id === id ? { ...t, done: !t.done } : t);
+    saveTasks(tasks);
+    render();
+  }
+
+  function toggleStar(id) {
+    tasks = tasks.map(t => t.id === id ? { ...t, starred: !t.starred } : t);
+    saveTasks(tasks);
+    render();
+  }
+
+  function deleteTask(id) {
+    tasks = tasks.filter(t => t.id !== id);
+    saveTasks(tasks);
+    render();
+  }
+
+  addTaskBtn.addEventListener('click', addTask);
+  taskInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') addTask();
+  });
+
+  render();
+})();

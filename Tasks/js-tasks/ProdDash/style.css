@@ -209,7 +209,6 @@ main {
   color: #d1d5db;
 }
 
-
 .planner-row input {
   flex: 1;
 
@@ -252,4 +251,251 @@ main {
   .planner-row input {
     width: 100%;
   }
+}
+
+.mono {
+  font-family: "Courier New", ui-monospace, monospace;
+}
+.progress-gradient {
+  background: linear-gradient(90deg, #2dd4bf 0%, #a3e635 45%, #b23cfb 100%);
+  transition: width 0.4s ease;
+}
+.goal-card {
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+.goal-card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+.strike {
+  text-decoration: line-through;
+  color: rgba(255, 255, 255, 0.35);
+}
+input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+.fade-in {
+  animation: fadeIn 0.25s ease;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.checkbox-circle {
+  transition: all 0.2s ease;
+}
+
+
+
+
+
+
+
+
+
+
+.mono {
+  font-family: 'Courier New', ui-monospace, monospace;
+}
+
+.ring-progress {
+  transition: stroke-dashoffset 1s linear;
+}
+
+.preset-chip {
+  background: #0d1219;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.preset-chip:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.preset-chip.active-chip {
+  border-color: #a83cfb;
+  color: #af3cfb;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+
+
+.mono {
+  font-family: 'Courier New', ui-monospace, monospace;
+}
+
+.fade-quote {
+  animation: fadeQuote 0.3s ease;
+}
+
+@keyframes fadeQuote {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
+
+.mono {
+  font-family: 'Courier New', ui-monospace, monospace;
+}
+
+.task-card {
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.task-card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.task-card.starred {
+  border-color: #fb923c;
+}
+
+.strike {
+  text-decoration: line-through;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.fade-in {
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.checkbox-circle {
+  transition: all 0.2s ease;
+}
+
+.star-btn {
+  transition: color 0.2s ease;
+}
+
+.star-btn.filled {
+  color: #fb923c;
+}
+
+.star-btn:not(.filled) {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.star-btn:not(.filled):hover {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+
+
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #0b0f14;
+}
+
+.mono {
+  font-family: 'Courier New', ui-monospace, monospace;
+}
+
+.planner-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.planner-row:last-child {
+  border-bottom: none;
+}
+
+.planner-row.current-hour {
+  background: rgba(45, 212, 191, 0.08);
+}
+
+.planner-time {
+  width: 84px;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.planner-row.current-hour .planner-time {
+  color: #2dd4bf;
+}
+
+.planner-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  padding: 0.25rem 0;
+}
+
+.planner-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Custom scrollbar to match the light thumb / dark track look */
+.planner-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.planner-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+}
+
+.planner-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+}
+
+.planner-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.planner-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.35) rgba(255, 255, 255, 0.04);
+}
+
+
+.dark{
+  background-color: #0b0f14;
 }
