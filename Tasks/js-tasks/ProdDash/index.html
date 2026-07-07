@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<div id="hero" class="bg-scene relative">
+<div id="hero" class="bg-scene ">
   <div class="overlay"></div>
 </div>
 
@@ -31,7 +31,7 @@
   </header>
 
   <!-- ============ MAIN SPLIT: greeting+weather (left) / hub (right) ============ -->
-  <div id="home-container" class="flex-1  h-screen flex flex-col lg:flex-row gap-6 pt-2">
+  <div id="home-container" class="flex-1 page  h-screen flex flex-col lg:flex-row gap-6 pt-2">
 
     <!-- LEFT: greeting, date, weather -->
     <div class="flex-1 min-w-0 flex h-full flex-col  sm:pt-10 gap-4 sm:gap-10">
@@ -90,7 +90,7 @@
 
       <div class="grid grid-cols-2 gap-3 flex-1 min-h-0">
 
-        <div id="todo" class="hub-card cursor-pointer glass rounded-2xl p-3.5 flex flex-col justify-between"
+        <div id="todo-card" data-page="todo-page" class="hub-card cursor-pointer glass rounded-2xl p-3.5 flex flex-col justify-between"
              style="background:linear-gradient(160deg,rgba(74,47,122,.55) 0%,rgba(22,15,40,.6) 100%);">
           <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#b48bff,#7c3fe0)">📋</span>
           <div class="mt-2">
@@ -100,7 +100,7 @@
           <div class="flex justify-end"><span class="arrow-btn">→</span></div>
         </div>
 
-        <div id="daily-planner" class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between"
+        <div id="daily-planner-card" data-page="planner-page" class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between"
              style="background:linear-gradient(160deg,rgba(31,90,138,.5) 0%,rgba(10,28,48,.6) 100%);">
           <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#5cb6f5,#1f7fd1)">🗂️</span>
           <div class="mt-2">
@@ -110,7 +110,7 @@
           <div class="flex justify-end"><span class="arrow-btn">→</span></div>
         </div>
 
-        <div id="daily-goals" class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between"
+        <div id="daily-goals-card" data-page="goals-page" class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between"
              style="background:linear-gradient(160deg,rgba(20,107,90,.5) 0%,rgba(8,34,30,.6) 100%);">
           <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#5be0c2,#12a583)">🎯</span>
           <div class="mt-2">
@@ -120,7 +120,7 @@
           <div class="flex justify-end"><span class="arrow-btn">→</span></div>
         </div>
 
-        <div id="pomodoro" class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between"
+        <div id="pomodoro-card" data-page="pomodoro-page" class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between"
              style="background:linear-gradient(160deg,rgba(122,44,31,.5) 0%,rgba(36,12,8,.6) 100%);">
           <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#ff8a65,#e0442a)">🍅</span>
           <div class="mt-2">
@@ -130,7 +130,7 @@
           <div class="flex justify-end"><span class="arrow-btn">→</span></div>
         </div>
 
-        <div id="quote" class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between col-span-2"
+        <div id="quote-card" class="hub-card glass rounded-2xl p-3.5 flex flex-col justify-between col-span-2"
              style="background:linear-gradient(160deg,rgba(49,42,110,.5) 0%,rgba(15,12,30,.6) 100%);">
           <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#8b93ff,#4a4de0)">🕐</span>
           <div class="mt-2 flex items-end justify-between">
@@ -147,14 +147,13 @@
 
   </div>
 
-  <div class="h-screen todo hidden w-full m-auto flex bg-green-200 ">
-    
-    
-      <!--  MAIN CONTAINER -->
-      <div
-        class="container h-[65%] sm:h-[80%] w-[80%] sm:w-[35%] rounded-xl bg-[#FFFFFF]"
+<!--  MAIN CONTAINER -->
+      <div id="todo-page"
+       class="page hidden flex justify-center  items-center flex-col h-full w-full"
       >
-        <!-- NAV SECTION -->
+
+      <div class="container h-[80%] w-[50%] overflow-hidden bg-violet-600/20 rounded-lg border border-violet-300 backdrop:blur-lg">
+          <!-- NAV SECTION -->
         <div
           class="nav h-[100px] w-full flex items-center justify-center gap-2"
         >
@@ -162,11 +161,11 @@
             TODO List
           </div>
           <div class="nav-part2">
-            <img
+            <!-- <img
               class="h-[35px] sm:h-[55px]"
               src="./assets/images/notebook.gif"
               alt="gif"
-            />
+            /> -->
           </div>
         </div>
 
@@ -175,10 +174,10 @@
           class="add-todo h-60px md:h-[80px] flex items-center justify-center w-full"
         >
           <div
-            class="search flex items-center justify-between h-[60%] sm:h-[80%] w-[90%] rounded-full bg-[#ECEEF0]"
+            class="search outline-0 flex items-center justify-between h-[60%] sm:h-[80%] w-[90%] rounded-full bg-[#ECEEF0]"
           >
             <input
-              class="p-2 h-full w-[80%] outline-0 ml-2 placeholder:text-[#717574] placeholder:font-normal text-[17px] sm:text-[20px] font-medium placeholder:text-[15px] sm:placeholder:text-[20px]"
+              class="p-2 h-full w-[80%] outline-0 bg-transparent overflow-hidden border-0 ml-2 placeholder:text-[#717574] placeholder:font-normal text-[17px] sm:text-[20px] text-black font-medium placeholder:text-[15px] sm:placeholder:text-[20px]"
               type="text"
               placeholder="Add your items"
             />
@@ -205,7 +204,7 @@
         <!-- TODO LISTS -->
 
         <div
-          class="list-container flex flex-nowrap items-center flex-col gap-3 h-[55%] sm:h-[58%] w-[100%] overflow-y-scroll"
+          class="list-container text-black flex flex-nowrap items-center flex-col gap-3 h-[55%] sm:h-[58%] w-[100%] overflow-y-scroll"
         >
           <!-- <div class="todo-list">
             <div class="todo">
@@ -224,15 +223,157 @@
 
           <div class="emptystate"> 
             <p class="text-center font-semibold text-[20px] sm:text-[30px] text-[#000000ba]">No Items in todo !</p>
-            <img class="no-itemsgif" width="400px" src="./assets/images/noitems.gif"/>
+            <!-- <img class="no-itemsgif" width="400px" src="./assets/images/noitems.gif"/> -->
           </div>
         </div>
       </div>
+        
+      </div>
+  <div id="planner-page" class="daily-planner page h-[100%]  hidden flex justify-center  items-center flex-col h-full w-full">
+    
+  <div
+    class="glass w-full max-w-5xl h-[80%] rounded-3xl p-5 md:p-8 border border-white/10"
+  >
+    <!-- Header -->
+    <div
+      class="flex flex-col sm:flex-row sm:items-center  sm:justify-between gap-4 mb-8"
+    >
+      <div class="flex items-center gap-3">
+        <button
+          id="planner-back"
+          class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 transition"
+        >
+          ←
+        </button>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-white">
+          Daily Planner
+        </h2>
+      </div>
+
+      <div
+        class="glass px-4 py-2 rounded-xl text-sm md:text-base font-medium"
+      >
+        <span id="planner-date"></span>
+      </div>
+    </div>
+
+    <!-- Planner List -->
+
+    <div id="planner-list" class="space-y-4 h-[80%] overflow-y-scroll overflow-y-scroll">
+
+      <div class="planner-row">
+        <p>06:00 AM</p>
+        <input
+          data-time="06:00 AM"
+          type="text"
+          placeholder="Morning Routine & Exercise"
+        />
+      </div>
+
+      <div class="planner-row">
+        <p>08:00 AM</p>
+        <input
+          data-time="08:00 AM"
+          type="text"
+          placeholder="Project Work"
+        />
+      </div>
+
+      <div class="planner-row">
+        <p>10:00 AM</p>
+        <input
+          data-time="10:00 AM"
+          type="text"
+          placeholder="Study JavaScript"
+        />
+      </div>
+
+      <div class="planner-row">
+        <p>01:00 PM</p>
+        <input
+          data-time="01:00 PM"
+          type="text"
+          placeholder="Lunch Break"
+        />
+      </div>
+
+      <div class="planner-row">
+        <p>02:00 PM</p>
+        <input
+          data-time="02:00 PM"
+          type="text"
+          placeholder="UI / UX Practice"
+        />
+      </div>
+
+      <div class="planner-row">
+        <p>05:00 PM</p>
+        <input
+          data-time="05:00 PM"
+          type="text"
+          placeholder="Review & Notes"
+        />
+      </div>
+
+      <div class="planner-row">
+        <p>07:00 PM</p>
+        <input
+          data-time="07:00 PM"
+          type="text"
+          placeholder="Free Time / Hobbies"
+        />
+      </div>
+
+      <div class="planner-row">
+        <p>10:00 PM</p>
+        <input
+          data-time="10:00 PM"
+          type="text"
+          placeholder="Plan Tomorrow & Sleep"
+        />
+      </div>
+      <div class="planner-row">
+        <p>12:00 AM</p>
+        <input
+          data-time="12:00 AM"
+          type="text"
+          placeholder="Plan Tomorrow & Sleep"
+        />
+      </div>
+      <div class="planner-row">
+        <p>12:00 AM</p>
+        <input
+          data-time="12:00 AM"
+          type="text"
+          placeholder="Plan Tomorrow & Sleep"
+        />
+      </div>
+      <div class="planner-row">
+        <p>12:00 AM</p>
+        <input
+          data-time="12:00 AM"
+          type="text"
+          placeholder="Plan Tomorrow & Sleep"
+        />
+      </div>
+      <div class="planner-row">
+        <p>12:00 AM</p>
+        <input
+          data-time="12:00 AM"
+          type="text"
+          placeholder="Plan Tomorrow & Sleep"
+        />
+      </div>
+
+    </div>
+
   </div>
-  <div class="daily-planner h-screen w-full hidden text-2xl text-white bg-amber-600">daily-planner</div>
-  <div class="daily-goals h-screen w-full hidden text-2xl text-white bg-amber-600">daily-goals</div>
-  <div class="pomodoro h-screen w-full hidden text-2xl text-white bg-amber-600">pomodoro</div>
-  <div class="quote h-screen w-full hidden text-2xl text-white bg-amber-600">quote</div>
+</div>
+  </div>
+  <div id="goals-page" class="daily-goals h-screen w-full hidden text-2xl text-white bg-amber-600">daily-goals</div>
+  <div id="pomodoro-page" class="pomodoro h-screen w-full hidden text-2xl text-white bg-amber-600">pomodoro</div>
+  <div  class="quote h-screen w-full hidden text-2xl text-white bg-amber-600">quote</div>
 </main>
 
 <script src="script.js"></script>
@@ -241,5 +382,6 @@
 <script src="./js/greeting.js"></script>
 <script src="./js/weather.js"></script>
 <script src="./js/todo.js"></script>
+<script src="./js/planner.js"></script>
 </body>
 </html>

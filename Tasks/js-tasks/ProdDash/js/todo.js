@@ -43,7 +43,7 @@ let addTodoList = () => {
 
   let read = document.createElement("img");
   read.classList.add("readimg");
-  read.src = "./assets/check-mark.png";
+  read.src = "/assets/images/check-mark.png";
   todo.appendChild(read);
 
   let update = document.createElement("div");
@@ -51,11 +51,11 @@ let addTodoList = () => {
   todoList.appendChild(update);
 
   let edit = document.createElement("img");
-  edit.src = "./assets/pencil.png";
+  edit.src = "/assets/images/pencil.png";
   edit.classList.add("edit");
 
   let del = document.createElement("img");
-  del.src = "./assets/delete.png";
+  del.src = "/assets/images/delete.png";
   del.classList.add("delete");
 
   update.append(edit, del);
@@ -95,7 +95,7 @@ let updateTodoList = (e) => {
   if (e.target.classList.contains("edit")) {
     editTodo = e.target.parentElement.parentElement;
     inp.value = editTodo.childNodes[0].textContent;
-    addImg.src = "./assets/refresh.png";
+    addImg.src = "./assets/images/refresh.png";
   }
 
   if (e.target.classList.contains("list")) {

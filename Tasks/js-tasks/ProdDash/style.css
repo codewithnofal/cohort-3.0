@@ -195,3 +195,61 @@ main {
     display: none;
   }
 }
+
+.planner-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.planner-row p {
+  width: 110px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #d1d5db;
+}
+
+
+.planner-row input {
+  flex: 1;
+
+  padding: 15px 18px;
+
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  outline: none;
+
+  color: white;
+
+  transition: 0.3s;
+}
+
+.planner-row input::placeholder {
+  color: #b8b8b8;
+}
+
+.planner-row input:focus {
+  border-color: #8b5cf6;
+
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.35);
+}
+
+@media (max-width: 768px) {
+  .planner-row {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .planner-row p {
+    width: 100%;
+  }
+
+  .planner-row input {
+    width: 100%;
+  }
+}

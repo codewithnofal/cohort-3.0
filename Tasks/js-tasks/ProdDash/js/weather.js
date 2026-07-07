@@ -9,6 +9,10 @@ const feelsLikeEl = document.getElementById("feels-like");
 const locationEl = document.getElementById("city");
 const hero = document.getElementById("hero");
 
+hero.style.backgroundSize = "cover";
+hero.style.backgroundPosition = "center";
+hero.style.backgroundRepeat = "no-repeat";
+
 function getCurrentLocation() {
   if (!navigator.geolocation) {
     alert("Geolocation is not supported");
@@ -119,10 +123,15 @@ const weatherMap = {
 
 function getTimeOfDay() {
   const currentHour = new Date().getHours();
+  console.log(currentHour)
 
   if (currentHour >= 5 && currentHour < 12) {
     return "morning";
-  } else if (currentHour >= 17 && currentHour < 20) {
+  }
+  else if(currentHour >=12 && currentHour < 17){
+    return "afternoon"
+  }
+   else if (currentHour >= 17 && currentHour < 20) {
     return "evening";
   } else {
     return "night";
@@ -176,10 +185,11 @@ async function getWeather(latitude, longitude) {
     const visibility = data.current.visibility;
     const weather = weatherMap[weatherCode];
     const feelsLike = data.current.apparent_temperature;
-    updateHeroBackground(weather);
-
+    
     weatherCondition.textContent = weather.text;
-    weatherImage.src = `./assets/images/${weather.icon}`;
+    weatherImage.src = `/assets/images/${weather.icon}`;
+
+    // console.log(`/assets/bg-images/${backgroundImage}`);
 
     temperatureEl.textContent = `${Math.floor(temperature)}°C`;
     humidityEl.textContent = `${humidity}%`;
@@ -187,8 +197,8 @@ async function getWeather(latitude, longitude) {
     pressureEl.textContent = `${pressure} hPa`;
     visibilityEl.textContent = `${visibility / 1000} km`;
     feelsLikeEl.textContent = `${Math.floor(feelsLike)}°C`;
+    updateHeroBackground(weather);
   } catch (error) {
     console.log(error);
   }
 }
-getWeather();
