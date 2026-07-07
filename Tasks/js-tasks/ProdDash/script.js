@@ -13,7 +13,7 @@ const savedTheme = localStorage.getItem("theme");
 if (savedTheme === "dark") {
   document.body.classList.add("dark");
 
-  themeIcon.src = "./assets/images/sun.png";
+  themeIcon.src = "./assets/images/moon.png";
 }
 
 function toggleTheme() {
@@ -23,12 +23,12 @@ function toggleTheme() {
     localStorage.setItem("theme", "dark");
 
     themeIcon.src =
-      "/assets/images/sun.png";
+      "/assets/images/moon.png";
   } else {
     localStorage.setItem("theme", "light");
 
     themeIcon.src =
-      "/assets/images/moon.png";
+      "/assets/images/sun.png";
   }
 }
 

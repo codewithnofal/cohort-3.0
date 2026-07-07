@@ -1,5 +1,4 @@
-// Wrapped in an IIFE so nothing here leaks into the global scope
-// and clashes with other script files on the same page (script.js, goals.js, task.js, etc).
+
 (function () {
   const STORAGE_KEY = 'daily-planner-entries';
 
@@ -70,6 +69,5 @@
   buildRows();
   highlightCurrentHour();
 
-  // Re-check every minute in case the hour rolls over while the page is open.
   setInterval(highlightCurrentHour, 60 * 1000);
 })();

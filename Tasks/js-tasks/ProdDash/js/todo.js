@@ -37,7 +37,7 @@
       taskEmptyState.classList.add('hidden');
     }
 
-    // Starred/important tasks float to the top, like a priority list.
+    
     const sorted = [...tasks].sort((a, b) => (b.starred === a.starred ? 0 : b.starred ? 1 : -1));
 
     sorted.forEach((task) => {

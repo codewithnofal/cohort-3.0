@@ -10,7 +10,7 @@
 
   if (!startBtn || !timeDisplay) return;
 
-  const CIRCUMFERENCE = 565.48; // 2 * PI * r(90)
+  const CIRCUMFERENCE = 565.48;
 
   const modes = {
     work: { label: 'WORK SESSION', minutes: 25 },

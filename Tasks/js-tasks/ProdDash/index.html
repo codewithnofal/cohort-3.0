@@ -17,23 +17,22 @@
 
 <main class="px-5 md:px-8 py-4 gap-4 flex flex-col md:h-screen">
 
-  <!-- ============ TOP BAR ============ -->
   <header class="flex items-center justify-between shrink-0">
     <div class="flex items-center gap-2">
       <span class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#a679ff,#6a3dfa)">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" fill="white"/></svg>
       </span>
-      <span class="text-lg font-bold tracking-tight">ProdDash</span>
+      <span class="text-lg font-bold tracking-tight">Productivity Dashboard</span>
     </div>
     <div id="theme-toggle" class="bg-white/20  border-white/75 p-2 cursor-pointer rounded-full backdrop:blur-2xl">
       <img id="theme-icon" class="h-5 sm:h-6  " src="/assets/images/moon.png" alt="">
     </div>
   </header>
 
-  <!-- ============ MAIN SPLIT: greeting+weather (left) / hub (right) ============ -->
+
+  <!-- home tab -->
   <div id="home-container" class="flex-1 page  h-screen flex flex-col lg:flex-row gap-6 pt-2">
 
-    <!-- LEFT: greeting, date, weather -->
     <div class="flex-1 min-w-0 flex h-full flex-col  sm:pt-10 gap-4 sm:gap-10">
       <div>
         <h1 id="greeting" class="text-2xl md:text-3xl font-bold drop-shadow-sm">Good Evening,</h1>
@@ -61,7 +60,6 @@
       <div class="glass rounded-2xl p-4 w-full max-w-sm">
         <div class="flex items-center justify-between mb-2">
           <p  id="city" class=" text-xs sm:text-sm text-white/80 flex items-center gap-1">📍 New Delhi, India</p>
-          <!-- <span class="text-white/60 text-sm">⋯</span> -->
         </div>
         <div class="flex items-center gap-10">
           <img id="w-image" class=" h-[80px] sm:h-[100px]" src="./assets/images/cloudy.webp"></img>
@@ -80,7 +78,6 @@
       </div>
     </div>
 
-    <!-- RIGHT: current time (small) + productivity hub -->
     <div class="flex-1 min-w-0 flex flex-col gap-3 min-h-0 pb-2">
 
       <div class="flex items-center justify-between shrink-0 gap-3">
@@ -92,7 +89,9 @@
 
         <div id="todo-card" data-page="todo-page" class="hub-card cursor-pointer glass rounded-2xl p-3.5 flex flex-col justify-between"
              style="background:linear-gradient(160deg,rgba(74,47,122,.55) 0%,rgba(22,15,40,.6) 100%);">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#b48bff,#7c3fe0)">📋</span>
+          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#b48bff,#7c3fe0)">
+            <img class="h-[20px]" src="https://img.icons8.com/?size=100&id=13550&format=png&color=000000" alt="">
+          </span>
           <div class="mt-2">
             <p class="font-semibold text-sm sm:text-lg">Todo List</p>
             <p class="text-[10px] text-white/60 leading-snug">Manage your tasks and get things done</p>
@@ -102,7 +101,9 @@
 
         <div id="daily-planner-card" data-page="planner-page" class="hub-card glass cursor-pointer rounded-2xl p-3.5 flex flex-col justify-between"
              style="background:linear-gradient(160deg,rgba(31,90,138,.5) 0%,rgba(10,28,48,.6) 100%);">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#5cb6f5,#1f7fd1)">🗂️</span>
+          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#5cb6f5,#1f7fd1)">
+            <img class="h-[20px]" src="https://img.icons8.com/?size=100&id=13543&format=png&color=000000" alt="">
+          </span>
           <div class="mt-2">
             <p class="font-semibold text-sm sm:text-lg">Daily Planner</p>
             <p class="text-[10px] text-white/60 leading-snug">Plan your day and stay organized</p>
@@ -112,7 +113,9 @@
 
         <div id="daily-goals-card" data-page="goals-page" class="hub-card glass cursor-pointer rounded-2xl p-3.5 flex flex-col justify-between"
              style="background:linear-gradient(160deg,rgba(20,107,90,.5) 0%,rgba(8,34,30,.6) 100%);">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#5be0c2,#12a583)">🎯</span>
+          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#5be0c2,#12a583)">
+             <img class="h-[20px]" src="https://img.icons8.com/?size=100&id=koNpktCdGh2V&format=png&color=000000" alt="">
+          </span>
           <div class="mt-2">
             <p class="font-semibold text-sm sm:text-lg">Daily Goals</p>
             <p class="text-[10px] text-white/60 leading-snug">Set goals and achieve more</p>
@@ -122,7 +125,9 @@
 
         <div id="pomodoro-card" data-page="pomodoro-page" class="hub-card glass cursor-pointer rounded-2xl p-3.5 flex flex-col justify-between"
              style="background:linear-gradient(160deg,rgba(122,44,31,.5) 0%,rgba(36,12,8,.6) 100%);">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#ff8a65,#e0442a)">🍅</span>
+          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#ff8a65,#e0442a)">
+           <img class="h-[20px]" src="https://img.icons8.com/?size=100&id=ZsuOWXipukZu&format=png&color=000000" alt="">
+          </span>
           <div class="mt-2">
             <p class="font-semibold text-sm sm:text-lg">Pomodoro Timer</p>
             <p class="text-[10px] text-white/60 leading-snug">Focus better with Pomodoro technique</p>
@@ -130,13 +135,13 @@
           <div class="flex justify-end"><span class="arrow-btn">→</span></div>
         </div>
 
-        <div id="quote-card" data-page="quote-page" class="hub-card glass cursor-pointer rounded-2xl p-3.5 flex flex-col justify-between col-span-2"
+        <div id="quote-card" data-page="quote-page" class="hub-card glass cursor-pointer rounded-2xl p-5 flex flex-col justify-between col-span-2"
              style="background:linear-gradient(160deg,rgba(49,42,110,.5) 0%,rgba(15,12,30,.6) 100%);">
-          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#8b93ff,#4a4de0)">🕐</span>
+          <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#8b93ff,#4a4de0)"><img class="h-[20px]" src="https://img.icons8.com/?size=100&id=93125&format=png&color=000000" alt=""></span>
           <div class="mt-2 flex items-end justify-between">
             <div>
-              <p class="font-semibold text-sm sm:text-lg">Date &amp; Time</p>
-              <p class="text-[10px] text-white/60 leading-snug">Check time, date and stay on track</p>
+              <p class="font-semibold text-sm sm:text-lg">Motivation Feed</p>
+              <p class="text-[10px] text-white/60 leading-snug">Get daily Consistance</p>
             </div>
             <span class="arrow-btn shrink-0">→</span>
           </div>
@@ -154,7 +159,6 @@
 
       <div class="w-full todo-bg max-w-2xl bg-[#111722] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl">
 
-    <!-- Back link -->
     <a onclick="goBack(event)" href="#" class="inline-flex items-center gap-2 text-slate-400 hover:text-slate-200 text-sm mb-6 sm:mb-8 transition-colors">
       <span>&#8592;</span> Back to Dashboard
     </a>
@@ -164,7 +168,6 @@
     </div>
     
 
-    <!-- Input row -->
     <div class="flex gap-3 mb-6 sm:mb-8">
       <input
         id="taskInput"
@@ -180,10 +183,8 @@
       </button>
     </div>
 
-    <!-- Task list -->
     <div id="taskList" class="flex flex-col gap-3"></div>
 
-    <!-- Empty state -->
     <div id="taskEmptyState" class="text-center text-slate-500 text-sm py-8 hidden">
       No tasks yet — add one above to get started.
     </div>
@@ -198,39 +199,32 @@
     
    <div class="w-full max-w-2xl bg-[#111722] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl">
 
-    <!-- Back link -->
     <a onclick="goBack(event)" href="#" class="inline-flex items-center gap-2 text-slate-400 hover:text-slate-200 text-sm mb-6 sm:mb-8 transition-colors">
       <span>&#8592;</span> Back to console
     </a>
 
-    <!-- Header -->
     <div class="mb-2">
       <h1 class="text-white text-3xl sm:text-4xl font-bold">Daily Planner</h1>
     </div>
     <p class="text-slate-400 text-sm mb-6 sm:mb-8">Plans are stored per hour. The current hour is highlighted automatically.</p>
 
-    <!-- Hour list -->
     <div id="plannerList" class="planner-scroll flex flex-col max-h-[420px] overflow-y-auto pr-2"></div>
 
   </div>
 </div>
   
-  <!-- Daily Goals-->
-
+<!-- daily Goals -->
 <div class="flex justify-center  items-center flex-col h-full w-full">
   <div id="goals-page" class="w-full page hidden max-w-2xl bg-[#111722] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl">
 
-    <!-- Back link -->
     <a onclick="goBack(event)" id="back" class="inline-flex cursor-pointer items-center gap-2 text-slate-400 hover:text-slate-200 text-sm mb-6 sm:mb-8 transition-colors">
       <span>&#8592;</span> Back to Dashboard
     </a>
 
-    <!-- Header -->
     <div class="mb-6 sm:mb-8">
       <h1 class="text-white text-3xl sm:text-4xl font-bold">Daily Goals</h1>
     </div>
 
-    <!-- Input row -->
     <div class="flex gap-3 mb-6 sm:mb-8">
       <input
         id="goalInput"
@@ -246,7 +240,6 @@
       </button>
     </div>
 
-    <!-- Progress bar -->
     <div class="mb-2">
       <div class="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
         <div id="progressBar" class="progress-gradient h-full rounded-full" style="width: 0%"></div>
@@ -254,10 +247,8 @@
     </div>
     <div id="progressText" class="mono text-slate-400 text-xs sm:text-sm mb-6 sm:mb-8">0 of 0 completed</div>
 
-    <!-- Goals list -->
     <div id="goalsList" class="flex flex-col gap-3"></div>
 
-    <!-- Empty state -->
     <div id="emptyState" class="text-center text-slate-500 text-sm py-8 hidden">
       No goals yet — add one above to get started.
     </div>
@@ -270,12 +261,10 @@
   <div id="pomodoro-page" class="pomodoro flex page  hidden justify-center items-center flex-col h-[70%] sm:h-[90%] w-full">
      <div class="w-full  max-w-2xl bg-[#111722] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl">
 
-    <!-- Back link -->
     <a onclick="goBack(event)" href="#" class="inline-flex cursor-pointer items-center gap-2 text-slate-400 hover:text-slate-200 text-sm mb-6 sm:mb-8 transition-colors">
       <span>&#8592;</span> Back to Dashboard
     </a>
 
-    <!-- Timer ring -->
     <div class="flex justify-center mb-8 sm:mb-10">
       <div class="relative w-56 h-56 sm:w-64 sm:h-64">
         <svg class="w-full h-full -rotate-90" viewBox="0 0 200 200">
@@ -296,7 +285,6 @@
       </div>
     </div>
 
-    <!-- Controls -->
     <div class="flex flex-wrap justify-center gap-3 mb-6 sm:mb-8">
       <button id="startBtn" class="bg-violet-400 hover:bg-violet-300 text-[#111722] font-semibold px-6 py-2.5 rounded-lg text-sm sm:text-base transition-colors">
         Start
@@ -309,7 +297,6 @@
       </button>
     </div>
 
-    <!-- Presets -->
     <div class="flex flex-wrap justify-center gap-3">
       <button data-mode="work" data-minutes="25" class="preset-chip active-chip mono text-xs sm:text-sm px-4 py-2 rounded-full border transition-colors">
         Work &middot; 25m
@@ -330,12 +317,10 @@
   <div id="quote-page" class="quote h-screen w-full flex page mb-20 sm:mb-32 hidden justify-start items-center flex-col">
     <div class="w-full max-w-2xl bg-[#111722] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl">
 
-    <!-- Back link -->
     <a  onclick="goBack(event)" class="inline-flex cursor-pointer items-center gap-2 text-slate-400 hover:text-slate-200 text-sm mb-6 sm:mb-8 transition-colors">
       <span>&#8592;</span> Back to Dashboard
     </a>
 
-    <!-- Quote card -->
     <div class="bg-[#0d1219] border border-white/10 rounded-2xl p-6 sm:p-8 mb-6 sm:mb-8">
       <p id="quoteText" class="text-white text-lg sm:text-xl font-semibold leading-relaxed mb-4">
         &ldquo;Loading a quote...&rdquo;
@@ -343,7 +328,6 @@
       <p id="quoteAuthor" class="mono text-emerald-400 text-sm">&mdash; Unknown</p>
     </div>
 
-    <!-- New quote button -->
     <button
       id="newQuoteBtn"
       class="bg-violet-400 hover:bg-violet-300 text-[#111722] font-semibold px-6 py-2.5 rounded-lg text-sm sm:text-base transition-colors"
