@@ -370,8 +370,182 @@
 
   </div>
 </div>
-  </div>
-  <div id="goals-page" class="daily-goals h-screen w-full hidden text-2xl text-white bg-amber-600">daily-goals</div>
+  
+  <!-- ================= Daily Goals ================= -->
+
+<div id="goals-page" class="page hidden w-full h-full flex flex-col">
+
+    <!-- Header -->
+
+    <div class="flex items-center justify-between mb-6">
+
+        <div class="flex items-center gap-3">
+
+            <button id="goals-back"
+                class="w-11 h-11 rounded-xl bg-white/10 backdrop-blur-md hover:bg-white/20 transition">
+
+                ←
+
+            </button>
+
+            <h2 class="text-2xl md:text-3xl font-bold">
+
+                Daily Goals
+
+            </h2>
+
+        </div>
+
+        <button id="add-goal-btn"
+            class="px-5 py-3 rounded-xl bg-violet-600 hover:bg-violet-700 transition font-semibold">
+
+            + Add Goal
+
+        </button>
+
+    </div>
+
+
+
+    <!-- Input -->
+
+    <div class="flex flex-col md:flex-row gap-4 mb-6">
+
+        <input id="goal-input"
+            type="text"
+            placeholder="Enter your goal..."
+
+            class="flex-1
+            h-14
+            px-5
+            rounded-xl
+            outline-none
+            bg-white/10
+            backdrop-blur-xl
+            border border-white/10
+            focus:border-violet-500
+            placeholder:text-white/50">
+
+        <button id="goal-add"
+
+            class="h-14
+            px-8
+            rounded-xl
+            bg-violet-600
+            hover:bg-violet-700
+            transition
+            font-semibold">
+
+            Add Goal
+
+        </button>
+
+    </div>
+
+
+
+    <!-- Stats -->
+
+    <div class="flex gap-5 mb-5">
+
+        <div class="glass rounded-xl px-5 py-3">
+
+            <p class="text-sm text-white/60">
+
+                Total Goals
+
+            </p>
+
+            <h2 id="total-goals"
+
+                class="text-2xl font-bold">
+
+                0
+
+            </h2>
+
+        </div>
+
+        <div class="glass rounded-xl px-5 py-3">
+
+            <p class="text-sm text-white/60">
+
+                Completed
+
+            </p>
+
+            <h2 id="completed-goals"
+
+                class="text-2xl font-bold text-green-400">
+
+                0
+
+            </h2>
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- Goal List -->
+
+    <div id="goal-list"
+
+        class="flex-1
+        overflow-y-auto
+        pr-2
+        space-y-4">
+
+
+        <!-- Empty State -->
+
+        <div id="empty-goals"
+
+            class="h-full
+            flex
+            flex-col
+            items-center
+            justify-center
+            text-center">
+
+            <img
+
+                class="w-52"
+
+                src="./assets/images/noitems.gif">
+
+            <h2 class="text-2xl font-bold mt-4">
+
+                No Goals Yet
+
+            </h2>
+
+            <p class="text-white/60 mt-2">
+
+                Start by adding your first goal.
+
+            </p>
+
+        </div>
+
+
+        <!-- JS Render Here -->
+
+
+        <!--
+
+        <div class="goal-card">
+
+        </div>
+
+        -->
+
+
+    </div>
+
+</div>
   <div id="pomodoro-page" class="pomodoro h-screen w-full hidden text-2xl text-white bg-amber-600">pomodoro</div>
   <div  class="quote h-screen w-full hidden text-2xl text-white bg-amber-600">quote</div>
 </main>
