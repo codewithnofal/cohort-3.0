@@ -6,14 +6,16 @@ const pomodoro = document.querySelector(".pomodoro");
 const quoteContainer = document.querySelector(".quote");
 const toggleBtn = document.getElementById("theme-toggle");
 const themeIcon = document.getElementById("theme-icon");
-console.log(themeIcon)
+console.log(themeIcon);
 
 const savedTheme = localStorage.getItem("theme");
 
 if (savedTheme === "dark") {
   document.body.classList.add("dark");
 
-  themeIcon.src = "./assets/images/moon.png";
+  themeIcon.src = "./assets/images/sun.png";
+} else {
+  themeIcon.src = "/assets/images/sun.png";
 }
 
 function toggleTheme() {
@@ -22,13 +24,11 @@ function toggleTheme() {
   if (document.body.classList.contains("dark")) {
     localStorage.setItem("theme", "dark");
 
-    themeIcon.src =
-      "/assets/images/moon.png";
+    themeIcon.src = "/assets/images/moon.png";
   } else {
     localStorage.setItem("theme", "light");
 
-    themeIcon.src =
-      "/assets/images/sun.png";
+    themeIcon.src = "/assets/images/sun.png";
   }
 }
 
