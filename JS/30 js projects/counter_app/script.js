@@ -3,7 +3,7 @@ const increaseBtn = document.querySelector(".increase");
 const decreaseBtn = document.querySelector(".decrease");
 const resetBtn = document.querySelector(".reset");
 
-let count = JSON.parse(localStorage.getItem("counter"));
+let count = JSON.parse(localStorage.getItem("counter")) || 0 ;
 updateUi();
 
 increaseBtn.addEventListener("click", () => {
