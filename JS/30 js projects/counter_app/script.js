@@ -3,7 +3,8 @@ const increaseBtn = document.querySelector(".increase");
 const decreaseBtn = document.querySelector(".decrease");
 const resetBtn = document.querySelector(".reset");
 
-let count = 0;
+let count = JSON.parse(localStorage.getItem("counter"));
+updateUi();
 
 increaseBtn.addEventListener("click", () => {
   count++;
@@ -23,5 +24,11 @@ resetBtn.addEventListener("click", () => {
 });
 
 function updateUi() {
+  if (count > 10) {
+    counter.style.color = "green";
+  } else {
+    counter.style.color = "black";
+  }
   counter.textContent = count;
+  localStorage.setItem("counter", JSON.stringify(count));
 }
