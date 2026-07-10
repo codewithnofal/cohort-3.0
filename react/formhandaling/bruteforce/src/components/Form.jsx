@@ -2,7 +2,12 @@ import { useState } from "react";
 
 function Form() {
   const [formData, setFormData] = useState({});
-  console.log(formData)
+
+  const handleinput = (e) => {
+    let { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+  console.log(formData);
 
   return (
     <div className="min-h-screen flex items-center flex-col justify-center bg-slate-100 px-4">
@@ -23,9 +28,8 @@ function Form() {
             </label>
 
             <input
-              onChange={(e) => {
-                setFormData({ ...formData, name: e.target.value });
-              }}
+              onChange={handleinput}
+              name="name"
               type="text"
               placeholder="Enter your name"
               className="w-full rounded-lg border text-black border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
@@ -39,9 +43,8 @@ function Form() {
             </label>
 
             <input
-              onChange={(e) => {
-                setFormData({ ...formData, email: e.target.value });
-              }}
+              onChange={handleinput}
+              name="email"
               type="email"
               placeholder="Enter your email"
               className="w-full rounded-lg border text-black border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
@@ -55,9 +58,8 @@ function Form() {
             </label>
 
             <input
-              onChange={(e) => {
-                setFormData({ ...formData, password: e.target.value });
-              }}
+              onChange={handleinput}
+              name="password"
               type="password"
               placeholder="Enter your password"
               className="w-full rounded-lg border border-slate-300 text-black px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
