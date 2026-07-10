@@ -1,9 +1,8 @@
 import { useState } from "react";
 
 function Form() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({});
+  console.log(formData)
 
   return (
     <div className="min-h-screen flex items-center flex-col justify-center bg-slate-100 px-4">
@@ -25,7 +24,7 @@ function Form() {
 
             <input
               onChange={(e) => {
-                setName(e.target.value);
+                setFormData({ ...formData, name: e.target.value });
               }}
               type="text"
               placeholder="Enter your name"
@@ -41,7 +40,7 @@ function Form() {
 
             <input
               onChange={(e) => {
-                setEmail(e.target.value);
+                setFormData({ ...formData, email: e.target.value });
               }}
               type="email"
               placeholder="Enter your email"
@@ -57,7 +56,7 @@ function Form() {
 
             <input
               onChange={(e) => {
-                setPassword(e.target.value);
+                setFormData({ ...formData, password: e.target.value });
               }}
               type="password"
               placeholder="Enter your password"
@@ -80,9 +79,9 @@ function Form() {
           </span>
         </p>
       </div>
-      <p className="text-xl text-black">name: {name}</p>
+      {/* <p className="text-xl text-black">name: {name}</p>
       <p className="text-xl text-black">email: {email} </p>
-      <p className="text-xl text-black">password : {password}</p>
+      <p className="text-xl text-black">password : {password}</p> */}
     </div>
   );
 }
