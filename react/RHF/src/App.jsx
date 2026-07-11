@@ -1,12 +1,22 @@
-import React from "react";
+import { useState } from "react";
+import Navbar from "./components/Navbar";
+import UserCard from "./components/UserCard";
 import UserForm from "./components/UserForm";
 
-const App = () => {
+export default function App() {
+  const [toggle, setToggle] = useState(false);
+  const [users, setUsers] = useState([]);
+  console.log(users);
   return (
-    <div className="h-screen w-full flex items-center justify-center bg-black">
-      <UserForm />
+    <div className="min-h-screen bg-slate-100">
+      <Navbar setToggle={setToggle} />
+      {toggle ? (
+        <UserForm setUsers={setUsers} setToggle={setToggle} />
+      ) : (
+        users.map((elem) => {
+          return <UserCard  user={elem} />;
+        })
+      )}
     </div>
   );
-};
-
-export default App;
+}

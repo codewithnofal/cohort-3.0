@@ -2,19 +2,20 @@ import { useState } from "react";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 
-function UserForm() {
+function UserForm({ setUsers , setToggle}) {
   let {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm({
-    mode: "onChange"
+    mode: "onChange",
   });
 
   const formSubmit = (data) => {
-    console.log(data);
+    setUsers(prev => [...prev, data])
     reset();
+    setToggle(prev => !prev)
   };
 
   return (
@@ -50,8 +51,8 @@ function UserForm() {
               required: "email is required",
               pattern: {
                 value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                message: "please enter valid email"
-              }
+                message: "please enter valid email",
+              },
             })}
             type="email"
             placeholder="Enter your email"
