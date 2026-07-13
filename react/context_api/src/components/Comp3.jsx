@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { MyStore } from "../context/MyContext";
 
 const Comp3 = () => {
+  let { users } = useContext(MyStore);
+  console.log(users);
   return (
     <div>
-      hii i am comp 3 inside comp 2
+      <h1>{users.name}</h1>
+      <h1>{users.email}</h1>
     </div>
   );
 };
