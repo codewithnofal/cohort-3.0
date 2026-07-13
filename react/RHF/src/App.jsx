@@ -8,35 +8,31 @@ export default function App() {
   const [users, setUsers] = useState(() => {
     return JSON.parse(localStorage.getItem("users")) || [];
   });
-  const [updatedUser, setUpdatedUser] = useState();
+  const [updatedUser, setUpdatedUser] = useState()
 
-  const deleteUser = (id) => {
-    let filteredUser = users.filter((user, index) => {
-      return id !== index;
+  const handleDelete = (id) => {
+    let filteredUser = users.filter((u) => {
+      return u.id !== id;
     });
     setUsers(filteredUser);
     localStorage.setItem("users", JSON.stringify(filteredUser));
   };
 
+  console.log(users);
   return (
     <div className="min-h-screen bg-slate-100">
       <Navbar setToggle={setToggle} />
       {toggle ? (
-        <UserForm
-          updatedUser={updatedUser}
-          users={users}
-          setUsers={setUsers}
-          setToggle={setToggle}
-        />
+        <UserForm updatedUser={updatedUser} users={users} setUsers={setUsers} setToggle={setToggle} />
       ) : (
-        users.map((elem, ind) => {
+        users.map((user) => {
           return (
             <UserCard
+              key={user.id}
+              handleDelete={handleDelete}
               setUpdatedUser={setUpdatedUser}
+              user={user}
               setToggle={setToggle}
-              deleteUser={deleteUser}
-              ind={ind}
-              user={elem}
             />
           );
         })

@@ -17,13 +17,14 @@ function UserForm({ setUsers, setToggle, users, updatedUser }) {
   const formSubmit = (data) => {
     if (updatedUser) {
       setUsers((prev) => {
-        return prev.map((val) => {
-          return val.id === updatedUser.id ? { ...data } : val;
+        const updatedArr = prev.map((u) => {
+          return u.id === updatedUser.id ? { ...data } : u;
         });
+        localStorage.setItem("users", JSON.stringify(updatedArr));
+        return updatedArr;
       });
     } else {
       let arr = [...users, { ...data, id: nanoid() }];
-      console.log(arr);
       setUsers(arr);
       localStorage.setItem("users", JSON.stringify(arr));
     }
@@ -31,7 +32,7 @@ function UserForm({ setUsers, setToggle, users, updatedUser }) {
     reset();
     setToggle((prev) => !prev);
   };
-
+  console.log(errors);
   return (
     <div className="w-full max-w-lg h-[90%] rounded-2xl bg-white p-8 shadow-xl">
       <h2 className="mb-3 text-center text-3xl font-bold text-slate-800">
@@ -44,28 +45,27 @@ function UserForm({ setUsers, setToggle, users, updatedUser }) {
             Name
           </label>
           <input
-            {...register("userName", {
-              required: "name is required",
+            {...register("name", {
+              required: "Name is required",
             })}
             type="text"
             placeholder="Enter your name"
             className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
           />
         </div>
-        {errors.userName && (
-          <p className="text-red-600">{errors.userName.message}</p>
-        )}
+
+        {errors.name && <p className="text-red-600">{errors.name.message}</p>}
 
         <div>
           <label className="mb-2 block text-sm font-medium text-slate-700">
             Email
           </label>
           <input
-            {...register("userEmail", {
+            {...register("email", {
               required: "email is required",
               pattern: {
                 value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                message: "please enter valid email",
+                message: "invalid email type",
               },
             })}
             type="email"
@@ -73,41 +73,39 @@ function UserForm({ setUsers, setToggle, users, updatedUser }) {
             className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
           />
         </div>
-        {errors.userEmail && (
-          <p className="text-red-600">{errors.userEmail.message}</p>
-        )}
+
+        {errors.email && <p className="text-red-600">{errors.email.message}</p>}
 
         <div>
           <label className="mb-2 block text-sm font-medium text-slate-700">
-            Password
+            Phone
           </label>
           <input
-            {...register("userPassword", {
-              required: "password is required",
+            {...register("phone", {
+              required: "numbaer is required",
               minLength: {
                 value: 10,
-                message: "min 10 digits are required",
+                message: "minimum 10 digit required",
               },
               maxLength: {
                 value: 10,
-                message: "max 10 digits are required",
+                message: "maximum 10 digit required",
               },
             })}
-            type="password"
-            placeholder="Enter your password"
+            type="number"
+            placeholder="Enter your Number"
             className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
           />
         </div>
-        {errors.userPassword && (
-          <p className="text-red-600">{errors.userPassword.message}</p>
-        )}
+
+        {errors.phone && <p className="text-red-600">{errors.phone.message}</p>}
 
         <div>
           <label className="mb-2 block text-sm font-medium text-slate-700">
             Image URL
           </label>
           <input
-            {...register("userImage", {
+            {...register("image", {
               required: "image is required",
             })}
             type="text"
@@ -115,9 +113,8 @@ function UserForm({ setUsers, setToggle, users, updatedUser }) {
             className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
           />
         </div>
-        {errors.userImage && (
-          <p className="text-red-600">{errors.userImage.message}</p>
-        )}
+
+        {errors.image && <p className="text-red-600">{errors.image.message}</p>}
 
         <button
           type="submit"
