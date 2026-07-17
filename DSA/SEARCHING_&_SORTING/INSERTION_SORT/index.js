@@ -12,6 +12,6 @@ function insertionSort(a) {
     }
     a[prev + 1] = curr;
   }
-  return a
+  // return a
 }
 // console.log(insertionSort(arr));
