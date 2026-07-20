@@ -1,19 +1,68 @@
 import { Zap, Mail, Lock, Eye, ArrowRight } from "lucide-react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+import { AuthStore } from "../context/AuthContext";
+import { toast } from "sonner";
 function Login() {
-  const { register, handleSubmit } = useForm({ mode: "onChange" });
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({});
+
+  let { users } = useContext(AuthStore);
+
+  const formSubmit = (data) => {
+    let currUser = users.find((u) => {
+      return u.email === data.email && u.password === data.password;
+    });
+
+    if (!currUser) {
+      toast.error("user not found please register!");
+      return;
+    }
+    localStorage.setItem("currUser", JSON.stringify(currUser));
+    reset();
+    toast.success("Login Successfull")
+    navigate("/home");
+  };
+
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+  const onError = (errors) => {
+    if (errors.email) {
+      toast.error(errors.email.message);
+    }
+
+    if (errors.password) {
+      toast.error(errors.password.message);
+    }
+  };
+
+  onError(errors);
+
+  let navigate = useNavigate();
   return (
     <div className="min-h-screen grid lg:grid-cols-2 bg-black text-white">
       {/* Left hero */}
-      <div className="relative flex flex-col justify-between p-10 lg:p-16 overflow-hidden border-b lg:border-b-0 lg:border-r border-white/5">
+      <div className="relative hidden sm:flex flex-col justify-between p-10 lg:p-16 overflow-hidden border-b lg:border-b-0 lg:border-r border-white/5">
         <div
           aria-hidden
           className="pointer-events-none absolute -left-40 top-1/3 h-[500px] w-[500px] rounded-full blur-3xl opacity-30"
-          style={{ background: "radial-gradient(circle, #c6f24e 0%, transparent 70%)" }}
+          style={{
+            background: "radial-gradient(circle, #c6f24e 0%, transparent 70%)",
+          }}
         />
         <div className="relative flex items-center gap-3">
           <div className="h-11 w-11 rounded-xl bg-[#c6f24e] flex items-center justify-center">
-            <Zap className="h-6 w-6 text-black" fill="black" strokeWidth={2.5} />
+            <Zap
+              className="h-6 w-6 text-black"
+              fill="black"
+              strokeWidth={2.5}
+            />
           </div>
           <span className="text-2xl font-bold tracking-tight">
             Sky<span className="text-[#c6f24e]">Mart</span>
@@ -29,7 +78,8 @@ function Login() {
             <span className="text-[#c6f24e]">Today.</span>
           </h1>
           <p className="mt-6 max-w-md text-neutral-400 text-base leading-relaxed">
-            Thousands of products, lightning-fast delivery, and prices that make your wallet happy.
+            Thousands of products, lightning-fast delivery, and prices that make
+            your wallet happy.
           </p>
           <div className="mt-10 grid grid-cols-3 gap-3 max-w-lg">
             <div className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-5 text-center">
@@ -46,16 +96,20 @@ function Login() {
             </div>
           </div>
         </div>
-        <div className="relative text-xs text-neutral-600">© 2026 SkyMart. All rights reserved.</div>
+        <div className="relative text-xs text-neutral-600">
+          © 2026 SkyMart. All rights reserved.
+        </div>
       </div>
       {/* Right form */}
       <div className="flex items-center justify-center p-6 lg:p-16">
         <form
-          onSubmit={handleSubmit((data) => console.log(data))}
+          onSubmit={handleSubmit(formSubmit)}
           className="w-full max-w-md rounded-3xl border border-white/10 bg-neutral-950/60 p-8 lg:p-10 backdrop-blur"
         >
           <h2 className="text-3xl font-bold tracking-tight">Sign in</h2>
-          <p className="mt-1 text-sm text-neutral-500">Enter your credentials to continue</p>
+          <p className="mt-1 text-sm text-neutral-500">
+            Enter your credentials to continue
+          </p>
           <div className="mt-8 space-y-4">
             <div className="relative flex items-center rounded-full border border-white/10 bg-white/[0.03] px-5 py-3.5 focus-within:border-[#c6f24e]/50 transition">
               <span className="mr-3 text-neutral-500">
@@ -73,7 +127,7 @@ function Login() {
                 <Lock className="h-4 w-4" />
               </span>
               <input
-                {...register("password")}
+                {...register("password", {})}
                 type="password"
                 placeholder="Password"
                 className="flex-1 bg-transparent text-sm text-white placeholder:text-neutral-500 outline-none"
@@ -90,9 +144,12 @@ function Login() {
             </button>
             <p className="pt-2 text-center text-sm text-neutral-500">
               Don't have an account?{" "}
-              <a href="/signup" className="font-semibold text-[#c6f24e] hover:underline">
+              <span
+                onClick={() => navigate("/signup")}
+                className="font-semibold cursor-pointer text-[#c6f24e] hover:underline"
+              >
                 Create one
-              </a>
+              </span>
             </p>
           </div>
         </form>

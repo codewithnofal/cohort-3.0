@@ -1,18 +1,25 @@
 import { User, Mail, Lock, Eye, ArrowRight, Zap } from "lucide-react";
 import { useContext } from "react";
 import { AuthStore } from "../context/AuthContext";
-import { useForm, Watch } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import { Toaster, toast } from "sonner";
+import { useNavigate } from "react-router";
 function SignUp() {
   const { users, setUsers } = useContext(AuthStore);
+  let navigate = useNavigate();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
     getValues,
-  } = useForm({ mode: "onChange" });
+    watch,
+  } = useForm({});
 
-  console.log(errors);
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+  let password = watch("password");
 
   const formSubmit = (data) => {
     const newUser = {
@@ -24,9 +31,30 @@ function SignUp() {
       wishlist: [],
       orders: [],
     };
-    setUsers([...users, newUser])
+    let formData = [...users, newUser];
+    setUsers(formData);
+    localStorage.setItem("users", JSON.stringify(formData));
+
     reset();
+    navigate("/")
   };
+
+  const onError = (errors) => {
+    if (errors.email) {
+      toast.error(errors.email.message);
+    }
+
+    if (errors.password) {
+      toast.error(errors.password.message);
+    }
+
+    if (errors.confirmPassword) {
+      toast.error(errors.confirmPassword.message);
+    }
+  };
+
+  onError(errors);
+
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center px-6 py-12">
       <div className="flex items-center gap-3 mb-10">
@@ -70,7 +98,6 @@ function SignUp() {
                 required: "email is required!",
               })}
               type="email"
-              required
               placeholder="Email address"
               className="flex-1 bg-transparent text-sm text-white placeholder:text-neutral-500 outline-none"
             />
@@ -82,6 +109,10 @@ function SignUp() {
             <input
               {...register("password", {
                 required: "Password is required!",
+                pattern: {
+                  value: /^.{6,}$/,
+                  message: "password must be 6 char long",
+                },
               })}
               type="password"
               placeholder="Password (min 6 chars)"
@@ -91,6 +122,38 @@ function SignUp() {
               <Eye className="h-4 w-4" />
             </span>
           </div>
+          {password && (
+            <div className="passwrd-strength flex items-center gap-2 h-2 bg-transparent w-full">
+              <div
+                className={`h-1 rounded-md w-[28%] ${passwordRegex.test(password) ? "bg-[#C8F400]" : password?.length >= 8 ? "bg-[#FBBF24]" : password?.length >= 1 ? "bg-[#EF4444]" : "bg-[#fff]"} transition duration-200`}
+              ></div>
+
+              <div
+                className={`h-1 rounded-md w-[28%] ${passwordRegex.test(password) ? "bg-[#C8F400]" : password?.length >= 8 ? "bg-[#FBBF24]" : "bg-[#fff]"} transition duration-200`}
+              ></div>
+
+              <div
+                className={`h-1 rounded-md w-[28%] ${passwordRegex.test(password) ? "bg-[#C8F400]" : "bg-[#fff]"} transition duration-200`}
+              ></div>
+              <div className="status  ">
+                {passwordRegex.test(password) ? (
+                  <p className="text-[13px] font-normal transition-all duration-200 text-[#C8F400]">
+                    Strong
+                  </p>
+                ) : password?.length >= 8 ? (
+                  <p className="text-[13px] font-normal transition-all duration-200 text-[#FBBF24]">
+                    Medium
+                  </p>
+                ) : password?.length >= 1 ? (
+                  <p className="text-[13px] font-normal transition-all duration-200 text-[#EF4444]">
+                    Weak
+                  </p>
+                ) : (
+                  ""
+                )}
+              </div>
+            </div>
+          )}
           <div className="relative flex items-center rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-3.5 focus-within:border-[#c6f24e]/50 transition">
             <span className="mr-3 text-neutral-500">
               <Lock className="h-4 w-4" />
@@ -117,12 +180,12 @@ function SignUp() {
           </button>
           <p className="pt-2 text-center text-sm text-neutral-500">
             Already have an account?{" "}
-            <a
-              href="/"
-              className="font-semibold text-[#c6f24e] hover:underline"
+            <span
+              onClick={() => navigate("/")}
+              className="font-semibold cursor-pointer text-[#c6f24e] hover:underline"
             >
               Sign in
-            </a>
+            </span>
           </p>
         </div>
       </form>
