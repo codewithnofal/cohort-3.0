@@ -12,7 +12,7 @@ function Login() {
     formState: { errors },
   } = useForm({});
 
-  let { users } = useContext(AuthStore);
+  let { users, currentUser, setCurrentUser } = useContext(AuthStore);
 
   const formSubmit = (data) => {
     let currUser = users.find((u) => {
@@ -23,9 +23,10 @@ function Login() {
       toast.error("user not found please register!");
       return;
     }
+    setCurrentUser(currUser);
     localStorage.setItem("currUser", JSON.stringify(currUser));
     reset();
-    toast.success("Login Successfull")
+    toast.success("Login Successfull");
     navigate("/home");
   };
 

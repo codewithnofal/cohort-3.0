@@ -22,7 +22,14 @@ function SignUp() {
   let password = watch("password");
 
   const formSubmit = (data) => {
+    let user = users.find((u) => u.email === data.email);
+    if (user) {
+      toast.error("user email already exist");
+      return;
+    }
+
     const newUser = {
+      firstLetter: data.name.at(0).toUpperCase(),
       id: crypto.randomUUID(),
       name: data.name,
       email: data.email,
@@ -36,7 +43,7 @@ function SignUp() {
     localStorage.setItem("users", JSON.stringify(formData));
 
     reset();
-    navigate("/")
+    navigate("/");
   };
 
   const onError = (errors) => {

@@ -9,9 +9,15 @@ const AppRouter = () => {
   return (
     <div>
       <Routes>
-        <ProtectedRoutes>
-          <Route path="/home" element={<Home />} />
-        </ProtectedRoutes>
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoutes>
+              <Home />
+            </ProtectedRoutes>
+          }
+        />
+
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
