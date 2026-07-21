@@ -21,7 +21,7 @@ function SignUp() {
 
   let password = watch("password");
 
-  const formSubmit = (data) => {
+  const formSubmit = (data, onError) => {
     let user = users.find((u) => u.email === data.email);
     if (user) {
       toast.error("user email already exist");
@@ -43,6 +43,7 @@ function SignUp() {
     localStorage.setItem("users", JSON.stringify(formData));
 
     reset();
+
     navigate("/");
   };
 
@@ -60,8 +61,6 @@ function SignUp() {
     }
   };
 
-  onError(errors);
-
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center px-6 py-12">
       <div className="flex items-center gap-3 mb-10">
@@ -73,7 +72,7 @@ function SignUp() {
         </span>
       </div>
       <form
-        onSubmit={handleSubmit(formSubmit)}
+        onSubmit={handleSubmit(formSubmit,onError)}
         className="w-full max-w-md rounded-3xl border border-white/10 bg-neutral-950/60 p-8 lg:p-10 backdrop-blur"
       >
         <h2 className=" text-2xl sm:text-3xl font-bold tracking-tight">

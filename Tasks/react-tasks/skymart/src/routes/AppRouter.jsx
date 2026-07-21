@@ -4,25 +4,25 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import ProtectedRoutes from "./ProtectedRoutes";
+import { createBrowserRouter } from "react-router";
+import { RouterProvider } from "react-router/dom";
+import MainLayout from "../layouts/MainLayout";
 
 const AppRouter = () => {
-  return (
-    <div>
-      <Routes>
-        <Route
-          path="/home"
-          element={
-            <ProtectedRoutes>
-              <Home />
-            </ProtectedRoutes>
-          }
-        />
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <MainLayout />,
+      children: [
+        {
+          path: "",
+          element: <Home />,
+        },
+      ],
+    },
+  ]);
 
-        <Route path="/" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-      </Routes>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default AppRouter;

@@ -43,8 +43,6 @@ function Login() {
     }
   };
 
-  onError(errors);
-
   let navigate = useNavigate();
   return (
     <div className="min-h-screen grid lg:grid-cols-2 bg-black text-white">
@@ -104,7 +102,7 @@ function Login() {
       {/* Right form */}
       <div className="flex items-center justify-center p-6 lg:p-16">
         <form
-          onSubmit={handleSubmit(formSubmit)}
+          onSubmit={handleSubmit(formSubmit, onError)}
           className="w-full max-w-md rounded-3xl border border-white/10 bg-neutral-950/60 p-8 lg:p-10 backdrop-blur"
         >
           <h2 className="text-3xl font-bold tracking-tight">Sign in</h2>
@@ -117,7 +115,9 @@ function Login() {
                 <Mail className="h-4 w-4" />
               </span>
               <input
-                {...register("email")}
+                {...register("email", {
+                  required: "email is required!",
+                })}
                 type="email"
                 placeholder="Email address"
                 className="flex-1 bg-transparent text-sm text-white placeholder:text-neutral-500 outline-none"
@@ -128,7 +128,9 @@ function Login() {
                 <Lock className="h-4 w-4" />
               </span>
               <input
-                {...register("password", {})}
+                {...register("password", {
+                  required: "password is required!",
+                })}
                 type="password"
                 placeholder="Password"
                 className="flex-1 bg-transparent text-sm text-white placeholder:text-neutral-500 outline-none"
