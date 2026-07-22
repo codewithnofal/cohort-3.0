@@ -1,4 +1,5 @@
 import { Zap, ShoppingCart, LogOut } from "lucide-react";
+import { NavLink } from "react-router";
 function Navbar() {
   return (
     <nav className="w-full flex items-center justify-between px-6 lg:px-12 py-5 bg-black text-white">
@@ -13,15 +14,24 @@ function Navbar() {
       </div>
       {/* Nav links */}
       <div className="hidden md:flex items-center gap-10 text-sm font-medium">
-        <a href="#" className="text-[#c6f24e]">
+        <NavLink
+          to={"/"}
+          className={({ isActive }) => (isActive ? "text-[#c6f24e]" : "")}
+        >
           Home
-        </a>
-        <a href="#" className="text-neutral-300 hover:text-white">
+        </NavLink>
+        <NavLink
+          to={"/shop"}
+          className={({ isActive }) => (isActive ? "text-[#c6f24e]" : "")}
+        >
           Shop
-        </a>
-        <a href="#" className="text-neutral-300 hover:text-white">
+        </NavLink>
+        <NavLink
+          to={"/about"}
+          className={({ isActive }) => (isActive ? "text-[#c6f24e]" : "")}
+        >
           About
-        </a>
+        </NavLink>
       </div>
       {/* Right side */}
       <div className="flex items-center gap-3">

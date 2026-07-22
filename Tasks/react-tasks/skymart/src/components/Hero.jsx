@@ -3,7 +3,7 @@ function Hero() {
   return (
     <section className="bg-black text-white px-6 lg:px-12 py-8">
       {/* Hero card */}
-      <div className="relative overflow-hidden rounded-3xl border border-white/10 p-8 lg:p-14">
+      <div className="relative overflow-hidden rounded-3xl border border-white/50 p-8 lg:p-14">
         <div
           aria-hidden
           className="absolute inset-0 opacity-[0.07]"
@@ -16,10 +16,10 @@ function Hero() {
         <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10">
           {/* Left */}
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold tracking-[0.25em] text-[#c6f24e] mb-5">
+            <p className="text-xs sm:text-lg  font-semibold tracking-[0.1em] text-[#c6f24e] mb-5">
               GOOD EVENING 👋
             </p>
-            <h1 className="text-5xl lg:text-7xl font-bold tracking-tight leading-[1.02]">
+            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight leading-[1.02]">
               Welcome back,
               <br />
               <span className="text-[#c6f24e]">nofal!</span>

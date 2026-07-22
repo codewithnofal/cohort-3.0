@@ -8,6 +8,9 @@ import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import MainLayout from "../layouts/MainLayout";
 import AuthLayout from "../layouts/AuthLayout";
+import AuthProtectedRoute from "./AuthProtectedRoute";
+import AllProducts from "../pages/AllProducts";
+import AboutUs from "../pages/AboutUs";
 
 const AppRouter = () => {
   const router = createBrowserRouter([
@@ -23,6 +26,14 @@ const AppRouter = () => {
               path: "",
               element: <Home />,
             },
+            {
+              path: "/shop",
+              element: <AllProducts />,
+            },
+            {
+              path: "/about",
+              element: <AboutUs />,
+            },
           ],
         },
       ],
@@ -30,15 +41,21 @@ const AppRouter = () => {
 
     {
       path: "/auth",
-      element: <AuthLayout />,
+      element: <AuthProtectedRoute />,
       children: [
         {
-          path: "login",
-          element: <Login />,
-        },
-        {
-          path: "register",
-          element: <SignUp />,
+          path: "",
+          element: <AuthLayout />,
+          children: [
+            {
+              path: "login",
+              element: <Login />,
+            },
+            {
+              path: "register",
+              element: <SignUp />,
+            },
+          ],
         },
       ],
     },

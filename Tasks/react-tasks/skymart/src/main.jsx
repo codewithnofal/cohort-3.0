@@ -5,10 +5,13 @@ import { BrowserRouter } from "react-router";
 import { AuthContextProvider } from "./context/AuthContext.jsx";
 import AppRouter from "./routes/AppRouter.jsx";
 import { Toaster } from "sonner";
+import { ProdContextProvider } from "./context/productContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <AuthContextProvider>
-    <Toaster richColors position="top-right" />
-    <AppRouter />
+    <ProdContextProvider>
+      <Toaster richColors position="top-right" />
+      <AppRouter />
+    </ProdContextProvider>
   </AuthContextProvider>,
 );
