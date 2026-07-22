@@ -2,15 +2,17 @@ import { Search, ChevronDown, ShoppingCart, Star } from "lucide-react";
 import { useContext, useEffect } from "react";
 import { ProdStore } from "../context/productContext";
 import axios from "axios";
+import { Navigate, useNavigate } from "react-router";
 
 function AllProducts() {
+  let navigate = useNavigate();
   let { products, setProducts } = useContext(ProdStore);
   const getProductsData = async () => {
     try {
       const res = await axios.get(
         "https://dummyjson.com/products?offset=0&limit=80",
       );
-      console.log(res.data.products)
+      console.log(res.data.products);
       setProducts(res.data.products);
     } catch (error) {
       console.log(error);
@@ -28,7 +30,7 @@ function AllProducts() {
         <h1 className="text-4xl lg:text-5xl font-bold tracking-tight">
           All Products
         </h1>
-        <p className="mt-2 text-sm text-neutral-500">50 products found</p>
+        <p className="mt-2 text-sm  text-neutral-500">{products.length} products found</p>
       </div>
       {/* Search + Filters bar */}
       <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-3 flex flex-col md:flex-row items-stretch md:items-center gap-3 mb-8">
@@ -65,7 +67,8 @@ function AllProducts() {
         {products.map((p) => (
           <div
             key={p.id}
-            className="group rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden hover:border-[#c6f24e]/40 transition"
+            onClick={() => navigate(`/product/${p.id}`)}
+            className="group  rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden hover:border-[#c6f24e]/40 transition"
           >
             <div className="relative bg-white p-3">
               <span className="absolute top-3 left-3 z-10 rounded-md bg-black/80 text-white text-[10px] font-semibold px-2 py-1">
@@ -97,7 +100,9 @@ function AllProducts() {
                     />
                   ))}
                 </div>
-                <span className="text-xs text-neutral-500">({p.reviews[0].rating})</span>
+                <span className="text-xs text-neutral-500">
+                  ({p.reviews[0].rating})
+                </span>
               </div>
               <div className="mt-3 flex items-center justify-between">
                 <span className="text-xl font-bold text-[#c6f24e]">
