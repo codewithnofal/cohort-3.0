@@ -27,7 +27,7 @@ function Login() {
     localStorage.setItem("currUser", JSON.stringify(currUser));
     reset();
     toast.success("Login Successfull");
-    navigate("/home");
+    navigate("/");
   };
 
   const passwordRegex =
@@ -148,7 +148,7 @@ function Login() {
             <p className="pt-2 text-center text-sm text-neutral-500">
               Don't have an account?{" "}
               <span
-                onClick={() => navigate("/signup")}
+                onClick={() => navigate("/auth/register")}
                 className="font-semibold cursor-pointer text-[#c6f24e] hover:underline"
               >
                 Create one

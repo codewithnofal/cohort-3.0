@@ -4,7 +4,7 @@ import { Outlet } from "react-router";
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className="h-screen w-full">
       <Navbar />
       <Outlet />
     </div>

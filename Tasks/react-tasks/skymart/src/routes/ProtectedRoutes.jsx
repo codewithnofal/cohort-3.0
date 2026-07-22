@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { AuthStore } from "../context/AuthContext";
+import { Navigate, Outlet } from "react-router";
 
-const ProtectedRoutes = ({children}) => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+const ProtectedRoutes = () => {
+  const { currentUser } = useContext(AuthStore);
 
-export default ProtectedRoutes
+  if (!currentUser) {
+    return <Navigate to={"/auth/login"} />;
+  }
+
+  return <Outlet />;
+};
+
+export default ProtectedRoutes;

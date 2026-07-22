@@ -7,9 +7,7 @@ import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
-    <div className=" h-screen w-full">
-      <Toaster richColors position="top-right" />
-      <Navbar />
+    <div className="">
       <AppRouter />
     </div>
   );

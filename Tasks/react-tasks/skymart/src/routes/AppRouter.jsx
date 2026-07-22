@@ -7,16 +7,38 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import MainLayout from "../layouts/MainLayout";
+import AuthLayout from "../layouts/AuthLayout";
 
 const AppRouter = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <MainLayout />,
+      element: <ProtectedRoutes />,
       children: [
         {
           path: "",
-          element: <Home />,
+          element: <MainLayout />,
+          children: [
+            {
+              path: "",
+              element: <Home />,
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      path: "/auth",
+      element: <AuthLayout />,
+      children: [
+        {
+          path: "login",
+          element: <Login />,
+        },
+        {
+          path: "register",
+          element: <SignUp />,
         },
       ],
     },

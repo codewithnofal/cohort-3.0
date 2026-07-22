@@ -4,62 +4,10 @@ import { AuthStore } from "../context/AuthContext";
 import { useForm } from "react-hook-form";
 import { Toaster, toast } from "sonner";
 import { useNavigate } from "react-router";
+import {  useRegister } from "../hooks/useAuth";
 function SignUp() {
-  const { users, setUsers } = useContext(AuthStore);
-  let navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-    getValues,
-    watch,
-  } = useForm({});
-
-  const passwordRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
-  let password = watch("password");
-
-  const formSubmit = (data, onError) => {
-    let user = users.find((u) => u.email === data.email);
-    if (user) {
-      toast.error("user email already exist");
-      return;
-    }
-
-    const newUser = {
-      firstLetter: data.name.at(0).toUpperCase(),
-      id: crypto.randomUUID(),
-      name: data.name,
-      email: data.email,
-      password: data.password,
-      cart: [],
-      wishlist: [],
-      orders: [],
-    };
-    let formData = [...users, newUser];
-    setUsers(formData);
-    localStorage.setItem("users", JSON.stringify(formData));
-
-    reset();
-
-    navigate("/");
-  };
-
-  const onError = (errors) => {
-    if (errors.email) {
-      toast.error(errors.email.message);
-    }
-
-    if (errors.password) {
-      toast.error(errors.password.message);
-    }
-
-    if (errors.confirmPassword) {
-      toast.error(errors.confirmPassword.message);
-    }
-  };
+  const { navigate, passwordRegex, password,errors, handleSubmit, register,  getValues, formSubmit, onError } =
+    useRegister();
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center px-6 py-12">
@@ -72,7 +20,7 @@ function SignUp() {
         </span>
       </div>
       <form
-        onSubmit={handleSubmit(formSubmit,onError)}
+        onSubmit={handleSubmit(formSubmit, onError)}
         className="w-full max-w-md rounded-3xl border border-white/10 bg-neutral-950/60 p-8 lg:p-10 backdrop-blur"
       >
         <h2 className=" text-2xl sm:text-3xl font-bold tracking-tight">
@@ -187,7 +135,7 @@ function SignUp() {
           <p className="pt-2 text-center text-sm text-neutral-500">
             Already have an account?{" "}
             <span
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/auth/login")}
               className="font-semibold cursor-pointer text-[#c6f24e] hover:underline"
             >
               Sign in
