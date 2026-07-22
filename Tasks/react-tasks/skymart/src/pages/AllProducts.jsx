@@ -1,87 +1,26 @@
 import { Search, ChevronDown, ShoppingCart, Star } from "lucide-react";
-const products = [
-  {
-    name: "Wireless Bluetooth Headphones",
-    category: "Electronics",
-    price: "$99.99",
-    rating: 5,
-    reviews: 120,
-    img: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=600&auto=format&fit=crop&q=70",
-  },
-  {
-    name: "Smart Watch Series 5",
-    category: "Electronics",
-    price: "$299.99",
-    rating: 4,
-    reviews: 85,
-    img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=70",
-  },
-  {
-    name: "Comfortable Cotton T-Shirt",
-    category: "Clothing",
-    price: "$24.99",
-    rating: 4,
-    reviews: 200,
-    img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&auto=format&fit=crop&q=70",
-  },
-  {
-    name: "Ergonomic Office Chair",
-    category: "Furniture",
-    price: "$199.99",
-    rating: 5,
-    reviews: 65,
-    img: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=600&auto=format&fit=crop&q=70",
-  },
-  {
-    name: "Stainless Steel Water Bottle",
-    category: "Home",
-    price: "$34.99",
-    rating: 4,
-    reviews: 150,
-    img: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&auto=format&fit=crop&q=70",
-  },
-  {
-    name: "Leather Crossbody Bag",
-    category: "Accessories",
-    price: "$79.99",
-    rating: 5,
-    reviews: 98,
-    img: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&auto=format&fit=crop&q=70",
-  },
-  {
-    name: "Wireless Charging Pad",
-    category: "Electronics",
-    price: "$29.99",
-    rating: 4,
-    reviews: 320,
-    img: "https://images.unsplash.com/photo-1591290619762-c5a5b9c3f6ac?w=600&auto=format&fit=crop&q=70",
-  },
-  {
-    name: "Running Sneakers",
-    category: "Footwear",
-    price: "$89.99",
-    rating: 5,
-    reviews: 410,
-    img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop&q=70",
-  },
-  {
-    name: "Ceramic Plant Pot",
-    category: "Home",
-    price: "$18.99",
-    rating: 4,
-    reviews: 75,
-    img: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=600&auto=format&fit=crop&q=70",
-  },
-  {
-    name: "Minimalist Desk Lamp",
-    category: "Home",
-    price: "$49.99",
-    rating: 5,
-    reviews: 143,
-    img: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&auto=format&fit=crop&q=70",
-  },
-];
+import { useContext, useEffect } from "react";
+import { ProdStore } from "../context/productContext";
+import axios from "axios";
+
 function AllProducts() {
+  let { products, setProducts } = useContext(ProdStore);
+  const getProductsData = async () => {
+    try {
+      const res = await axios.get(
+        "https://dummyjson.com/products?offset=0&limit=80",
+      );
+      console.log(res.data.products)
+      setProducts(res.data.products);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getProductsData();
+  }, []);
+
   return (
     <section className="bg-black text-white px-6 lg:px-12 py-10 min-h-screen">
       {/* Header */}
@@ -125,7 +64,7 @@ function AllProducts() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
         {products.map((p) => (
           <div
-            key={p.name}
+            key={p.id}
             className="group rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden hover:border-[#c6f24e]/40 transition"
           >
             <div className="relative bg-white p-3">
@@ -134,16 +73,16 @@ function AllProducts() {
               </span>
               <div className="aspect-[4/3] w-full rounded-lg overflow-hidden bg-neutral-100 flex items-center justify-center">
                 <img
-                  src={p.img}
-                  alt={p.name}
+                  src={p.images[0]}
+                  alt={p.title}
                   className="h-full w-full object-cover group-hover:scale-105 transition"
                 />
               </div>
             </div>
             <div className="p-4">
-              <p className="text-xs text-neutral-500">{p.category}</p>
+              <p className="text-xs text-neutral-500">{p.brand}</p>
               <h3 className="mt-1 text-sm font-semibold leading-snug min-h-[2.5rem]">
-                {p.name}
+                {p.title}
               </h3>
               <div className="mt-2 flex items-center gap-1.5">
                 <div className="flex items-center gap-0.5">
@@ -158,11 +97,11 @@ function AllProducts() {
                     />
                   ))}
                 </div>
-                <span className="text-xs text-neutral-500">({p.reviews})</span>
+                <span className="text-xs text-neutral-500">({p.reviews[0].rating})</span>
               </div>
               <div className="mt-3 flex items-center justify-between">
                 <span className="text-xl font-bold text-[#c6f24e]">
-                  {p.price}
+                  ${p.price.toFixed(2)}
                 </span>
                 <button className="inline-flex items-center gap-1.5 rounded-full bg-[#c6f24e] text-black px-3.5 py-1.5 text-xs font-bold hover:brightness-110">
                   <ShoppingCart className="h-3.5 w-3.5" /> Add

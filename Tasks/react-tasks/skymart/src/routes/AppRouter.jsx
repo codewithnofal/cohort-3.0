@@ -11,6 +11,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import AuthProtectedRoute from "./AuthProtectedRoute";
 import AllProducts from "../pages/AllProducts";
 import AboutUs from "../pages/AboutUs";
+import SingleProduct from "../pages/SingleProduct";
 
 const AppRouter = () => {
   const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const AppRouter = () => {
             {
               path: "/shop",
               element: <AllProducts />,
+            },
+            {
+              path: "product/:id",
+              element: <SingleProduct />,
             },
             {
               path: "/about",
