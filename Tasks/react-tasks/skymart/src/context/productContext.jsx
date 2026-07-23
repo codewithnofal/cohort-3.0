@@ -6,8 +6,10 @@ export const ProdContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   console.log(products);
 
+  const [cartItems, setCartItems] = useState([])
+
   return (
-    <ProdStore.Provider value={{ products, setProducts }}>
+    <ProdStore.Provider value={{ products, setProducts , cartItems, setCartItems }}>
       {children}
     </ProdStore.Provider>
   );

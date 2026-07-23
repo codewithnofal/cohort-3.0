@@ -3,10 +3,12 @@ import { useContext, useEffect } from "react";
 import { ProdStore } from "../context/productContext";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router";
+import { motion } from "framer-motion";
 
 function AllProducts() {
   let navigate = useNavigate();
-  let { products, setProducts } = useContext(ProdStore);
+  let { products, setProducts, cartItems, setCartItems } =
+    useContext(ProdStore);
   const getProductsData = async () => {
     try {
       const res = await axios.get(
@@ -19,6 +21,11 @@ function AllProducts() {
     }
   };
 
+
+  const addToCart = () => {
+    
+  }
+
   useEffect(() => {
     getProductsData();
   }, []);
@@ -30,7 +37,9 @@ function AllProducts() {
         <h1 className="text-4xl lg:text-5xl font-bold tracking-tight">
           All Products
         </h1>
-        <p className="mt-2 text-sm  text-neutral-500">{products.length} products found</p>
+        <p className="mt-2 text-sm  text-neutral-500">
+          {products.length} products found
+        </p>
       </div>
       {/* Search + Filters bar */}
       <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-3 flex flex-col md:flex-row items-stretch md:items-center gap-3 mb-8">
@@ -65,12 +74,17 @@ function AllProducts() {
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
         {products.map((p) => (
-          <div
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
             key={p.id}
-            onClick={() => navigate(`/product/${p.id}`)}
             className="group  rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden hover:border-[#c6f24e]/40 transition"
           >
-            <div className="relative bg-white p-3">
+            <div
+              onClick={() => navigate(`/product/${p.id}`)}
+              className="relative bg-white p-3"
+            >
               <span className="absolute top-3 left-3 z-10 rounded-md bg-black/80 text-white text-[10px] font-semibold px-2 py-1">
                 {p.category}
               </span>
@@ -108,12 +122,15 @@ function AllProducts() {
                 <span className="text-xl font-bold text-[#c6f24e]">
                   ${p.price.toFixed(2)}
                 </span>
-                <button className="inline-flex items-center gap-1.5 rounded-full bg-[#c6f24e] text-black px-3.5 py-1.5 text-xs font-bold hover:brightness-110">
+                <button
+                  onClick={() => addToCart()}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-[#c6f24e] text-black px-3.5 py-1.5 text-xs font-bold hover:brightness-110"
+                >
                   <ShoppingCart className="h-3.5 w-3.5" /> Add
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

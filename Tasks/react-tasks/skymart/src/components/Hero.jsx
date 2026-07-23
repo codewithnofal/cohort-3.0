@@ -1,5 +1,15 @@
 import { ArrowRight, Package, TrendingUp, Star, Tag } from "lucide-react";
+import { useContext } from "react";
+import { AuthStore } from "../context/AuthContext";
+import { ProdStore } from "../context/productContext";
+import { useNavigate } from "react-router";
 function Hero() {
+  const { currentUser } = useContext(AuthStore);
+  const { products } = useContext(ProdStore);
+
+ let navigate =  useNavigate()
+
+
   return (
     <section className="bg-black text-white px-6 lg:px-12 py-8">
       {/* Hero card */}
@@ -22,17 +32,17 @@ function Hero() {
             <h1 className="text-3xl sm:text-5xl font-bold tracking-tight leading-[1.02]">
               Welcome back,
               <br />
-              <span className="text-[#c6f24e]">nofal!</span>
+              <span className="text-[#c6f24e]">{currentUser.name}!</span>
             </h1>
             <p className="mt-6 text-neutral-400 text-base lg:text-lg leading-relaxed max-w-lg">
               Discover today's picks — hand-curated products across electronics,
               fashion, and more.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <button className="inline-flex items-center gap-2 rounded-full bg-[#c6f24e] px-6 py-3.5 text-sm font-semibold text-black hover:brightness-110">
+              <button onClick={()=>navigate("/shop")} className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-[#c6f24e] px-6 py-3.5 text-sm font-semibold text-black hover:brightness-110">
                 Shop Now <ArrowRight className="h-4 w-4" />
               </button>
-              <button className="inline-flex items-center rounded-full border border-white/15 bg-white/[0.03] px-6 py-3.5 text-sm font-semibold text-white hover:bg-white/[0.06]">
+              <button onClick={()=>navigate("/shop")} className="inline-flex cursor-pointer items-center rounded-full border border-white/15 bg-white/[0.03] px-6 py-3.5 text-sm font-semibold text-white hover:bg-white/[0.06]">
                 View All Products
               </button>
             </div>
@@ -40,7 +50,7 @@ function Hero() {
           {/* Right cards */}
           <div className="flex flex-col gap-4 w-full lg:w-auto">
             <div className="rounded-2xl border border-[#c6f24e]/30 bg-[#c6f24e]/10 px-8 py-6 text-center min-w-[220px]">
-              <div className="text-4xl font-bold text-[#c6f24e]">20+</div>
+              <div className="text-4xl font-bold text-[#c6f24e]">{products.length}+</div>
               <div className="mt-1 text-sm text-neutral-300">
                 Products Available
               </div>

@@ -32,9 +32,9 @@ function SingleProduct() {
       getSingleProductsData();
     }, []);
   return (
-    <section className="bg-black text-white px-8 lg:px-20 xl:px-28 py-6 lg:py-8">
+    <section className="bg-black text-white px-4 lg:px-20 xl:px-28 py-6 lg:py-8">
       {/* Breadcrumb */}
-      <div className="flex items-center px-20 gap-2 text-xs text-neutral-400 mb-5">
+      <div className="flex items-center sm:px-30 gap-2 text-xs text-neutral-400 mb-5">
         <button onClick={() => navigate("/shop")} className="inline-flex items-center gap-1 hover:text-white transition">
           <ChevronLeft className="h-3.5 w-3.5" />
           Products
@@ -51,7 +51,7 @@ function SingleProduct() {
         <span className="text-white">{product.title}</span>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start">
+      <div className="grid grid-cols-1  sm:px-20 lg:grid-cols-2 gap-6 sm:gap-5 items-start">
         {/* Product Image */}
         <div className="w-full max-w-[460px] mx-auto rounded-3xl bg-white p-6 flex items-center justify-center">
           <img
@@ -62,7 +62,7 @@ function SingleProduct() {
         </div>
 
         {/* Product Details */}
-        <div className="flex px-10 flex-col">
+        <div className="flex  sm:px-10 flex-col">
           <span className="inline-block self-start rounded-full bg-[#c6f24e]/15 border border-[#c6f24e]/40 text-[#c6f24e] text-xs font-bold px-3 py-1">
             {product.category}
           </span>
