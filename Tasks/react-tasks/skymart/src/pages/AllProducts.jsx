@@ -1,14 +1,20 @@
 import { Search, ChevronDown, ShoppingCart, Star } from "lucide-react";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProdStore } from "../context/productContext";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router";
 import { motion } from "framer-motion";
+import { AuthStore } from "../context/AuthContext";
 
 function AllProducts() {
   let navigate = useNavigate();
   let { products, setProducts, cartItems, setCartItems } =
     useContext(ProdStore);
+
+  let { users, setUsers, currentUser, setCurrentUser } = useContext(AuthStore);
+
+  const [isAdded, setisAdded] = useState(false);
+
   const getProductsData = async () => {
     try {
       const res = await axios.get(
@@ -21,14 +27,31 @@ function AllProducts() {
     }
   };
 
+  const addToCart = (id) => {
+    let product = products.find((p) => {
+      return p.id === id;
+    });
 
-  const addToCart = () => {
-    
-  }
+    let cartData = { ...currentUser, cart: [...currentUser.cart, product] };
+    setCurrentUser(cartData);
+    localStorage.setItem("currUser", JSON.stringify(cartData));
+    console.log(product);
+    console.log(currentUser.cart);
+  };
 
   useEffect(() => {
     getProductsData();
   }, []);
+
+  const incrementProd = (id) => {
+    let isAvailable = currentUser.cart.find((c) => {
+      return c.id === c.id;
+    });
+
+    if (isAvailable) {
+      setisAdded(true);
+    }
+  };
 
   return (
     <section className="bg-black text-white px-6 lg:px-12 py-10 min-h-screen">
@@ -123,10 +146,12 @@ function AllProducts() {
                   ${p.price.toFixed(2)}
                 </span>
                 <button
-                  onClick={() => addToCart()}
+                  onClick={() => {
+                    return (addToCart(p.id), incrementProd(p.id));
+                  }}
                   className="inline-flex items-center gap-1.5 rounded-full bg-[#c6f24e] text-black px-3.5 py-1.5 text-xs font-bold hover:brightness-110"
                 >
-                  <ShoppingCart className="h-3.5 w-3.5" /> Add
+                  {/* {isAdded ? <} */}
                 </button>
               </div>
             </div>
