@@ -8,16 +8,24 @@ import {
   Truck,
   Shield,
   RotateCcw,
+  Check,
+  Minus,
+  Plus,
 } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { AuthStore } from "../context/AuthContext";
+import { ProdStore } from "../context/productContext";
+import RelatedProducts from "../components/RelatedProducts";
 
 function SingleProduct() {
   let { id } = useParams();
   let navigate = useNavigate();
 
-  let { currentUser, setCurrentUser } = useContext(AuthStore);
+  let { currentUser, setCurrentUser, users } = useContext(AuthStore);
+  // const [isAdded, setisAdded] = useState(false);
+
+  // let {pro} = useContext(ProdStore)
 
   const [product, setProduct] = useState({});
 
@@ -33,7 +41,83 @@ function SingleProduct() {
 
   useEffect(() => {
     getSingleProductsData();
-  }, []);
+  }, [id]);
+
+  const addToCart = (id) => {
+    let isAvailable = currentUser.cart.find((u) => {
+      return u.id === id;
+    });
+
+    if (isAvailable) {
+      return;
+    } else {
+      let cartData = {
+        ...currentUser,
+        cart: [...currentUser.cart, { ...product, quantity: 1 }],
+      };
+      setCurrentUser(cartData);
+      localStorage.setItem("currUser", JSON.stringify(cartData));
+
+      let index = users.findIndex((u) => u.id === cartData.id);
+      users[index] = cartData;
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    console.log(product);
+    console.log(currentUser.cart);
+  };
+
+  const setIncrement = (id) => {
+    let updateQuantity = currentUser.cart.map((item) => {
+      if (item.id === id) {
+        return { ...item, quantity: item.quantity + 1 };
+      } else {
+        return item;
+      }
+    });
+
+    const updatedUser = { ...currentUser, cart: updateQuantity };
+    setCurrentUser(updatedUser);
+    localStorage.setItem("currUser", JSON.stringify(updatedUser));
+
+    let index = users.findIndex((u) => u.id === updatedUser.id);
+
+    users[index] = updatedUser;
+
+    localStorage.setItem("users", JSON.stringify(users));
+  };
+
+  const setDecrement = (id) => {
+    let product = currentUser.cart.find((item) => item.id === id);
+
+    if (product.quantity === 1) {
+      deleteItem(id);
+      return;
+    }
+
+    let updateQuantity = currentUser.cart.map((item) => {
+      if (item.id === id) {
+        return { ...item, quantity: item.quantity - 1 };
+      } else {
+        return item;
+      }
+    });
+
+    const updatedUser = { ...currentUser, cart: updateQuantity };
+    setCurrentUser(updatedUser);
+    localStorage.setItem("currUser", JSON.stringify(updatedUser));
+
+    let index = users.findIndex((u) => u.id === updatedUser.id);
+
+    users[index] = updatedUser;
+
+    localStorage.setItem("users", JSON.stringify(users));
+  };
+
+  const cartItem = currentUser?.cart?.find((item) => item.id === product.id);
+
+  const isAdded = !!cartItem;
+
   return (
     <section className="bg-black text-white px-4 lg:px-20 xl:px-28 py-6 lg:py-8">
       {/* Breadcrumb */}
@@ -61,7 +145,7 @@ function SingleProduct() {
         {/* Product Image */}
         <div className="w-full max-w-[460px] mx-auto rounded-3xl bg-white p-6 flex items-center justify-center">
           <img
-            src={product.images}
+            src={product?.images?.[0]}
             alt={product.title}
             className="w-full aspect-[4/3] object-contain rounded-xl"
           />
@@ -113,11 +197,50 @@ function SingleProduct() {
             {product.description}
           </p>
 
+          {isAdded && (
+            <div className="flex items-center justify-between rounded-2xl border border-white/10 mt-2 bg-white/[0.02] px-5 py-4">
+              <span className="text-sm text-neutral-400">In cart:</span>
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={() => setDecrement(product.id)}
+                  className="h-9 w-9 rounded-full border border-white/15 bg-transparent text-white flex items-center justify-center hover:bg-white/[0.06] transition"
+                >
+                  <Minus className="h-4 w-4" />
+                </button>
+                <span className="min-w-[20px] text-center text-base font-bold text-white">
+                  {cartItem.quantity}
+                </span>
+                <button
+                  onClick={() => setIncrement(product.id)}
+                  className="h-9 w-9 rounded-full border border-white/15 bg-transparent text-white flex items-center justify-center hover:bg-white/[0.06] transition"
+                >
+                  <Plus className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* Actions */}
           <div className="mt-5 flex items-center gap-3">
-            <button className="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-[#c6f24e] text-black px-5 py-3 text-sm font-bold hover:brightness-110 transition">
-              <ShoppingCart className="h-4 w-4" />
-              Add to Cart
+            <button
+              onClick={() => addToCart(product.id)}
+              className={`flex-1 inline-flex items-center justify-center gap-2 rounded-2xl ${
+                isAdded
+                  ? "bg-[#132B1C] text-white cursor-not-allowed"
+                  : "bg-[#c6f24e] text-black hover:brightness-110"
+              }text-black px-5 py-3 text-sm font-bold hover:brightness-110 transition`}
+            >
+              {isAdded ? (
+                <>
+                  <Check className="h-3.5 w-3.5" />
+                  Added
+                </>
+              ) : (
+                <>
+                  <ShoppingCart className="h-3.5 w-3.5" />
+                  Add to cart
+                </>
+              )}
             </button>
 
             <button className="grid place-items-center h-11 w-11 rounded-2xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] transition">
@@ -152,18 +275,27 @@ function SingleProduct() {
 
           {/* Previous / Next */}
           <div className="mt-4 grid grid-cols-2 gap-3">
-            <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white/[0.04] border border-white/10 px-4 py-2.5 text-sm font-semibold hover:bg-white/[0.08] transition">
+            <button
+              onClick={() => navigate(`/product/${Number(id) - 1}`)}
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white/[0.04] border border-white/10 px-4 py-2.5 text-sm font-semibold hover:bg-white/[0.08] transition"
+            >
               <ChevronLeft className="h-4 w-4" />
               Previous
             </button>
 
-            <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#c6f24e] text-black px-4 py-2.5 text-sm font-bold hover:brightness-110 transition">
+            <button
+              onClick={() => navigate(`/product/${Number(id) + 1}`)}
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#c6f24e] text-black px-4 py-2.5 text-sm font-bold hover:brightness-110 transition"
+            >
               Next
               <ChevronRight className="h-4 w-4" />
             </button>
           </div>
         </div>
       </div>
+
+
+      <RelatedProducts cat={product.category} />
     </section>
   );
 }

@@ -136,7 +136,7 @@ function Cart({ open = false, onClose = () => {} }) {
               >
                 <div className="h-20 w-20 shrink-0 rounded-xl bg-white overflow-hidden flex items-center justify-center">
                   <img
-                    src={item.images[0]}
+                    src={item?.images?.[0]}
                     alt={item.title}
                     className="h-full w-full object-cover"
                   />
@@ -149,7 +149,7 @@ function Cart({ open = false, onClose = () => {} }) {
                     ${item.price * item.quantity.toFixed(2)}
                   </div>
                   <div className="text-xs text-neutral-500">
-                    ${item.price.toFixed(2)} each
+                    ${item.price} each
                   </div>
                   <div className="mt-2 flex items-center justify-between">
                     <div className="flex items-center gap-2">
