@@ -223,6 +223,7 @@ function SingleProduct() {
           {/* Actions */}
           <div className="mt-5 flex items-center gap-3">
             <button
+              disabled={isAdded}
               onClick={() => addToCart(product.id)}
               className={`flex-1 inline-flex items-center justify-center gap-2 rounded-2xl ${
                 isAdded
@@ -293,7 +294,6 @@ function SingleProduct() {
           </div>
         </div>
       </div>
-
 
       <RelatedProducts cat={product.category} />
     </section>

@@ -11,6 +11,9 @@ function AllProducts() {
   let { products, setProducts, cartItems, setCartItems } =
     useContext(ProdStore);
 
+  const [searchData, setSearchData] = useState("");
+  const [filterProducts, setFilterProducts] = useState([]);
+
   let { users, setUsers, currentUser, setCurrentUser } = useContext(AuthStore);
 
   const [isAdded, setisAdded] = useState(false);
@@ -22,11 +25,22 @@ function AllProducts() {
       );
       console.log(res.data.products);
       setProducts(res.data.products);
+      setFilterProducts(res.data.products)
     } catch (error) {
       console.log(error);
     }
   };
 
+  const filterSearch = () => {
+    let filteredProd = products.filter((p) => {
+      return p.title.toLowerCase().includes(searchData);
+    });
+    setFilterProducts(filteredProd)
+  };
+
+  useEffect(() => {
+    filterSearch();
+  }, [searchData]);
   const addToCart = (id) => {
     let product = products.find((p) => {
       return p.id === id;
@@ -77,6 +91,7 @@ function AllProducts() {
         <div className="flex items-center gap-3 flex-1 rounded-xl bg-black/40 border border-white/5 px-4 py-3">
           <Search className="h-4 w-4 text-neutral-500" />
           <input
+            onChange={(e) => setSearchData(e.target.value)}
             type="text"
             placeholder="Search products..."
             className="bg-transparent outline-none w-full text-sm placeholder:text-neutral-500"
@@ -104,7 +119,7 @@ function AllProducts() {
       </div>
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
-        {products.map((p) => {
+        {filterProducts.map((p) => {
           const isAdded = currentUser?.cart?.some((item) => item.id === p.id);
 
           return (
