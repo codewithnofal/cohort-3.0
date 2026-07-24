@@ -10,30 +10,64 @@ import {
 import { useContext } from "react";
 import { AuthStore } from "../context/AuthContext";
 
-const cartItems = [
-  {
-    id: 1,
-    title: "Smart Watch Series 5",
-    price: 299.99,
-    qty: 4,
-    image:
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&auto=format&fit=crop",
-  },
-  {
-    id: 2,
-    title: "Wireless Bluetooth Headphones",
-    price: 99.99,
-    qty: 1,
-    image:
-      "https://images.unsplash.com/photo-1518444065439-e933c06ce9cd?w=200&auto=format&fit=crop",
-  },
-];
-
 function Cart({ open = false, onClose = () => {} }) {
-  let { currentUser } = useContext(AuthStore);
+  let { currentUser, setCurrentUser, users } = useContext(AuthStore);
   console.log(currentUser.cart);
 
   const isEmpty = currentUser.cart.length === 0;
+
+  const setIncrement = (id) => {
+    let updateQuantity = currentUser.cart.map((item) => {
+      if (item.id === id) {
+        console.log("chala");
+        return { ...item, quantity: item.quantity + 1 };
+      } else {
+        console.log("nai chala");
+        return item;
+      }
+    });
+
+    const updatedUser = { ...currentUser, cart: updateQuantity };
+    setCurrentUser(updatedUser);
+    localStorage.setItem("currUser", JSON.stringify(updatedUser));
+
+    let index = users.findIndex((u) => u.id === updatedUser.id);
+
+    users[index] = updatedUser;
+
+    localStorage.setItem("users", JSON.stringify(users));
+  };
+
+  const setDecrement = (id) => {
+    let updateQuantity = currentUser.cart.map((item) => {
+      if (item.id === id) {
+        console.log("chala");
+        return { ...item, quantity: item.quantity - 1 };
+      } else {
+        console.log("nai chala");
+        return item;
+      }
+    });
+
+    const updatedUser = { ...currentUser, cart: updateQuantity };
+    setCurrentUser(updatedUser);
+    localStorage.setItem("currUser", JSON.stringify(updatedUser));
+
+    let index = users.findIndex((u) => u.id === updatedUser.id);
+
+    users[index] = updatedUser;
+
+    localStorage.setItem("users", JSON.stringify(users));
+  };
+
+  const total = currentUser.cart.reduce(
+    (acc, val) => acc + val.price * val.quantity,
+    0,
+  );
+
+  const deleteItem = () =>{
+    
+  }
 
   return (
     <>
@@ -90,7 +124,7 @@ function Cart({ open = false, onClose = () => {} }) {
               >
                 <div className="h-20 w-20 shrink-0 rounded-xl bg-white overflow-hidden flex items-center justify-center">
                   <img
-                    src={item.images[0] }
+                    src={item.images[0]}
                     alt={item.title}
                     className="h-full w-full object-cover"
                   />
@@ -100,20 +134,26 @@ function Cart({ open = false, onClose = () => {} }) {
                     {item.title}
                   </h4>
                   <div className="mt-1 text-lg font-extrabold text-[#c6f24e]">
-                    ${item.price}
+                    ${item.price * item.quantity.toFixed(2)}
                   </div>
                   <div className="text-xs text-neutral-500">
                     ${item.price.toFixed(2)} each
                   </div>
                   <div className="mt-2 flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <button className="h-7 w-7 rounded-lg border border-white/10 bg-white/[0.03] text-white flex items-center justify-center hover:bg-white/[0.08] transition">
+                      <button
+                        onClick={() => setDecrement(item.id)}
+                        className="h-7 w-7 rounded-lg border border-white/10 bg-white/[0.03] text-white flex items-center justify-center hover:bg-white/[0.08] transition"
+                      >
                         <Minus className="h-3.5 w-3.5" />
                       </button>
                       <span className="min-w-[20px] text-center text-sm font-bold text-white">
-                        {item.qty}
+                        {item.quantity}
                       </span>
-                      <button className="h-7 w-7 rounded-lg border border-white/10 bg-white/[0.03] text-white flex items-center justify-center hover:bg-white/[0.08] transition">
+                      <button
+                        onClick={() => setIncrement(item.id)}
+                        className="h-7 w-7 rounded-lg border border-white/10 bg-white/[0.03] text-white flex items-center justify-center hover:bg-white/[0.08] transition"
+                      >
                         <Plus className="h-3.5 w-3.5" />
                       </button>
                     </div>
@@ -132,7 +172,7 @@ function Cart({ open = false, onClose = () => {} }) {
             <div className="flex items-center justify-between mb-4">
               <span className="text-neutral-400 text-sm">Total</span>
               <span className="text-2xl font-extrabold text-white">
-                3244
+                {total.toFixed(2)}
               </span>
             </div>
             <button className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-[#c6f24e] text-black py-3.5 text-base font-bold hover:brightness-110 transition">

@@ -6,7 +6,6 @@ import Cart from "./Cart";
 
 function Navbar() {
   const { currentUser } = useContext(AuthStore);
-  const cartCount = 5;
   const [open, setOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
 
@@ -59,9 +58,9 @@ function Navbar() {
             className="relative h-11 w-11 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.06]"
           >
             <ShoppingCart className="h-5 w-5" />
-            {cartCount > 0 && (
+            {currentUser.cart.quantity > 0 && (
               <span className="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1 rounded-full bg-[#c6f24e] text-black text-[11px] font-bold flex items-center justify-center border-2 border-black">
-                {cartCount}
+                {currentUser.cart.quantity}
               </span>
             )}
           </button>
@@ -78,9 +77,9 @@ function Navbar() {
             className="relative h-11 w-11 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.06]"
           >
             <ShoppingCart className="h-5 w-5" />
-            {cartCount > 0 && (
+            {currentUser.cart.quantity > 0 && (
               <span className="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1 rounded-full bg-[#c6f24e] text-black text-[11px] font-bold flex items-center justify-center border-2 border-black">
-                {cartCount}
+                {currentUser.cart.quantity}
               </span>
             )}
           </button>

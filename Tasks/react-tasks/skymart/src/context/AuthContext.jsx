@@ -11,6 +11,8 @@ export const AuthContextProvider = ({ children }) => {
   );
   console.log(currentUser);
 
+  console.log(users)
+
   return (
     <AuthStore.Provider
       value={{ users, setUsers, currentUser, setCurrentUser }}
