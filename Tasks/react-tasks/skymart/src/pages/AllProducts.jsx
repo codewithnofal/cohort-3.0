@@ -48,7 +48,7 @@ function AllProducts() {
       setCurrentUser(cartData);
       localStorage.setItem("currUser", JSON.stringify(cartData));
 
-      let index = users.findIndex((u) => u.id === currentUser.id);
+      let index = users.findIndex((u) => u.id === cartData.id);
       users[index] = cartData;
       localStorage.setItem("users", JSON.stringify(users));
     }

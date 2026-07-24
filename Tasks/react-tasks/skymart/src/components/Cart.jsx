@@ -19,10 +19,8 @@ function Cart({ open = false, onClose = () => {} }) {
   const setIncrement = (id) => {
     let updateQuantity = currentUser.cart.map((item) => {
       if (item.id === id) {
-        console.log("chala");
         return { ...item, quantity: item.quantity + 1 };
       } else {
-        console.log("nai chala");
         return item;
       }
     });
@@ -39,12 +37,17 @@ function Cart({ open = false, onClose = () => {} }) {
   };
 
   const setDecrement = (id) => {
+    let product = currentUser.cart.find((item) => item.id === id);
+
+    if (product.quantity === 1) {
+      deleteItem(id);
+      return;
+    }
+
     let updateQuantity = currentUser.cart.map((item) => {
       if (item.id === id) {
-        console.log("chala");
         return { ...item, quantity: item.quantity - 1 };
       } else {
-        console.log("nai chala");
         return item;
       }
     });
@@ -65,9 +68,18 @@ function Cart({ open = false, onClose = () => {} }) {
     0,
   );
 
-  const deleteItem = () =>{
-    
-  }
+  const deleteItem = (id) => {
+    let filteredCart = currentUser.cart.filter((item) => {
+      return item.id !== id;
+    });
+    const updatedUser = { ...currentUser, cart: filteredCart };
+    setCurrentUser(updatedUser);
+    localStorage.setItem("currUser", JSON.stringify(updatedUser));
+
+    let index = users.findIndex((u) => u.id === updatedUser.id);
+    users[index] = updatedUser;
+    localStorage.setItem("users", JSON.stringify(users));
+  };
 
   return (
     <>
@@ -157,7 +169,10 @@ function Cart({ open = false, onClose = () => {} }) {
                         <Plus className="h-3.5 w-3.5" />
                       </button>
                     </div>
-                    <button className="text-red-500 hover:text-red-400 transition">
+                    <button
+                      onClick={() => deleteItem(item.id)}
+                      className="text-red-500 hover:text-red-400 transition"
+                    >
                       <Trash2 className="h-4 w-4" />
                     </button>
                   </div>

@@ -9,33 +9,39 @@ import {
   Shield,
   RotateCcw,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
+import { AuthStore } from "../context/AuthContext";
 
 function SingleProduct() {
-   let { id } = useParams();
-  let navigate =  useNavigate()
+  let { id } = useParams();
+  let navigate = useNavigate();
 
-    const [product, setProduct] = useState({});
+  let { currentUser, setCurrentUser } = useContext(AuthStore);
 
-    const getSingleProductsData = async () => {
-      try {
-        const res = await axios.get(`https://dummyjson.com/products/${id}`);
-        console.log(res.data);
-        setProduct(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  const [product, setProduct] = useState({});
 
-    useEffect(() => {
-      getSingleProductsData();
-    }, []);
+  const getSingleProductsData = async () => {
+    try {
+      const res = await axios.get(`https://dummyjson.com/products/${id}`);
+      console.log(res.data);
+      setProduct(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getSingleProductsData();
+  }, []);
   return (
     <section className="bg-black text-white px-4 lg:px-20 xl:px-28 py-6 lg:py-8">
       {/* Breadcrumb */}
       <div className="flex items-center sm:px-30 gap-2 text-xs text-neutral-400 mb-5">
-        <button onClick={() => navigate("/shop")} className="inline-flex items-center gap-1 hover:text-white transition">
+        <button
+          onClick={() => navigate("/shop")}
+          className="inline-flex items-center gap-1 hover:text-white transition"
+        >
           <ChevronLeft className="h-3.5 w-3.5" />
           Products
         </button>
