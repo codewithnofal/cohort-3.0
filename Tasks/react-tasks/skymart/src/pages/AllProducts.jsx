@@ -2,16 +2,21 @@ import { Search, ChevronDown, ShoppingCart, Star, Check } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { ProdStore } from "../context/productContext";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router";
+import { Navigate, useNavigate, useSearchParams } from "react-router";
 import { motion } from "framer-motion";
 import { AuthStore } from "../context/AuthContext";
 
 function AllProducts() {
   let navigate = useNavigate();
+  let [searchParams] = useSearchParams();
+  const category = searchParams.get("category");
+  console.log(category)
   let { products, setProducts, cartItems, setCartItems } =
     useContext(ProdStore);
 
   const [searchData, setSearchData] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all categories");
+  const [selectedFeature, setSelectedFeature] = useState("");
   const [filterProducts, setFilterProducts] = useState([]);
 
   let { users, setUsers, currentUser, setCurrentUser } = useContext(AuthStore);
@@ -21,26 +26,59 @@ function AllProducts() {
   const getProductsData = async () => {
     try {
       const res = await axios.get(
-        "https://dummyjson.com/products?offset=0&limit=80",
+        "https://dummyjson.com/products?offset=0&limit=100",
       );
       console.log(res.data.products);
       setProducts(res.data.products);
-      setFilterProducts(res.data.products)
+      setFilterProducts(res.data.products);
     } catch (error) {
       console.log(error);
     }
   };
 
   const filterSearch = () => {
-    let filteredProd = products.filter((p) => {
-      return p.title.toLowerCase().includes(searchData);
-    });
-    setFilterProducts(filteredProd)
+    let filtered = [...products];
+    if (searchData) {
+      filtered = filtered.filter((p) => {
+        return p.title.toLowerCase().includes(searchData);
+      });
+    }
+
+    if (selectedCategory !== "all categories") {
+      filtered = filtered.filter((p) => {
+        return p.category === selectedCategory;
+      });
+    }
+
+    if (selectedFeature === "low to high")
+      filtered.sort((a, b) => a.price - b.price);
+
+    if (selectedFeature === "high to low") {
+      filtered.sort((a, b) => b.price - a.price);
+    }
+    if (selectedFeature === "top rated") {
+      filtered.sort((a, b) => b.rating - a.rating);
+    }
+    if (selectedFeature === "Lowest rated") {
+      filtered.sort((a, b) => a.rating - b.rating);
+    }
+
+    console.log(filtered);
+
+    setFilterProducts(filtered);
   };
+  // console.log(selectedFeature);
 
   useEffect(() => {
     filterSearch();
-  }, [searchData]);
+  }, [searchData, selectedCategory, selectedFeature, products]);
+
+  useEffect(() => {
+    if (category) {
+      setSelectedCategory(category);
+    }
+  }, [category]);
+
   const addToCart = (id) => {
     let product = products.find((p) => {
       return p.id === id;
@@ -98,21 +136,73 @@ function AllProducts() {
           />
         </div>
         <div className="relative">
-          <select className="appearance-none rounded-xl bg-black/40 border border-white/10 pl-4 pr-10 py-3 text-sm outline-none cursor-pointer hover:border-white/20">
-            <option>All Categories</option>
-            <option>Electronics</option>
-            <option>Clothing</option>
-            <option>Home</option>
-            <option>Furniture</option>
+          <select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className="appearance-none rounded-xl bg-black/40 border border-white/10 pl-4 pr-10 py-3 text-sm outline-none cursor-pointer hover:border-white/20"
+          >
+            <option className="bg-[#000] text-[#fff]" value={"all categories"}>
+              All Categories
+            </option>
+            <option className="bg-[#000] text-[#fff]" value={"beauty"}>
+              Beauty
+            </option>
+            <option className="bg-[#000] text-[#fff]" value={"fragrances"}>
+              Fragrances
+            </option>
+            <option className="bg-[#000] text-[#fff]" value={"furniture"}>
+              Furniture
+            </option>
+            <option className="bg-[#000] text-[#fff]" value={"groceries"}>
+              Groceries
+            </option>
+            <option className="bg-[#000] text-[#fff]" value={"home-decoration"}>
+              Home Decoration
+            </option>
+            <option
+              className="bg-[#000] text-[#fff]"
+              value={"kitchen-accessories"}
+            >
+              Kitchen Accessories
+            </option>
+            <option className="bg-[#000] text-[#fff]" value={"mens-shirts"}>
+              Mens Shirts
+            </option>
+            <option className="bg-[#000] text-[#fff]" value={"mens-shoes"}>
+              Mens Shoes
+            </option>
+            <option className="bg-[#000] text-[#fff]" value={"mens-watches"}>
+              Mens Watches
+            </option>
+            <option
+              className="bg-[#000] text-[#fff]"
+              value={"mobile-accessories"}
+            >
+              Mobile Accessories
+            </option>
           </select>
           <ChevronDown className="h-4 w-4 text-neutral-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
         </div>
         <div className="relative">
-          <select className="appearance-none rounded-xl bg-black/40 border border-[#c6f24e]/50 pl-4 pr-10 py-3 text-sm outline-none cursor-pointer text-[#c6f24e]">
-            <option>Featured</option>
-            <option>Price: Low to High</option>
-            <option>Price: High to Low</option>
-            <option>Top Rated</option>
+          <select
+            onChange={(e) => setSelectedFeature(e.target.value)}
+            className="appearance-none rounded-xl bg-black/40 border border-[#c6f24e]/50 pl-4 pr-10 py-3 text-sm outline-none cursor-pointer text-[#c6f24e]"
+          >
+            <option value={"featured"} className="bg-[#000] text-[#fff]">
+              Featured
+            </option>
+            <option value={"low to high"} className="bg-[#000] text-[#fff]">
+              Price: Low to High
+            </option>
+            <option value={"high to low"} className="bg-[#000] text-[#fff]">
+              Price: High to Low
+            </option>
+            <option value={"top rated"} className="bg-[#000] text-[#fff]">
+              Top Rated
+            </option>
+            <option value={"lowest rated"} className="bg-[#000] text-[#fff]">
+              Lowest Rated
+            </option>
           </select>
           <ChevronDown className="h-4 w-4 text-[#c6f24e] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
         </div>

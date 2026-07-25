@@ -7,9 +7,10 @@ import {
   BookOpen,
   ArrowRight,
 } from "lucide-react";
-const categories = [
+import { useNavigate } from "react-router";
+const category = [
   {
-    name: "Electronics",
+    name: "beauty",
     count: "120+ items",
     icon: Smartphone,
     color: "text-blue-400",
@@ -17,7 +18,7 @@ const categories = [
     ring: "ring-blue-500/20",
   },
   {
-    name: "Fashion",
+    name: "fragrances",
     count: "240+ items",
     icon: Shirt,
     color: "text-pink-400",
@@ -25,7 +26,7 @@ const categories = [
     ring: "ring-pink-500/20",
   },
   {
-    name: "Home & Living",
+    name: "furniture",
     count: "80+ items",
     icon: Home,
     color: "text-amber-400",
@@ -33,7 +34,7 @@ const categories = [
     ring: "ring-amber-500/20",
   },
   {
-    name: "Beauty",
+    name: "groceries",
     count: "60+ items",
     icon: Sparkles,
     color: "text-purple-400",
@@ -41,7 +42,7 @@ const categories = [
     ring: "ring-purple-500/20",
   },
   {
-    name: "Sports",
+    name: "home decoration",
     count: "45+ items",
     icon: Dumbbell,
     color: "text-emerald-400",
@@ -49,7 +50,7 @@ const categories = [
     ring: "ring-emerald-500/20",
   },
   {
-    name: "Books",
+    name: "mens shirts",
     count: "150+ items",
     icon: BookOpen,
     color: "text-orange-400",
@@ -58,6 +59,8 @@ const categories = [
   },
 ];
 function ShopByCategory() {
+
+  const navigate = useNavigate()
   return (
     <section className="bg-black text-white px-6 lg:px-12 py-12">
       <div className="flex items-end justify-between mb-8 gap-4 flex-wrap">
@@ -77,10 +80,11 @@ function ShopByCategory() {
         </button>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-        {categories.map((c) => {
+        {category.map((c) => {
           const Icon = c.icon;
           return (
             <button
+              onClick={() => navigate(`/shop?category=${c.name}`)}
               key={c.name}
               className="group flex flex-col items-center text-center gap-3 rounded-2xl border border-white/10 bg-white/[0.02] p-5 hover:border-[#c6f24e]/40 hover:bg-white/[0.04] transition"
             >

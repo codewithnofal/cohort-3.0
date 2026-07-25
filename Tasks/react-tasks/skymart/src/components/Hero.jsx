@@ -1,14 +1,17 @@
 import { ArrowRight, Package, TrendingUp, Star, Tag } from "lucide-react";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthStore } from "../context/AuthContext";
 import { ProdStore } from "../context/productContext";
 import { useNavigate } from "react-router";
+import axios from "axios";
 function Hero() {
   const { currentUser } = useContext(AuthStore);
-  const { products } = useContext(ProdStore);
 
- let navigate =  useNavigate()
+  let cartItem = currentUser.cart.reduce((acc, val) => acc + val.quantity, 0);
+  let total = currentUser.cart.reduce((acc, val) => acc + val.quantity * val.price, 0);
 
+
+  let navigate = useNavigate();
 
   return (
     <section className="bg-black text-white px-6 lg:px-12 py-8">
@@ -39,10 +42,16 @@ function Hero() {
               fashion, and more.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <button onClick={()=>navigate("/shop")} className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-[#c6f24e] px-6 py-3.5 text-sm font-semibold text-black hover:brightness-110">
+              <button
+                onClick={() => navigate("/shop")}
+                className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-[#c6f24e] px-6 py-3.5 text-sm font-semibold text-black hover:brightness-110"
+              >
                 Shop Now <ArrowRight className="h-4 w-4" />
               </button>
-              <button onClick={()=>navigate("/shop")} className="inline-flex cursor-pointer items-center rounded-full border border-white/15 bg-white/[0.03] px-6 py-3.5 text-sm font-semibold text-white hover:bg-white/[0.06]">
+              <button
+                onClick={() => navigate("/shop")}
+                className="inline-flex cursor-pointer items-center rounded-full border border-white/15 bg-white/[0.03] px-6 py-3.5 text-sm font-semibold text-white hover:bg-white/[0.06]"
+              >
                 View All Products
               </button>
             </div>
@@ -50,7 +59,7 @@ function Hero() {
           {/* Right cards */}
           <div className="flex flex-col gap-4 w-full lg:w-auto">
             <div className="rounded-2xl border border-[#c6f24e]/30 bg-[#c6f24e]/10 px-8 py-6 text-center min-w-[220px]">
-              <div className="text-4xl font-bold text-[#c6f24e]">{products.length}+</div>
+              <div className="text-4xl font-bold text-[#c6f24e]">100+</div>
               <div className="mt-1 text-sm text-neutral-300">
                 Products Available
               </div>
@@ -69,14 +78,14 @@ function Hero() {
         <StatCard
           icon={<Package className="h-5 w-5 text-[#c6f24e]" />}
           iconBg="bg-[#c6f24e]/10"
-          value="0"
+          value={cartItem}
           label="Cart Items"
           sub="In your bag"
         />
         <StatCard
           icon={<TrendingUp className="h-5 w-5 text-blue-400" />}
           iconBg="bg-blue-500/10"
-          value="$0.00"
+          value={"$" + total.toFixed(2)}
           label="Cart Value"
           sub="Ready to checkout"
         />
@@ -90,7 +99,7 @@ function Hero() {
         <StatCard
           icon={<Tag className="h-5 w-5 text-purple-400" />}
           iconBg="bg-purple-500/10"
-          value="6"
+          value="10"
           label="Categories"
           sub="To explore"
         />

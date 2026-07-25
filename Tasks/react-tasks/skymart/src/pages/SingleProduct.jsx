@@ -23,9 +23,6 @@ function SingleProduct() {
   let navigate = useNavigate();
 
   let { currentUser, setCurrentUser, users } = useContext(AuthStore);
-  // const [isAdded, setisAdded] = useState(false);
-
-  // let {pro} = useContext(ProdStore)
 
   const [product, setProduct] = useState({});
 
@@ -38,6 +35,7 @@ function SingleProduct() {
       console.log(error);
     }
   };
+  // [][758758]
 
   useEffect(() => {
     getSingleProductsData();

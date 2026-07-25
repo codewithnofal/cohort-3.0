@@ -9,6 +9,9 @@ function Navbar() {
   const [open, setOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
 
+  let cartTotal = currentUser.cart.reduce((acc, val) => acc + val.quantity, 0);
+  console.log(cartTotal)
+
   const linkClass = ({ isActive }) =>
     isActive
       ? "text-[#c6f24e]"
@@ -58,9 +61,9 @@ function Navbar() {
             className="relative h-11 w-11 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.06]"
           >
             <ShoppingCart className="h-5 w-5" />
-            {currentUser.cart.quantity > 0 && (
+            {cartTotal > 0 && (
               <span className="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1 rounded-full bg-[#c6f24e] text-black text-[11px] font-bold flex items-center justify-center border-2 border-black">
-                {currentUser.cart.quantity}
+                {cartTotal}
               </span>
             )}
           </button>
@@ -77,9 +80,9 @@ function Navbar() {
             className="relative h-11 w-11 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.06]"
           >
             <ShoppingCart className="h-5 w-5" />
-            {currentUser.cart.quantity > 0 && (
+            {cartTotal > 0 && (
               <span className="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1 rounded-full bg-[#c6f24e] text-black text-[11px] font-bold flex items-center justify-center border-2 border-black">
-                {currentUser.cart.quantity}
+                {cartTotal}
               </span>
             )}
           </button>

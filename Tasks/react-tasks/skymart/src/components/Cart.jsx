@@ -102,7 +102,7 @@ function Cart({ open = false, onClose = () => {} }) {
             <h2 className="text-xl font-bold text-white">Cart</h2>
             {!isEmpty && (
               <span className="rounded-full bg-[#c6f24e]/15 text-[#c6f24e] text-xs font-semibold px-2.5 py-1">
-                {2} items
+                {currentUser.cart.length} items
               </span>
             )}
           </div>
