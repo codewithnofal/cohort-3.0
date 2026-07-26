@@ -47,7 +47,7 @@ function RelatedProducts({ cat }) {
   const getProductsData = async () => {
     try {
       const res = await axios.get(
-        "https://dummyjson.com/products?offset=0&limit=80",
+        "https://dummyjson.com/products?offset=0&limit=100",
       );
       console.log(res.data.products);
       setProduct(res.data.products);

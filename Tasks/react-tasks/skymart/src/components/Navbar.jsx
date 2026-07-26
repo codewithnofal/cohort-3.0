@@ -1,16 +1,27 @@
 import { Zap, ShoppingCart, LogOut, Menu, X } from "lucide-react";
 import { useContext, useState } from "react";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { AuthStore } from "../context/AuthContext";
 import Cart from "./Cart";
+import { ProdStore } from "../context/productContext";
 
 function Navbar() {
-  const { currentUser } = useContext(AuthStore);
+  const { currentUser, setCurrentUser } = useContext(AuthStore);
   const [open, setOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false);
+  const { cartOpen, setCartOpen } = useContext(ProdStore);
+  const navigate = useNavigate();
 
   let cartTotal = currentUser.cart.reduce((acc, val) => acc + val.quantity, 0);
-  console.log(cartTotal)
+  console.log(cartTotal);
+
+  const logout = () => {
+    localStorage.removeItem("currUser");
+    setCurrentUser(null);
+
+    toast.success("Logged out successfully 👋");
+
+    navigate("/auth/login")
+  };
 
   const linkClass = ({ isActive }) =>
     isActive
@@ -21,7 +32,10 @@ function Navbar() {
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-between px-6 lg:px-12 py-5 bg-black text-white border-b border-white/5">
         {/* Logo */}
-        <div className="flex items-center gap-2">
+        <div
+          onClick={() => navigate("/")}
+          className="flex cursor-pointer items-center gap-2"
+        >
           <div className=" h-9 sm:h-11 w-9 sm:w-11 rounded-xl bg-[#c6f24e] flex items-center justify-center">
             <Zap
               className=" h-4 w-4 sm:h-6 sm:w-6 text-black"
@@ -58,7 +72,7 @@ function Navbar() {
 
           <button
             onClick={() => setCartOpen(true)}
-            className="relative h-11 w-11 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.06]"
+            className="relative h-11 w-11 rounded-xl border cursor-pointer border-white/10 bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.06]"
           >
             <ShoppingCart className="h-5 w-5" />
             {cartTotal > 0 && (
@@ -68,7 +82,7 @@ function Navbar() {
             )}
           </button>
 
-          <button className="h-11 w-11 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.06]">
+          <button onClick={logout} className="h-11 w-11 cursor-pointer rounded-xl border hover:text-red-400 hover:border-[#7F0707] hover:bg-[#3A1818] border-white/10 bg-white/[0.03] flex items-center justify-center ">
             <LogOut className="h-5 w-5" />
           </button>
         </div>
@@ -77,7 +91,7 @@ function Navbar() {
         <div className="flex md:hidden items-center gap-3">
           <button
             onClick={() => setCartOpen(true)}
-            className="relative h-11 w-11 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.06]"
+            className="relative h-11 w-11 rounded-xl border cursor-pointer border-white/10 bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.06]"
           >
             <ShoppingCart className="h-5 w-5" />
             {cartTotal > 0 && (
@@ -86,12 +100,12 @@ function Navbar() {
               </span>
             )}
           </button>
-          <button className="h-11 w-11 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.06]">
+          <button onClick={logout} className="h-11 w-11 rounded-xl hover:text-red-400 cursor-pointer hover:border-[#7F0707] border border-white/10 bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.06]">
             <LogOut className="h-5 w-5" />
           </button>
           <button
             onClick={() => setOpen((v) => !v)}
-            className="h-11 w-11 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.06]"
+            className="h-11 w-11 rounded-xl cursor-pointer border border-white/10 bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.06]"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -107,7 +121,7 @@ function Navbar() {
           open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="flex flex-col px-6 py-6 gap-5 text-base font-semibold">
+        <div className="flex cursor-pointer flex-col px-6 py-6 gap-5 text-base font-semibold">
           <NavLink to="/" onClick={() => setOpen(false)} className={linkClass}>
             Home
           </NavLink>
@@ -125,7 +139,7 @@ function Navbar() {
           >
             About
           </NavLink>
-          <button className="flex items-center gap-2 text-red-500 hover:text-red-400 transition text-left">
+          <button onClick={logout} className="flex cursor-pointer items-center gap-2 text-red-500 hover:text-red-400 transition text-left">
             <LogOut className="h-5 w-5" />
             Logout
           </button>

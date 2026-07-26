@@ -9,10 +9,15 @@ import {
 } from "lucide-react";
 import { useContext } from "react";
 import { AuthStore } from "../context/AuthContext";
+import { toast } from "sonner";
+import { useNavigate } from "react-router";
+import { ProdStore } from "../context/productContext";
 
 function Cart({ open = false, onClose = () => {} }) {
   let { currentUser, setCurrentUser, users } = useContext(AuthStore);
-  console.log(currentUser.cart);
+  const navigate = useNavigate()
+    const {cartOpen, setCartOpen} = useContext(ProdStore)
+  
 
   const isEmpty = currentUser.cart.length === 0;
 
@@ -74,11 +79,34 @@ function Cart({ open = false, onClose = () => {} }) {
     });
     const updatedUser = { ...currentUser, cart: filteredCart };
     setCurrentUser(updatedUser);
+    toast.warning("Item removed from cart")
     localStorage.setItem("currUser", JSON.stringify(updatedUser));
 
     let index = users.findIndex((u) => u.id === updatedUser.id);
     users[index] = updatedUser;
     localStorage.setItem("users", JSON.stringify(users));
+  };
+
+  const checkout = () => {
+    let updatedUser = {
+      ...currentUser,
+      cart: [],
+    };
+
+    let updatedUsers = users.map((user) => {
+      if (user.id === currentUser.id) {
+        return updatedUser;
+      }
+      return user;
+    });
+    toast.message("Order Placed 🎉")
+
+    localStorage.setItem("currUser", JSON.stringify(updatedUser));
+
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+    setCurrentUser(updatedUser);
+    setUsers(updatedUsers);
   };
 
   return (
@@ -123,7 +151,10 @@ function Cart({ open = false, onClose = () => {} }) {
             <p className="mt-1 text-sm text-neutral-500">
               Go shop something cool!
             </p>
-            <button className="mt-6 rounded-2xl bg-[#c6f24e] text-black px-6 py-3 text-sm font-bold hover:brightness-110 transition">
+            <button onClick={()=>{
+              navigate("/shop")
+              onClose()
+            }}  className="mt-6 rounded-2xl cursor-pointer bg-[#c6f24e] text-black px-6 py-3 text-sm font-bold hover:brightness-110 transition">
               Browse Products
             </button>
           </div>
@@ -145,8 +176,8 @@ function Cart({ open = false, onClose = () => {} }) {
                   <h4 className="text-sm font-semibold text-white leading-snug line-clamp-2">
                     {item.title}
                   </h4>
-                  <div className="mt-1 text-lg font-extrabold text-[#c6f24e]">
-                    ${item.price * item.quantity.toFixed(2)}
+                  <div className="mt-1 sm:text-lg font-medium text-[#c6f24e]">
+                    ${(item.price * item.quantity).toFixed(2)}
                   </div>
                   <div className="text-xs text-neutral-500">
                     ${item.price} each
@@ -190,7 +221,10 @@ function Cart({ open = false, onClose = () => {} }) {
                 {total.toFixed(2)}
               </span>
             </div>
-            <button className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-[#c6f24e] text-black py-3.5 text-base font-bold hover:brightness-110 transition">
+            <button
+              onClick={() => checkout()}
+              className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-[#c6f24e] text-black py-3.5 text-base font-bold hover:brightness-110 transition"
+            >
               Checkout <ArrowRight className="h-5 w-5" />
             </button>
             <button className="w-full mt-2 py-2 text-sm text-neutral-500 hover:text-neutral-300 transition">

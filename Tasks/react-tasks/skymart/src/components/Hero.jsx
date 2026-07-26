@@ -8,10 +8,30 @@ function Hero() {
   const { currentUser } = useContext(AuthStore);
 
   let cartItem = currentUser.cart.reduce((acc, val) => acc + val.quantity, 0);
-  let total = currentUser.cart.reduce((acc, val) => acc + val.quantity * val.price, 0);
-
+  let total = currentUser.cart.reduce(
+    (acc, val) => acc + val.quantity * val.price,
+    0,
+  );
 
   let navigate = useNavigate();
+
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+
+    if (hour >= 5 && hour < 12) {
+      return "GOOD MORNING";
+    }
+
+    if (hour >= 12 && hour < 17) {
+      return "GOOD AFTERNOON";
+    }
+
+    if (hour >= 17 && hour < 21) {
+      return "GOOD EVENING";
+    }
+
+    return "GOOD NIGHT";
+  };
 
   return (
     <section className="bg-black text-white px-6 lg:px-12 py-8">
@@ -30,9 +50,9 @@ function Hero() {
           {/* Left */}
           <div className="max-w-2xl">
             <p className="text-xs sm:text-lg  font-semibold tracking-[0.1em] text-[#c6f24e] mb-5">
-              GOOD EVENING 👋
+              {getGreeting()} 👋
             </p>
-            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight leading-[1.02]">
+            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight sm:leading-[1.02]">
               Welcome back,
               <br />
               <span className="text-[#c6f24e]">{currentUser.name}!</span>

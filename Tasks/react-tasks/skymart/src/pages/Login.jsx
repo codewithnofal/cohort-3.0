@@ -1,5 +1,14 @@
-import { Zap, Mail, Lock, Eye, ArrowRight } from "lucide-react";
-import { useContext } from "react";
+import {
+  Zap,
+  Mail,
+  Lock,
+  Eye,
+  ArrowRight,
+  EyeClosed,
+  EyeClosedIcon,
+  EyeOffIcon,
+} from "lucide-react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { AuthStore } from "../context/AuthContext";
@@ -13,8 +22,13 @@ function Login() {
   } = useForm({});
 
   let { users, currentUser, setCurrentUser } = useContext(AuthStore);
+  const [showPassword, setShowPassword] = useState(false);
 
   const formSubmit = (data) => {
+    if (!data.email && !data.password) {
+      toast.error("Fields are empty!");
+      return;
+    }
     let currUser = users.find((u) => {
       return u.email === data.email && u.password === data.password;
     });
@@ -47,7 +61,7 @@ function Login() {
   return (
     <div className="min-h-screen grid lg:grid-cols-2 bg-black text-white">
       {/* Left hero */}
-      <div className="relative hidden sm:flex flex-col justify-between p-10 lg:p-16 overflow-hidden border-b lg:border-b-0 lg:border-r border-white/5">
+      <div className="relative hidden sm:flex flex-col justify-between p-10 lg:p-16 overflow-hidden border-b lg:border-b-0 lg:border-r border-white">
         <div
           aria-hidden
           className="pointer-events-none absolute -left-40 top-1/3 h-[500px] w-[500px] rounded-full blur-3xl opacity-30"
@@ -95,9 +109,6 @@ function Login() {
             </div>
           </div>
         </div>
-        <div className="relative text-xs text-neutral-600">
-          © 2026 SkyMart. All rights reserved.
-        </div>
       </div>
       {/* Right form */}
       <div className="flex items-center justify-center p-6 lg:p-16">
@@ -127,7 +138,16 @@ function Login() {
               <span className="mr-3 text-neutral-500">
                 <Lock className="h-4 w-4" />
               </span>
-              <input
+
+              {
+                showPassword ? <input
+                {...register("password", {
+                  required: "password is required!",
+                })}
+                type="text"
+                placeholder="Password"
+                className="flex-1 bg-transparent text-sm text-white placeholder:text-neutral-500 outline-none"
+              /> : <input
                 {...register("password", {
                   required: "password is required!",
                 })}
@@ -135,13 +155,22 @@ function Login() {
                 placeholder="Password"
                 className="flex-1 bg-transparent text-sm text-white placeholder:text-neutral-500 outline-none"
               />
-              <span className="ml-3 text-neutral-500">
-                <Eye className="h-4 w-4" />
+              }
+              
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                className="ml-3 cursor-pointer text-neutral-500"
+              >
+                {showPassword ? (
+                  <EyeOffIcon className="h-4 w-4" />
+                ) : (
+                  <Eye className="h-4 w-4" />
+                )}
               </span>
             </div>
             <button
               type="submit"
-              className="mt-2 w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#c6f24e] px-4 py-3.5 text-sm font-semibold text-black transition hover:brightness-110"
+              className="mt-2 w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#c6f24e] px-4 py-3.5 text-sm font-semibold text-black cursor-pointer transition hover:brightness-110"
             >
               Sign in <ArrowRight className="h-4 w-4" />
             </button>

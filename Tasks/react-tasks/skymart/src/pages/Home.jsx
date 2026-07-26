@@ -1,16 +1,17 @@
 import React from "react";
 import Hero from "../components/Hero";
 import ShopByCategory from "../components/ShopByCategory";
-import TopRated from "../components/TopRated";
 import NewArrivals from "../components/NewArrivals";
+import ProductShowcase from "../components/ProductShowcase";
+import FeatureStrip from "../components/FeatureStrip";
 
 const Home = () => {
   return (
-    <div className="">
+    <div className="bg-black sm:px-10">
       <Hero />
       <ShopByCategory />
-      <TopRated />
-      <NewArrivals />
+      <ProductShowcase />
+      <FeatureStrip/>
     </div>
   );
 };

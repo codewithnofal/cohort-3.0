@@ -6,13 +6,18 @@ import {
   Dumbbell,
   BookOpen,
   ArrowRight,
+  SprayCan,
+  Sofa,
+  ShoppingBasket,
+  LampCeiling,
+  ShirtIcon,
 } from "lucide-react";
 import { useNavigate } from "react-router";
 const category = [
   {
     name: "beauty",
     count: "120+ items",
-    icon: Smartphone,
+    icon: Sparkles,
     color: "text-blue-400",
     bg: "bg-blue-500/10",
     ring: "ring-blue-500/20",
@@ -20,7 +25,7 @@ const category = [
   {
     name: "fragrances",
     count: "240+ items",
-    icon: Shirt,
+    icon: SprayCan,
     color: "text-pink-400",
     bg: "bg-pink-500/10",
     ring: "ring-pink-500/20",
@@ -28,7 +33,7 @@ const category = [
   {
     name: "furniture",
     count: "80+ items",
-    icon: Home,
+    icon: Sofa,
     color: "text-amber-400",
     bg: "bg-amber-500/10",
     ring: "ring-amber-500/20",
@@ -36,7 +41,7 @@ const category = [
   {
     name: "groceries",
     count: "60+ items",
-    icon: Sparkles,
+    icon: ShoppingBasket,
     color: "text-purple-400",
     bg: "bg-purple-500/10",
     ring: "ring-purple-500/20",
@@ -44,7 +49,7 @@ const category = [
   {
     name: "home decoration",
     count: "45+ items",
-    icon: Dumbbell,
+    icon: LampCeiling,
     color: "text-emerald-400",
     bg: "bg-emerald-500/10",
     ring: "ring-emerald-500/20",
@@ -52,7 +57,7 @@ const category = [
   {
     name: "mens shirts",
     count: "150+ items",
-    icon: BookOpen,
+    icon: ShirtIcon,
     color: "text-orange-400",
     bg: "bg-orange-500/10",
     ring: "ring-orange-500/20",
@@ -75,18 +80,18 @@ function ShopByCategory() {
             Find exactly what you're looking for.
           </p>
         </div>
-        <button className="inline-flex items-center gap-2 text-sm font-semibold text-[#c6f24e] hover:underline">
+        <button onClick={()=>navigate("/shop")} className="inline-flex cursor-pointer items-center gap-2 text-sm font-semibold text-[#c6f24e] hover:underline">
           View all <ArrowRight className="h-4 w-4" />
         </button>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+      <div className="grid grid-cols-2  sm:grid-cols-3 lg:grid-cols-6 gap-4">
         {category.map((c) => {
           const Icon = c.icon;
           return (
             <button
               onClick={() => navigate(`/shop?category=${c.name}`)}
               key={c.name}
-              className="group flex flex-col items-center text-center gap-3 rounded-2xl border border-white/10 bg-white/[0.02] p-5 hover:border-[#c6f24e]/40 hover:bg-white/[0.04] transition"
+              className="group flex cursor-pointer flex-col items-center text-center gap-3 rounded-2xl border border-white/10 bg-white/[0.02] p-5 hover:border-[#c6f24e]/40 hover:bg-white/[0.04] transition"
             >
               <div
                 className={`h-14 w-14 rounded-2xl ring-1 ${c.ring} ${c.bg} flex items-center justify-center group-hover:scale-105 transition`}
