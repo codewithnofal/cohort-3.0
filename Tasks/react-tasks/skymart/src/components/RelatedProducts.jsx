@@ -142,7 +142,7 @@ function RelatedProducts({ cat }) {
                   </span>
                   <button
                     onClick={() => addToCart(p)}
-                    className={`inline-flex items-center gap-1.5 rounded-full ${
+                    className={`inline-flex cursor-pointer items-center gap-1.5 rounded-full ${
                       isAdded
                         ? "bg-[#132B1C] border border-[#234d33] text-white cursor-not-allowed"
                         : "bg-[#c6f24e] text-black hover:brightness-110"

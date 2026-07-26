@@ -8,6 +8,7 @@ import {
   Heart,
   ArrowRight,
 } from "lucide-react";
+import { useNavigate } from "react-router";
 const stats = [
   { icon: Package, value: "20K+", label: "Products" },
   { icon: Users, value: "50K+", label: "Happy Customers" },
@@ -38,35 +39,37 @@ const values = [
 ];
 const team = [
   {
-    name: "Aryan Shah",
+    name: "Nofal Ali",
     role: "Founder & CEO",
-    initial: "A",
+    initial: "N",
     bg: "bg-[#c6f24e]",
     fg: "text-black",
   },
   {
-    name: "Priya Mehta",
+    name: "Rudresh Shukhla",
     role: "Head of Product",
-    initial: "P",
+    initial: "R",
     bg: "bg-blue-500",
     fg: "text-white",
   },
   {
-    name: "Rohan Verma",
+    name: "Rishabh Tripathi",
     role: "Lead Engineer",
     initial: "R",
     bg: "bg-purple-500",
     fg: "text-white",
   },
   {
-    name: "Sneha Kapoor",
+    name: "Soham Gore",
     role: "Design Director",
     initial: "S",
     bg: "bg-rose-500",
     fg: "text-white",
   },
+  
 ];
 function AboutUs() {
+  const navigate = useNavigate()
   return (
     <section className="bg-black text-white px-6 lg:px-12 py-16">
       {/* Hero */}
@@ -179,7 +182,7 @@ function AboutUs() {
         <p className="mt-3 text-neutral-400 text-sm lg:text-base">
           Explore thousands of products at unbeatable prices.
         </p>
-        <button className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#c6f24e] px-7 py-3.5 text-sm font-bold text-black hover:brightness-110">
+        <button onClick={()=>navigate("/shop")} className="mt-6 inline-flex cursor-pointer items-center gap-2 rounded-full bg-[#c6f24e] px-7 py-3.5 text-sm font-bold text-black hover:brightness-110">
           Browse Products <ArrowRight className="h-4 w-4" />
         </button>
       </div>

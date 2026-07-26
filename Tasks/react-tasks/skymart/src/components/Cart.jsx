@@ -14,7 +14,7 @@ import { useNavigate } from "react-router";
 import { ProdStore } from "../context/productContext";
 
 function Cart({ open = false, onClose = () => {} }) {
-  let { currentUser, setCurrentUser, users } = useContext(AuthStore);
+  let { currentUser, setCurrentUser, users, setUsers } = useContext(AuthStore);
   const navigate = useNavigate();
   const { cartOpen, setCartOpen } = useContext(ProdStore);
 
@@ -249,8 +249,8 @@ function Cart({ open = false, onClose = () => {} }) {
             </div>
             <button
               onClick={() => {
-                checkout();
-                setCartOpen(false);
+                checkout()
+                onClose()
               }}
               className="w-full inline-flex cursor-pointer items-center justify-center gap-2 rounded-2xl bg-[#c6f24e] text-black py-3.5 text-base font-bold hover:brightness-110 transition"
             >

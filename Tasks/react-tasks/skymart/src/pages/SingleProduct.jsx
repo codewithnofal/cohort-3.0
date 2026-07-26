@@ -25,7 +25,7 @@ function SingleProduct() {
   let { currentUser, setCurrentUser, users } = useContext(AuthStore);
 
   const [product, setProduct] = useState({});
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
 
   const getSingleProductsData = async () => {
     try {
@@ -235,7 +235,7 @@ function SingleProduct() {
                   <button
                     disabled={isAdded}
                     onClick={() => addToCart(product.id)}
-                    className={`flex-1 inline-flex items-center justify-center gap-2 rounded-2xl ${
+                    className={`flex-1 inline-flex cursor-pointer items-center justify-center gap-2 rounded-2xl ${
                       isAdded
                         ? "bg-[#132B1C] text-white cursor-not-allowed"
                         : "bg-[#c6f24e] text-black hover:brightness-110"
@@ -309,7 +309,7 @@ function SingleProduct() {
                 <div className="mt-4 grid grid-cols-2 gap-3">
                   <button
                     onClick={() => navigate(`/product/${Number(id) - 1}`)}
-                    className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white/[0.04] border border-white/10 px-4 py-2.5 text-sm font-semibold hover:bg-white/[0.08] transition"
+                    className="inline-flex items-center cursor-pointer justify-center gap-2 rounded-2xl bg-white/[0.04] border border-white/10 px-4 py-2.5 text-sm font-semibold hover:bg-white/[0.08] transition"
                   >
                     <ChevronLeft className="h-4 w-4" />
                     Previous
@@ -317,7 +317,7 @@ function SingleProduct() {
 
                   <button
                     onClick={() => navigate(`/product/${Number(id) + 1}`)}
-                    className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#c6f24e] text-black px-4 py-2.5 text-sm font-bold hover:brightness-110 transition"
+                    className="inline-flex items-center justify-center cursor-pointer gap-2 rounded-2xl bg-[#c6f24e] text-black px-4 py-2.5 text-sm font-bold hover:brightness-110 transition"
                   >
                     Next
                     <ChevronRight className="h-4 w-4" />

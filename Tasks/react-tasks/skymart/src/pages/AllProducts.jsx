@@ -15,8 +15,7 @@ function AllProducts() {
   console.log(category);
   let { products, setProducts, cartItems, setCartItems } =
     useContext(ProdStore);
-  const {cartOpen, setCartOpen} = useContext(ProdStore)
-
+  const { cartOpen, setCartOpen } = useContext(ProdStore);
 
   const [searchData, setSearchData] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all categories");
@@ -245,7 +244,7 @@ function AllProducts() {
                     <img
                       src={p.images[0]}
                       alt={p.title}
-                      className="h-full w-full object-cover group-hover:scale-105 transition"
+                      className="h-full w-full cursor-pointer object-cover group-hover:scale-105 transition"
                     />
                   </div>
                 </div>
@@ -284,8 +283,8 @@ function AllProducts() {
                     <button
                       disabled={isAdded}
                       onClick={() => {
-                        addToCart(p.id)
-                        setCartOpen(true)
+                        addToCart(p.id);
+                        setCartOpen(true);
                       }}
                       className={`inline-flex items-center cursor-pointer gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-bold transition-all duration-200 ${
                         isAdded
