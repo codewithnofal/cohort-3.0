@@ -15,9 +15,8 @@ import { ProdStore } from "../context/productContext";
 
 function Cart({ open = false, onClose = () => {} }) {
   let { currentUser, setCurrentUser, users } = useContext(AuthStore);
-  const navigate = useNavigate()
-    const {cartOpen, setCartOpen} = useContext(ProdStore)
-  
+  const navigate = useNavigate();
+  const { cartOpen, setCartOpen } = useContext(ProdStore);
 
   const isEmpty = currentUser.cart.length === 0;
 
@@ -79,7 +78,9 @@ function Cart({ open = false, onClose = () => {} }) {
     });
     const updatedUser = { ...currentUser, cart: filteredCart };
     setCurrentUser(updatedUser);
-    toast.warning("Item removed from cart")
+    toast.warning("Item removed from cart", {
+      duration: 800,
+    });
     localStorage.setItem("currUser", JSON.stringify(updatedUser));
 
     let index = users.findIndex((u) => u.id === updatedUser.id);
@@ -99,7 +100,29 @@ function Cart({ open = false, onClose = () => {} }) {
       }
       return user;
     });
-    toast.message("Order Placed 🎉")
+    toast.success("Order Placed 🎉",{duration: 1200});
+
+    localStorage.setItem("currUser", JSON.stringify(updatedUser));
+
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+    setCurrentUser(updatedUser);
+    setUsers(updatedUsers);
+  };
+
+  const clearCart = () => {
+    let updatedUser = {
+      ...currentUser,
+      cart: [],
+    };
+
+    let updatedUsers = users.map((user) => {
+      if (user.id === currentUser.id) {
+        return updatedUser;
+      }
+      return user;
+    });
+    toast.warning("Cart Cleared!", {duration: 1200});
 
     localStorage.setItem("currUser", JSON.stringify(updatedUser));
 
@@ -113,14 +136,14 @@ function Cart({ open = false, onClose = () => {} }) {
     <>
       <div
         onClick={onClose}
-        className={`fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[60]  bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
           open
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
       />
       <aside
-        className={`fixed top-0 right-0 z-[70] h-full w-full sm:w-[420px] bg-black border-l border-white/10 shadow-2xl transform transition-transform duration-300 ease-out flex flex-col ${
+        className={`fixed top-0 right-0  z-[70] h-full w-full sm:w-[420px] bg-black border-l ease-in border-white/10 shadow-2xl transform transition-transform duration-300 ease-out flex flex-col ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -136,7 +159,7 @@ function Cart({ open = false, onClose = () => {} }) {
           </div>
           <button
             onClick={onClose}
-            className="h-9 w-9 rounded-lg flex items-center justify-center text-neutral-400 hover:text-white hover:bg-white/5 transition"
+            className="h-9 w-9 rounded-lg cursor-pointer flex items-center justify-center text-neutral-400 hover:text-white hover:bg-white/5 transition"
           >
             <X className="h-5 w-5" />
           </button>
@@ -151,10 +174,13 @@ function Cart({ open = false, onClose = () => {} }) {
             <p className="mt-1 text-sm text-neutral-500">
               Go shop something cool!
             </p>
-            <button onClick={()=>{
-              navigate("/shop")
-              onClose()
-            }}  className="mt-6 rounded-2xl cursor-pointer bg-[#c6f24e] text-black px-6 py-3 text-sm font-bold hover:brightness-110 transition">
+            <button
+              onClick={() => {
+                navigate("/shop");
+                onClose();
+              }}
+              className="mt-6 rounded-2xl cursor-pointer bg-[#c6f24e] text-black px-6 py-3 text-sm font-bold hover:brightness-110 transition"
+            >
               Browse Products
             </button>
           </div>
@@ -186,7 +212,7 @@ function Cart({ open = false, onClose = () => {} }) {
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => setDecrement(item.id)}
-                        className="h-7 w-7 rounded-lg border border-white/10 bg-white/[0.03] text-white flex items-center justify-center hover:bg-white/[0.08] transition"
+                        className="h-7 w-7 rounded-lg border cursor-pointer border-white/10 bg-white/[0.03] text-white flex items-center justify-center hover:bg-white/[0.08] transition"
                       >
                         <Minus className="h-3.5 w-3.5" />
                       </button>
@@ -195,14 +221,14 @@ function Cart({ open = false, onClose = () => {} }) {
                       </span>
                       <button
                         onClick={() => setIncrement(item.id)}
-                        className="h-7 w-7 rounded-lg border border-white/10 bg-white/[0.03] text-white flex items-center justify-center hover:bg-white/[0.08] transition"
+                        className="h-7 w-7 rounded-lg border cursor-pointer border-white/10 bg-white/[0.03] text-white flex items-center justify-center hover:bg-white/[0.08] transition"
                       >
                         <Plus className="h-3.5 w-3.5" />
                       </button>
                     </div>
                     <button
                       onClick={() => deleteItem(item.id)}
-                      className="text-red-500 hover:text-red-400 transition"
+                      className="text-red-500  cursor-pointer hover:text-red-400 transition"
                     >
                       <Trash2 className="h-4 w-4" />
                     </button>
@@ -214,20 +240,23 @@ function Cart({ open = false, onClose = () => {} }) {
         )}
 
         {!isEmpty && (
-          <div className="border-t border-white/10 px-5 py-5">
+          <div className="border-t border-white/10 px-10 py-5">
             <div className="flex items-center justify-between mb-4">
               <span className="text-neutral-400 text-sm">Total</span>
-              <span className="text-2xl font-extrabold text-white">
-                {total.toFixed(2)}
+              <span className="text-2xl font-medium text-white">
+                ${total.toFixed(2)}
               </span>
             </div>
             <button
-              onClick={() => checkout()}
-              className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-[#c6f24e] text-black py-3.5 text-base font-bold hover:brightness-110 transition"
+              onClick={() => {
+                checkout();
+                setCartOpen(false);
+              }}
+              className="w-full inline-flex cursor-pointer items-center justify-center gap-2 rounded-2xl bg-[#c6f24e] text-black py-3.5 text-base font-bold hover:brightness-110 transition"
             >
               Checkout <ArrowRight className="h-5 w-5" />
             </button>
-            <button className="w-full mt-2 py-2 text-sm text-neutral-500 hover:text-neutral-300 transition">
+            <button onClick={clearCart} className="w-full mt-2 cursor-pointer py-2 text-sm text-neutral-500 hover:text-neutral-300 transition">
               Clear cart
             </button>
           </div>

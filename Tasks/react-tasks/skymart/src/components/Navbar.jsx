@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router";
 import { AuthStore } from "../context/AuthContext";
 import Cart from "./Cart";
 import { ProdStore } from "../context/productContext";
+import { toast } from "sonner";
 
 function Navbar() {
   const { currentUser, setCurrentUser } = useContext(AuthStore);
@@ -18,7 +19,7 @@ function Navbar() {
     localStorage.removeItem("currUser");
     setCurrentUser(null);
 
-    toast.success("Logged out successfully 👋");
+    toast.info("Logged out successfully", {duration:1000});
 
     navigate("/auth/login")
   };

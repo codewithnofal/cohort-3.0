@@ -23,11 +23,11 @@ const features = [
 
 export function FeatureStrip() {
   return (
-    <div className="grid gap-3 mb-10 sm:gap-4 md:grid-cols-3">
+    <div className="grid gap-3 sm:gap-4 md:grid-cols-3">
       {features.map((feature) => (
         <div
           key={feature.title}
-          className="flex items-center gap-3 rounded-2xl border border-white/10 bg-zinc-900/70 p-4 transition-colors duration-300 hover:border-lime-400/40 sm:gap-4 sm:rounded-3xl sm:p-5"
+          className="flex items-center gap-3 mb-5 rounded-2xl border border-white/10 bg-zinc-900/70 p-4 transition-colors duration-300 hover:border-lime-400/40 sm:gap-4 sm:rounded-3xl sm:p-5"
         >
           <span className={"shrink-0 " + feature.iconColor}>{feature.icon}</span>
           <div className="min-w-0">

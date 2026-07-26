@@ -40,7 +40,7 @@ function Login() {
     setCurrentUser(currUser);
     localStorage.setItem("currUser", JSON.stringify(currUser));
     reset();
-    toast.success("Login Successfull");
+    toast.success("Login Successfull", {duration: 1000});
     navigate("/");
   };
 
@@ -48,11 +48,17 @@ function Login() {
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
   const onError = (errors) => {
-    if (errors.email) {
+    if (
+      errors.email &&
+      errors.password
+    ) {
+      toast.error("Please fill all the fields!", { duration: 1000 });
+    }
+    else if (errors.email) {
       toast.error(errors.email.message);
     }
 
-    if (errors.password) {
+    else if (errors.password) {
       toast.error(errors.password.message);
     }
   };
@@ -111,7 +117,19 @@ function Login() {
         </div>
       </div>
       {/* Right form */}
-      <div className="flex items-center justify-center p-6 lg:p-16">
+      <div className="flex items-center flex-col justify-center p-6 lg:p-16">
+        <div className="flex items-center gap-3 mb-10">
+          <div className="h-11 w-11 rounded-xl bg-[#c6f24e] flex items-center justify-center">
+            <Zap
+              className="h-6 w-6 text-black"
+              fill="black"
+              strokeWidth={2.5}
+            />
+          </div>
+          <span className="text-2xl font-bold tracking-tight">
+            Sky<span className="text-[#c6f24e]">Mart</span>
+          </span>
+        </div>
         <form
           onSubmit={handleSubmit(formSubmit, onError)}
           className="w-full max-w-md rounded-3xl border border-white/10 bg-neutral-950/60 p-8 lg:p-10 backdrop-blur"
@@ -139,24 +157,26 @@ function Login() {
                 <Lock className="h-4 w-4" />
               </span>
 
-              {
-                showPassword ? <input
-                {...register("password", {
-                  required: "password is required!",
-                })}
-                type="text"
-                placeholder="Password"
-                className="flex-1 bg-transparent text-sm text-white placeholder:text-neutral-500 outline-none"
-              /> : <input
-                {...register("password", {
-                  required: "password is required!",
-                })}
-                type="password"
-                placeholder="Password"
-                className="flex-1 bg-transparent text-sm text-white placeholder:text-neutral-500 outline-none"
-              />
-              }
-              
+              {showPassword ? (
+                <input
+                  {...register("password", {
+                    required: "password is required!",
+                  })}
+                  type="text"
+                  placeholder="Password"
+                  className="flex-1 bg-transparent text-sm text-white placeholder:text-neutral-500 outline-none"
+                />
+              ) : (
+                <input
+                  {...register("password", {
+                    required: "password is required!",
+                  })}
+                  type="password"
+                  placeholder="Password"
+                  className="flex-1 bg-transparent text-sm text-white placeholder:text-neutral-500 outline-none"
+                />
+              )}
+
               <span
                 onClick={() => setShowPassword(!showPassword)}
                 className="ml-3 cursor-pointer text-neutral-500"

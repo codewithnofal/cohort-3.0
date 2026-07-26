@@ -1,5 +1,5 @@
-import { User, Mail, Lock, Eye, ArrowRight, Zap } from "lucide-react";
-import { useContext } from "react";
+import { User, Mail, Lock, Eye, ArrowRight, Zap, EyeOffIcon } from "lucide-react";
+import { useContext, useState } from "react";
 import { AuthStore } from "../context/AuthContext";
 import { useForm } from "react-hook-form";
 import { Toaster, toast } from "sonner";
@@ -8,6 +8,9 @@ import {  useRegister } from "../hooks/useAuth";
 function SignUp() {
   const { navigate, passwordRegex, password,errors, handleSubmit, register,  getValues, formSubmit, onError } =
     useRegister();
+
+      const [showPassword, setShowPassword] = useState(false);
+    
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center px-6 py-12">
@@ -60,21 +63,33 @@ function SignUp() {
             <span className="mr-3 text-neutral-500">
               <Lock className="h-4 w-4" />
             </span>
-            <input
-              {...register("password", {
-                required: "Password is required!",
-                pattern: {
-                  value: /^.{6,}$/,
-                  message: "password must be 6 char long",
-                },
-              })}
-              type="password"
-              placeholder="Password (min 6 chars)"
-              className="flex-1 bg-transparent text-sm text-white placeholder:text-neutral-500 outline-none"
-            />
-            <span className="ml-3 text-neutral-500">
-              <Eye className="h-4 w-4" />
-            </span>
+               {
+                showPassword ? <input
+                {...register("password", {
+                  required: "password is required!",
+                })}
+                type="text"
+                placeholder="Password"
+                className="flex-1 bg-transparent text-sm text-white placeholder:text-neutral-500 outline-none"
+              /> : <input
+                {...register("password", {
+                  required: "password is required!",
+                })}
+                type="password"
+                placeholder="Password"
+                className="flex-1 bg-transparent text-sm text-white placeholder:text-neutral-500 outline-none"
+              />
+              }
+            <span
+                onClick={() => setShowPassword(!showPassword)}
+                className="ml-3 cursor-pointer  text-neutral-500"
+              >
+                {showPassword ? (
+                  <EyeOffIcon className="h-4 transition-all duration-200 w-4" />
+                ) : (
+                  <Eye className="h-4 transition-all duration-200 w-4" />
+                )}
+              </span>
           </div>
           {password && (
             <div className="passwrd-strength flex items-center gap-2 h-2 bg-transparent w-full">
@@ -128,7 +143,7 @@ function SignUp() {
           </div>
           <button
             type="submit"
-            className="mt-2 w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#c6f24e] px-4 py-3.5 text-sm font-semibold text-black transition hover:brightness-110"
+            className="mt-2 w-full cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl bg-[#c6f24e] px-4 py-3.5 text-sm font-semibold text-black transition hover:brightness-110"
           >
             Create Account <ArrowRight className="h-4 w-4" />
           </button>

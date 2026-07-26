@@ -102,7 +102,7 @@ function AllProducts() {
         cart: [...currentUser.cart, { ...product, quantity: 1 }],
       };
       toast.success("Added To Cart", {
-        duration: 800,
+        duration: 1000,
       });
       setCurrentUser(cartData);
 
@@ -287,9 +287,9 @@ function AllProducts() {
                         addToCart(p.id)
                         setCartOpen(true)
                       }}
-                      className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-bold transition-all duration-200 ${
+                      className={`inline-flex items-center cursor-pointer gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-bold transition-all duration-200 ${
                         isAdded
-                          ? "bg-[#132B1C] text-white cursor-not-allowed"
+                          ? "bg-[#132B1C] text-[#45CE77] border border-[#255939] cursor-not-allowed"
                           : "bg-[#c6f24e] text-black hover:brightness-110"
                       }`}
                     >

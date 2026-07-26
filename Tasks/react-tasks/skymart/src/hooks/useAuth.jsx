@@ -24,7 +24,7 @@ export const useRegister = () => {
   const formSubmit = (data) => {
     let user = users.find((u) => u.email === data.email);
     if (user) {
-      toast.error("user email already exist");
+      toast.error("user email already exist", {duration: 1000});
       return;
     }
 
@@ -35,11 +35,10 @@ export const useRegister = () => {
       email: data.email,
       password: data.password,
       cart: [],
-      wishlist: [],
-      orders: [],
     };
     let formData = [...users, newUser];
     setUsers(formData);
+    toast.success("User Registered Successfully")
     localStorage.setItem("users", JSON.stringify(formData));
 
     reset();
@@ -47,23 +46,40 @@ export const useRegister = () => {
     navigate("/auth/login");
   };
 
-  
-
   const onError = (errors) => {
-
-    console.log("me chal rha hu")
-    if (errors.email) {
-      toast.error(errors.email.message);
+    if (
+      errors.name &&
+      errors.email &&
+      errors.password &&
+      errors.confirmPassword
+    ) {
+      toast.error("Please fill all the fields!", {duration:1000});
+    }
+     else if (errors.name) {
+      toast.error(errors.name.message, {duration:1000});
+    }
+    else if (errors.email) {
+      toast.error(errors.email.message, {duration:1000});
     }
 
-    if (errors.password) {
-      toast.error(errors.password.message);
+    else if (errors.password) {
+      toast.error(errors.password.message, {duration:1000});
     }
 
-    if (errors.confirmPassword) {
-      toast.error(errors.confirmPassword.message);
+    else if (errors.confirmPassword) {
+      toast.error(errors.confirmPassword.message, {duration:1000});
     }
   };
 
-  return { navigate, passwordRegex, password,  errors,  getValues, handleSubmit, register, formSubmit, onError };
+  return {
+    navigate,
+    passwordRegex,
+    password,
+    errors,
+    getValues,
+    handleSubmit,
+    register,
+    formSubmit,
+    onError,
+  };
 };
