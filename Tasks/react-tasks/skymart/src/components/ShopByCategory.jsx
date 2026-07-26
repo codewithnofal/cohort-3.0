@@ -47,7 +47,7 @@ const category = [
     ring: "ring-purple-500/20",
   },
   {
-    name: "home decoration",
+    name: "home-decoration",
     count: "45+ items",
     icon: LampCeiling,
     color: "text-emerald-400",
@@ -55,7 +55,7 @@ const category = [
     ring: "ring-emerald-500/20",
   },
   {
-    name: "mens shirts",
+    name: "mens-shirts",
     count: "150+ items",
     icon: ShirtIcon,
     color: "text-orange-400",
