@@ -138,13 +138,13 @@ function RelatedProducts({ cat }) {
                 </div>
                 <div className="mt-3 flex items-center justify-between">
                   <span className="text-lg font-bold text-[#c6f24e]">
-                    {p.price}
+                    ${p.price}
                   </span>
                   <button
                     onClick={() => addToCart(p)}
                     className={`inline-flex cursor-pointer items-center gap-1.5 rounded-full ${
                       isAdded
-                        ? "bg-[#132B1C] border border-[#234d33] text-white cursor-not-allowed"
+                        ? "bg-[#132B1C] text-green-300 border border-[#255939] cursor-not-allowed"
                         : "bg-[#c6f24e] text-black hover:brightness-110"
                     } text-black px-3.5 py-1.5 text-xs font-bold hover:brightness-110`}
                   >

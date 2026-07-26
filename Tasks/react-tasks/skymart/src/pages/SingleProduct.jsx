@@ -213,7 +213,7 @@ function SingleProduct() {
                     <div className="flex items-center gap-4">
                       <button
                         onClick={() => setDecrement(product.id)}
-                        className="h-9 w-9 rounded-full border border-white/15 bg-transparent text-white flex items-center justify-center hover:bg-white/[0.06] transition"
+                        className="h-9 w-9 rounded-full border cursor-pointer border-white/15 bg-transparent text-white flex items-center justify-center hover:bg-white/[0.06] transition"
                       >
                         <Minus className="h-4 w-4" />
                       </button>
@@ -222,7 +222,7 @@ function SingleProduct() {
                       </span>
                       <button
                         onClick={() => setIncrement(product.id)}
-                        className="h-9 w-9 rounded-full border border-white/15 bg-transparent text-white flex items-center justify-center hover:bg-white/[0.06] transition"
+                        className="h-9 w-9 rounded-full border cursor-pointer border-white/15 bg-transparent text-white flex items-center justify-center hover:bg-white/[0.06] transition"
                       >
                         <Plus className="h-4 w-4" />
                       </button>
@@ -237,7 +237,7 @@ function SingleProduct() {
                     onClick={() => addToCart(product.id)}
                     className={`flex-1 inline-flex cursor-pointer items-center justify-center gap-2 rounded-2xl ${
                       isAdded
-                        ? "bg-[#132B1C] text-white cursor-not-allowed"
+                        ? "bg-[#132B1C] text-[#45CE77] border border-[#255939] cursor-not-allowed"
                         : "bg-[#c6f24e] text-black hover:brightness-110"
                     }text-black px-5 py-3 text-sm font-bold hover:brightness-110 transition`}
                   >
