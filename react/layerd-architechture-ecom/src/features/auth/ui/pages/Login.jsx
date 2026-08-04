@@ -1,8 +1,8 @@
 import { ShoppingBag, User, Lock } from "lucide-react";
+import { useAuth } from "../../hooks/useAuthHook";
 
 export default function Login() {
-
-  
+  const { register, handleSubmit, loginForm, navigate, errors } = useAuth();
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center px-5">
@@ -21,7 +21,7 @@ export default function Login() {
           Login to continue shopping.
         </p>
 
-        <div className="space-y-5">
+        <form onSubmit={handleSubmit(loginForm)} className="space-y-5">
           <div>
             <label className="text-sm text-neutral-400 mb-2 block">
               Username
@@ -31,11 +31,17 @@ export default function Login() {
               <User className="text-neutral-500 h-5 w-5" />
 
               <input
+                {...register("username", {
+                  required: "name is required",
+                })}
                 type="text"
                 placeholder="Enter username"
                 className="w-full bg-transparent px-3 py-4 text-white outline-none placeholder:text-neutral-600"
               />
             </div>
+            {errors.name && (
+              <p className="text-xs text-red-500 ">{errors.name.message}</p>
+            )}
           </div>
 
           <div>
@@ -47,11 +53,17 @@ export default function Login() {
               <Lock className="text-neutral-500 h-5 w-5" />
 
               <input
+                {...register("password", {
+                  required: "password is required",
+                })}
                 type="password"
                 placeholder="Enter password"
                 className="w-full bg-transparent px-3 py-4 text-white outline-none placeholder:text-neutral-600"
               />
             </div>
+            {errors.password && (
+              <p className="text-xs text-red-500 ">{errors.password.message}</p>
+            )}
           </div>
 
           <button className="w-full bg-[#C6F24E] text-black font-bold rounded-2xl py-4 hover:brightness-110 transition">
@@ -62,7 +74,7 @@ export default function Login() {
             Don't have an account?
             <span className="text-[#C6F24E] cursor-pointer ml-1">Register</span>
           </p>
-        </div>
+        </form>
       </div>
     </div>
   );

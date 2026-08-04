@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import MainLayout from "../app/layouts/MainLayout";
 import PublicProtected from "./protected/PublicProtected";
@@ -10,8 +10,22 @@ import AuthProtected from "./protected/AuthProtected";
 import Login from "../features/auth/ui/pages/Login";
 import Register from "../features/auth/ui/pages/Register";
 import AuthLayout from "../app/layouts/AuthLayout";
+import { userHydrationApi } from "../features/auth/api/authApi";
+import { useDispatch } from "react-redux";
+import { addUser } from "../features/auth/state/authSlice";
 
 const AppRoute = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        let response = await userHydrationApi();
+        dispatch(addUser(response));
+      } catch (error) {}
+    })();
+  }, []);
+
   let router = createBrowserRouter([
     {
       path: "/",

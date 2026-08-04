@@ -1,12 +1,17 @@
 import React from "react";
-import { Outlet } from "react-router";
+import { useSelector } from "react-redux";
+import { Navigate, Outlet } from "react-router";
 
 const AuthProtected = () => {
-  return (
-    <div>
-      <Outlet />
-    </div>
-  );
+  let { user, isLoading } = useSelector((store) => store.auth);
+
+  if (isLoading) return <h1>Loading...</h1>;
+
+  if (user) {
+    return <Navigate to={"/"} />;
+  }
+
+  return <Outlet />;
 };
 
 export default AuthProtected;

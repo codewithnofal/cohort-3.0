@@ -1,12 +1,17 @@
-import React from 'react'
-import { Outlet } from 'react-router'
+import React from "react";
+import { useSelector } from "react-redux";
+import { Navigate, Outlet } from "react-router";
 
 const PublicProtected = () => {
-  return (
-    <div>
-      <Outlet />
-    </div>
-  )
-}
+  let { user, isLoading } = useSelector((store) => store.auth);
 
-export default PublicProtected
+  if(isLoading) return <h1>Loading...</h1>
+
+  if(!user) {
+    return <Navigate to={"/auth/login"} />
+  }
+
+  return <Outlet />;
+};
+
+export default PublicProtected;
