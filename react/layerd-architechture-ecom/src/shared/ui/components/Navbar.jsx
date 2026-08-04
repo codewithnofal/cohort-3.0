@@ -1,4 +1,5 @@
 import { ShoppingBag, LogOut } from "lucide-react";
+import { NavLink } from "react-router";
 
 export default function Navbar() {
   return (
@@ -20,21 +21,21 @@ export default function Navbar() {
 
         {/* Nav Links */}
         <div className="hidden md:flex items-center gap-10">
-          <button className="text-white font-medium hover:text-[#C6F24E] transition">
+          <NavLink to={"/"} className="text-white font-medium hover:text-[#C6F24E] transition">
             Home
-          </button>
+          </NavLink>
 
-          <button className="text-neutral-400 font-medium hover:text-[#C6F24E] transition">
+          <NavLink to={"/shop"} className="text-neutral-400 font-medium hover:text-[#C6F24E] transition">
             Shop
-          </button>
+          </NavLink>
 
-          <button className="text-neutral-400 font-medium hover:text-[#C6F24E] transition">
+          <NavLink to={"/cart"} className="text-neutral-400 font-medium hover:text-[#C6F24E] transition">
             Cart
-          </button>
+          </NavLink>
 
-          <button className="text-neutral-400 font-medium hover:text-[#C6F24E] transition">
+          <NavLink to={"/orders"} className="text-neutral-400 font-medium hover:text-[#C6F24E] transition">
             Orders
-          </button>
+          </NavLink>
         </div>
 
         {/* User */}

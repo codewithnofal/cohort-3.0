@@ -1,6 +1,9 @@
 import { ShoppingBag, User, Lock } from "lucide-react";
 
 export default function Login() {
+
+  
+
   return (
     <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center px-5">
       <div className="w-full max-w-md rounded-3xl border border-white/10 bg-white/3 backdrop-blur-xl p-8">
