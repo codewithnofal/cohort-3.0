@@ -21,19 +21,47 @@ export default function Navbar() {
 
         {/* Nav Links */}
         <div className="hidden md:flex items-center gap-10">
-          <NavLink to={"/"} className="text-white font-medium hover:text-[#C6F24E] transition">
+          <NavLink
+            to={"/"}
+            className={({ isActive }) =>
+              isActive
+                ? "text-white font-medium hover:text-[#C6F24E] transition"
+                : "text-neutral-400 font-medium hover:text-[#C6F24E] transition"
+            }
+          >
             Home
           </NavLink>
 
-          <NavLink to={"/shop"} className="text-neutral-400 font-medium hover:text-[#C6F24E] transition">
+          <NavLink
+            to={"/shop"}
+            className={({ isActive }) =>
+              isActive
+                ? "text-white font-medium hover:text-[#C6F24E] transition"
+                : "text-neutral-400 font-medium hover:text-[#C6F24E] transition"
+            }
+          >
             Shop
           </NavLink>
 
-          <NavLink to={"/cart"} className="text-neutral-400 font-medium hover:text-[#C6F24E] transition">
+          <NavLink
+            to={"/cart"}
+            className={({ isActive }) =>
+              isActive
+                ? "text-white font-medium hover:text-[#C6F24E] transition"
+                : "text-neutral-400 font-medium hover:text-[#C6F24E] transition"
+            }
+          >
             Cart
           </NavLink>
 
-          <NavLink to={"/orders"} className="text-neutral-400 font-medium hover:text-[#C6F24E] transition">
+          <NavLink
+            to={"/orders"}
+            className={({ isActive }) =>
+              isActive
+                ? "text-white font-medium hover:text-[#C6F24E] transition"
+                : "text-neutral-400 font-medium hover:text-[#C6F24E] transition"
+            }
+          >
             Orders
           </NavLink>
         </div>

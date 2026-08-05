@@ -34,7 +34,7 @@ const AppRoute = () => {
           element: <MainLayout />,
           children: [
             {
-              path: "home",
+              path: "",
               element: <Home />,
             },
             {

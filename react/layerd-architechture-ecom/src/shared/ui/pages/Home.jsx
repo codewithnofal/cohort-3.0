@@ -71,7 +71,7 @@ export default function Home() {
           {categories.map((item) => (
             <div
               key={item}
-              className="cursor-pointer rounded-3xl border border-white/10 bg-white/[0.03] p-6 text-center transition hover:border-[#C6F24E]/40 hover:bg-white/[0.05]"
+              className="cursor-pointer rounded-3xl border border-white/10 bg-white/3 p-6 text-center transition hover:border-[#C6F24E]/40 hover:bg-white/[0.05]"
             >
               <Package className="mx-auto h-10 w-10 text-[#C6F24E]" />
 
@@ -88,7 +88,7 @@ export default function Home() {
         </h2>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+          <div className="rounded-3xl border border-white/10 bg-white/3 p-8">
             <Truck className="h-12 w-12 text-[#C6F24E]" />
 
             <h3 className="mt-5 text-xl font-bold">
@@ -101,7 +101,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+          <div className="rounded-3xl border border-white/10 bg-white/3p-8">
             <ShieldCheck className="h-12 w-12 text-[#C6F24E]" />
 
             <h3 className="mt-5 text-xl font-bold">
@@ -114,7 +114,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+          <div className="rounded-3xl border border-white/10 bg-white/3 p-8">
             <Star className="h-12 w-12 text-[#C6F24E]" />
 
             <h3 className="mt-5 text-xl font-bold">
