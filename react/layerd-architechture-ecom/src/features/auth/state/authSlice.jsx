@@ -19,6 +19,9 @@ const authSlice = createSlice({
       state.isLoading = false;
     },
   },
+  extraReducers: (builder) => {
+      builder.addCase().addCase().addCase()
+  }
 });
 
 export const { addUser, removeUser } = authSlice.actions;

@@ -4,10 +4,12 @@ import { loginUserApi } from "../api/authApi";
 import { useDispatch } from "react-redux";
 import { addUser } from "../state/authSlice";
 import { toast } from "react-toastify";
+import { loginUserAction } from "../state/authAction";
 
 export const useAuth = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -15,16 +17,19 @@ export const useAuth = () => {
     formState: { errors },
   } = useForm();
 
+
+
   const loginForm = async (data) => {
     try {
-      let response = await loginUserApi(data);
-      console.log(response);
-      dispatch(addUser(response));
+      console.log("login form triggered...");
+      dispatch(loginUserAction(data));
       toast.success("user logged in!");
     } catch (error) {
       console.log("err from loginForm", error);
     }
   };
+
+  
 
   return {
     register,
