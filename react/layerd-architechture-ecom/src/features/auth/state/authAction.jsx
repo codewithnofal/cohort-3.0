@@ -14,3 +14,20 @@ export const loginUserAction = createAsyncThunk(
     }
   },
 );
+
+export const loginUserHydration = createAsyncThunk(
+  "/hydration",
+  async (_, thunkApi) => {
+    let token = localStorage.getItem("accessToken");
+    try {
+      let res = await api.get("/auth/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return res.data;
+    } catch (error) {
+      console.log("hydration user api err", error);
+    }
+  },
+);

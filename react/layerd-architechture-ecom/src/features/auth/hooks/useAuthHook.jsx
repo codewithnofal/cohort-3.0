@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
-import { loginUserApi } from "../api/authApi";
+// import { loginUserApi } from "../api/authApi";
 import { useDispatch } from "react-redux";
 import { addUser } from "../state/authSlice";
 import { toast } from "react-toastify";
@@ -19,7 +19,7 @@ export const useAuth = () => {
 
 
 
-  const loginForm = async (data) => {
+  const loginForm = (data) => {
     try {
       console.log("login form triggered...");
       dispatch(loginUserAction(data));
