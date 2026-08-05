@@ -1,7 +1,15 @@
 import { Search, Filter } from "lucide-react";
-import { useAllCategories } from "../../hooks/useProductsHook";
+import {
+  useAllCategories,
+  useProductByCategory,
+} from "../../hooks/useProductsHook";
 
-export default function FilterProducts({ search, setSearch }) {
+export default function FilterProducts({
+  search,
+  setSearch,
+  prodCategory,
+  setProdCategory,
+}) {
   let { data, isPending, error } = useAllCategories();
 
   console.log("category data", data);
@@ -31,8 +39,12 @@ export default function FilterProducts({ search, setSearch }) {
           className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-500"
         />
 
-        <select className="w-full cursor-pointer appearance-none rounded-2xl border border-white/10 bg-[#1A1A1A] py-3 pl-12 pr-10 text-white outline-none transition focus:border-[#C6F24E]">
-          <option>All Categories</option>
+        <select
+          value={prodCategory}
+          onChange={(e) => setProdCategory(e.target.value)}
+          className="w-full cursor-pointer appearance-none rounded-2xl border border-white/10 bg-[#1A1A1A] py-3 pl-12 pr-10 text-white outline-none transition focus:border-[#C6F24E]"
+        >
+          <option value="">All Categories</option>
           {data?.map((c) => {
             return (
               <option key={c.slug} value={c.slug}>

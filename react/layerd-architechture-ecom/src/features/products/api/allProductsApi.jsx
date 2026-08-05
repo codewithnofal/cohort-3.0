@@ -19,3 +19,13 @@ export const getAllProductsCategories = async () => {
     console.log("err in all products data ->", error);
   }
 };
+
+export const getProductsByCategory = async (category) => {
+  try {
+    const res = await api.get(`/products/category/${category}`);
+    console.log("categoy data", res)
+    return res.data;
+  } catch (error) {
+    console.log("err from category", error);
+  }
+};
