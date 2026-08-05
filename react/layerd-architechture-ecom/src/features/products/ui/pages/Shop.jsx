@@ -15,6 +15,10 @@ const Shop = () => {
     setProdCategory,
   } = useProductByCategory();
 
+  
+
+  console.log("i am prodcategory data ->>>>>>", prodCategory);
+
   return (
     <div>
       <FilterProducts
@@ -24,12 +28,12 @@ const Shop = () => {
         setSearch={setSearch}
       />
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-5 py-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {prodCategory?.products?.length
-          ? prodCategory?.products?.map((product) => (
+        {categoryData?.products?.length
+          ? categoryData?.products?.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))
           : data?.products?.map((product) => (
-              <ProductCard key={product.id} product={product} />  
+              <ProductCard key={product.id} product={product} />
             ))}
       </div>
     </div>
