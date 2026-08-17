@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import TodoList from "./components/TodoList";
 
 const App = () => {
   return (
-    <div className='text-red-500'>
-      app
+    <div >
+      <TodoList />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
