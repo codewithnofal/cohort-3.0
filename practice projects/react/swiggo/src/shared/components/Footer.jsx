@@ -1,4 +1,5 @@
-import { Instagram, Twitter, Facebook, Apple, Smartphone } from "lucide-react";
+// import { Instagram, Twitter, Facebook, Apple, Smartphone } from "lucide-react";
+import {} from "lucide-react";
 
 export default function Footer() {
   return (
@@ -10,7 +11,9 @@ export default function Footer() {
             <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#fc8019] text-lg font-bold text-white">
               S
             </div>
-            <span className="text-lg font-bold tracking-tight text-[#1c1c1c]">Swiggo</span>
+            <span className="text-lg font-bold tracking-tight text-[#1c1c1c]">
+              Swiggo
+            </span>
           </div>
           <p className="mt-3 max-w-xs text-sm text-[#7e7e7e]">
             Fresh food from your favourite local restaurants, delivered fast.
@@ -44,10 +47,18 @@ export default function Footer() {
         <div>
           <p className="text-sm font-semibold text-[#1c1c1c]">Company</p>
           <ul className="mt-3 flex flex-col gap-2 text-sm text-[#7e7e7e]">
-            <li className="cursor-pointer transition-colors hover:text-[#fc8019]">About Us</li>
-            <li className="cursor-pointer transition-colors hover:text-[#fc8019]">Careers</li>
-            <li className="cursor-pointer transition-colors hover:text-[#fc8019]">Team</li>
-            <li className="cursor-pointer transition-colors hover:text-[#fc8019]">Swiggo One</li>
+            <li className="cursor-pointer transition-colors hover:text-[#fc8019]">
+              About Us
+            </li>
+            <li className="cursor-pointer transition-colors hover:text-[#fc8019]">
+              Careers
+            </li>
+            <li className="cursor-pointer transition-colors hover:text-[#fc8019]">
+              Team
+            </li>
+            <li className="cursor-pointer transition-colors hover:text-[#fc8019]">
+              Swiggo One
+            </li>
           </ul>
         </div>
 
@@ -55,10 +66,18 @@ export default function Footer() {
         <div>
           <p className="text-sm font-semibold text-[#1c1c1c]">Help & Support</p>
           <ul className="mt-3 flex flex-col gap-2 text-sm text-[#7e7e7e]">
-            <li className="cursor-pointer transition-colors hover:text-[#fc8019]">Partner With Us</li>
-            <li className="cursor-pointer transition-colors hover:text-[#fc8019]">Ride With Us</li>
-            <li className="cursor-pointer transition-colors hover:text-[#fc8019]">Terms & Conditions</li>
-            <li className="cursor-pointer transition-colors hover:text-[#fc8019]">Privacy Policy</li>
+            <li className="cursor-pointer transition-colors hover:text-[#fc8019]">
+              Partner With Us
+            </li>
+            <li className="cursor-pointer transition-colors hover:text-[#fc8019]">
+              Ride With Us
+            </li>
+            <li className="cursor-pointer transition-colors hover:text-[#fc8019]">
+              Terms & Conditions
+            </li>
+            <li className="cursor-pointer transition-colors hover:text-[#fc8019]">
+              Privacy Policy
+            </li>
           </ul>
         </div>
 
