@@ -1,5 +1,5 @@
 // import { Instagram, Twitter, Facebook, Apple, Smartphone } from "lucide-react";
-import {} from "lucide-react";
+import {Instagram} from "lucide-react";
 
 export default function Footer() {
   return (
@@ -8,9 +8,7 @@ export default function Footer() {
         {/* Brand */}
         <div>
           <div className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#fc8019] text-lg font-bold text-white">
-              S
-            </div>
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#fc8019] text-lg font-bold text-white"></div>
             <span className="text-lg font-bold tracking-tight text-[#1c1c1c]">
               Swiggo
             </span>
