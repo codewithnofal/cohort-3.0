@@ -1,103 +1,87 @@
-const { default: mongoose } = require("mongoose");
 const NotesModel = require("../models/notes.model");
 
-// CREATE NOTE
-const createNoteController = async (req, res) => {
-  try {
-    let { title, description } = req.body;
+// CREATE
+const createNotesController = async (req, res) => {
+  let { title, description } = req.body;
 
-    const newNote = await NotesModel.create({
-      title,
-      description,
-    });
-
-    return res.status(201).json({
-      message: "Note created successfully",
-      data: newNote,
-    });
-  } catch (error) {
-    return res.status(500).json({
-      message: "internal server error",
-    });
-  }
-};
-
-// GET ALL NOTES
-const getAllNotesController = async (req, res) => {
-  const getAllNotes = await NotesModel.find();
-
-  res.status(200).json({
-    message: "all notes fetch successfully",
-    data: getAllNotes,
+  const newNote = await NotesModel.create({
+    title,
+    description,
   });
 
+  return res.status(201).json({
+    message: "notes created successfully",
+    data: newNote,
+  });
+};
+
+// READ ALL NOTES
+const getAllNotesController = async (req, res) => {
   try {
-  } catch (error) {
-    return res.status(500).json({
-      message: "internel server error",
+    const getAllNotes = await NotesModel.find();
+
+    return res.status(200).json({
+      message: "all notes fetched",
+      data: getAllNotes,
     });
+  } catch (error) {
+    return res.status(500).json("internal server error");
   }
 };
 
-// GET SINGLE NOTE
+// READ SINGLE NOTE
 const getSingleNoteController = async (req, res) => {
-  const notesId = req.params.id;
+  let noteId = req.params.id;
 
   try {
-    const singleNote = await NotesModel.findById(notesId);
+    const singleNote = await NotesModel.findById(noteId);
 
-    res.status(200).json({
-      message: "single note fetched successfully",
+    return res.status(200).json({
+      message: "fetched single note successfully",
       data: singleNote,
     });
   } catch (error) {
-    return res.send(500).json({
-      message: "internal server error",
-    });
+    return res.status(500).json("internal server error");
   }
 };
 
-// UPDATE NOTE
+
+// UPDATE
 const updateNotesController = async (req, res) => {
   try {
-    const notesId = req.params.id;
-    let body = req.body;
+    let noteId = req.params.id;
+    let data = req.body;
 
-    const updateNote = await NotesModel.findByIdAndUpdate(notesId, body, {
-      new: true,
-    });
+    const notesUpdate = await NotesModel.findByIdAndUpdate(noteId, data, {new: true});
 
-    res.status(200).json({
+    return res.status(200).json({
       message: "note updated successfully",
-      data: updateNote,
+      data: notesUpdate,
     });
   } catch (error) {
-    return res.status(500).json({
-      message: "internal server error",
-    });
+    return res.status(500).json("internal server error");
   }
 };
 
+// DELETE
 const deleteNoteController = async (req, res) => {
-  const id = req.params.id;
+    try {
+        let noteId = req.params.id;
+        const deleteNote = await NotesModel.findByIdAndDelete(noteId);
 
-  try {
-    await NotesModel.findByIdAndDelete(id);
-
-    res.status(200).json({
-      message: "note deleted successfully",
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: "internal server error",
-    });
-  }
-};
+        return res.status(200).json({
+            message: "Note deleted successfully",
+            data: deleteNote
+        })
+    } catch (error) {
+        return res.status(500).json("internal server error")
+    }
+}
 
 module.exports = {
-  createNoteController,
+  createNotesController,
   getAllNotesController,
   getSingleNoteController,
   updateNotesController,
-  deleteNoteController,
+  deleteNoteController
 };
