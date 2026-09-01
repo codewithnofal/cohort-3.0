@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const connectDB = require("./config/db");
 const notesRoute = require("./routes/note.route");
@@ -8,7 +9,5 @@ app.use(express.json());
 connectDB();
 
 app.use("/notes", notesRoute);
-
-
 
 module.exports = app;
