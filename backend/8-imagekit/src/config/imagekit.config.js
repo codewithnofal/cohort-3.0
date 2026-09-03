@@ -8,7 +8,7 @@ const storageInstance = new ImageKit({
 
 const sendFiles = async (file, fileName) => {
   const obj = {
-    file: file,
+    file: file.toString("base64"),
     fileName: fileName,
     folder: "cohort3",
   };

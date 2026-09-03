@@ -8,10 +8,7 @@ const createPostController = async (req, res) => {
 
     console.log(file);
 
-    const uploadImage = await sendFiles(
-      file.buffer,
-      file.originalname
-    );
+    const uploadImage = await sendFiles(file.buffer, file.originalname);
 
     console.log(uploadImage);
 
@@ -22,8 +19,8 @@ const createPostController = async (req, res) => {
 
     return res.status(201).json({
       message: "post created successfully",
+      imageURL: uploadImage.url,
     });
-
   } catch (error) {
     console.log(error);
 
