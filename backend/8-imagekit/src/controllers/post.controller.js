@@ -1,4 +1,4 @@
-const imagekit = require("../config/imagekit.config");
+const sendFiles = require("../config/imagekit.config");
 const PostModel = require("../models/post.model");
 
 const createPostController = async (req, res) => {
@@ -6,26 +6,30 @@ const createPostController = async (req, res) => {
     const { caption } = req.body;
     const file = req.file;
 
-    const uploadFile = await imagekit.upload({
-      file: file.buffer,
-      fileName: file.originalname,
-      folder: "uploads/",
+    console.log(file);
+
+    const uploadImage = await sendFiles(
+      file.buffer,
+      file.originalname
+    );
+
+    console.log(uploadImage);
+
+    const createPost = await PostModel.create({
+      caption,
+      image: uploadImage.url,
     });
-
-    console.log(uploadFile);
-
-    // const createPost = await PostModel.create({
-    //   caption: caption,
-    //   image: uploadFile,
-    // });
 
     return res.status(201).json({
       message: "post created successfully",
     });
+
   } catch (error) {
+    console.log(error);
+
     return res.status(500).json({
       message: "internal server error",
-      error: error,
+      error: error.message,
     });
   }
 };

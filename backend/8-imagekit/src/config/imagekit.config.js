@@ -1,10 +1,19 @@
-const {ImageKit} = require("@imagekit/nodejs");
+const ImageKit = require("@imagekit/nodejs");
 
-const imagekit = new ImageKit({
+const storageInstance = new ImageKit({
+  urlEndpoint: process.env.IK_URL,
   publicKey: process.env.IK_PUBLIC,
   privateKey: process.env.IK_PRIVATE,
-  urlEndpoint: process.env.IK_URL,
 });
 
+const sendFiles = async (file, fileName) => {
+  const obj = {
+    file: file,
+    fileName: fileName,
+    folder: "cohort3",
+  };
 
-module.exports = imagekit
+  return await storageInstance.files.upload(obj);
+};
+
+module.exports = sendFiles;
