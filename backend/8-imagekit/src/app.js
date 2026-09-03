@@ -5,6 +5,7 @@ const app = express();
 
 app.use(express.json());
 
+
 app.use("/api/post", postRoute);
 
 module.exports = app;
