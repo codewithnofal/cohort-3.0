@@ -1,14 +1,15 @@
-import AuthModel from "../models/auth.model.js";
+import userModel from "../models/auth.model.js";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 
 export const registerUserController = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    const user = await AuthModel.create({
+    const user = await userModel.create({
       name,
       email,
-      password,
+      password: await bcrypt.hash(password, 10),
     });
 
     const token = jwt.sign(
@@ -34,13 +35,19 @@ export const registerUserController = async (req, res) => {
 };
 
 export const getUserDetails = async (req, res) => {
-  const authHeader = req.headers.authorization;
+  res.status(200).json({
+    data: {
+      user: req.user,
+    },
+  });
+};
 
-  console.log(authHeader);
-
-  const data = jwt.verify(authHeader, process.env.JWT_SECRET);
-
-  const user = await AuthModel.findById(data.id);
-
-  console.log(user);
+export const loginUserController = async (req, res) => {
+  try {
+    
+  } catch (error) {
+    return res.status(500).json({
+      message: "internal server error",
+    });
+  }
 };
