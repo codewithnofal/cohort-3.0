@@ -44,7 +44,23 @@ export const getUserDetails = async (req, res) => {
 
 export const loginUserController = async (req, res) => {
   try {
-    
+    const { email, password } = req.body;
+
+    const user = await userModel.findOne({
+      email,
+    });
+
+    const isValidPassword = bcrypt.compare(password, user.password);
+
+    if (!isValidPassword) {
+      return res.status(400).json({
+        message: "invlid email or password",
+      });
+    }
+
+    return res.status(200).json({
+      message: "User loggedIn successfully",
+    });
   } catch (error) {
     return res.status(500).json({
       message: "internal server error",
