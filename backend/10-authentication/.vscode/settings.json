@@ -1,0 +1,9 @@
+{
+    "a-file-icon-vscode.arrowTheme": "triangle",
+    "a-file-icon-vscode.activeIconPacks": [
+        "angular",
+        "vue",
+        "rails"
+    ],
+    "a-file-icon-vscode.folderColor": "#979fad"
+}
