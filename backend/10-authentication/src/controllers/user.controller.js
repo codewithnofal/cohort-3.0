@@ -43,6 +43,9 @@ export const getUserDetailsController = async (req, res) => {
   });
 };
 
+
+
+
 export const loginUserController = async (req, res) => {
   try {
     const { email, password } = req.body;
