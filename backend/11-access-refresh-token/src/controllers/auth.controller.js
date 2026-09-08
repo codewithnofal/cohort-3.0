@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import userModel from "../models/auth.model.js";
-import { generateTokens } from "../utils/auth.js";
+import { generateTokens, verifyAccessTokon } from "../utils/auth.js";
 
 export const registerUserController = async (req, res) => {
   try {
@@ -36,6 +36,32 @@ export const registerUserController = async (req, res) => {
         emai: user.email,
       },
       accessToken,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "internal server error",
+    });
+  }
+};
+
+export const getUserDetails = async (req, res) => {
+  try {
+    const token = req.headers.authorization;
+
+    const { decode } = verifyAccessTokon(token);
+
+    console.log(decode);
+
+    const user = await userModel.findById(decode.id);
+
+    console.log(user);
+
+    return res.status(200).json({
+      message: "user fetched successfully",
+      data: {
+        name: user.name,
+        email: user.email,
+      },
     });
   } catch (error) {
     return res.status(500).json({
