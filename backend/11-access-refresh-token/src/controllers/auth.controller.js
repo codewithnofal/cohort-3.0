@@ -25,7 +25,7 @@ export const registerUserController = async (req, res) => {
     user.refreshToken = refreshToken;
     await user.save();
 
-    res.cookie("accessToken", accessToken, {
+    res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
     });
 
@@ -45,27 +45,17 @@ export const registerUserController = async (req, res) => {
 };
 
 export const getUserDetails = async (req, res) => {
+  const accessToken = req.headers.authorization?.split(" ")[1];
+
   try {
-    const token = req.headers.authorization;
-
-    const { decode } = verifyAccessTokon(token);
-
+    const decode = verifyAccessTokon(accessToken);
     console.log(decode);
 
     const user = await userModel.findById(decode.id);
-
     console.log(user);
-
-    return res.status(200).json({
-      message: "user fetched successfully",
-      data: {
-        name: user.name,
-        email: user.email,
-      },
-    });
   } catch (error) {
-    return res.status(500).json({
-      message: "internal server error",
+    return res.status(400).json({
+      message: "Unauthorized, accessToken expires",
     });
   }
 };
