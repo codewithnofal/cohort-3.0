@@ -20,7 +20,7 @@ export const registerUserController = async (req, res) => {
       passwordHash: await bcrypt.hash(password, 10),
     });
 
-    const { refreshToken, accessToken } = generateTokens({ id: user._id });
+    const { refreshToken, accessToken } = generateTokens({ userID: user._id });
 
     user.refreshToken = refreshToken;
     await user.save();
@@ -49,10 +49,16 @@ export const getUserDetails = async (req, res) => {
 
   try {
     const decode = verifyAccessTokon(accessToken);
-    console.log(decode);
 
     const user = await userModel.findById(decode.id);
-    console.log(user);
+
+    return res.status(200).json({
+      message: "user fatched successfully",
+      data: {
+        name: user.name,
+        email: user.email,
+      },
+    });
   } catch (error) {
     return res.status(400).json({
       message: "Unauthorized, accessToken expires",
