@@ -73,7 +73,6 @@ export const getUserDetails = async (req, res) => {
 export const getNewTokens = async (req, res) => {
   try {
     const refreshToken = req.cookies.refreshToken;
-
     const decode = verifyRefreshToken(refreshToken);
 
     const user = await userModel.findById(decode.id);
