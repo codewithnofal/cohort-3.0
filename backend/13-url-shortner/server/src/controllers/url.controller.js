@@ -53,7 +53,7 @@ export const getAllUrlController = async (req, res) => {
   try {
     return res.status(200).json({
       message: "all urls fetched successfully",
-      urls
+      urls,
     });
   } catch (error) {
     return res.status(500).json({
@@ -62,3 +62,12 @@ export const getAllUrlController = async (req, res) => {
   }
 };
 
+export const deleteUrlController = async (req, res) => {
+  const { code } = req.params;
+
+  const deleteUser = await urlModel.findOneAndDelete({ shortCode: code });
+
+  return res.status(200).json({
+    message: "Url deleted successfully",
+  });
+};
