@@ -63,11 +63,18 @@ export const getAllUrlController = async (req, res) => {
 };
 
 export const deleteUrlController = async (req, res) => {
-  const { id } = req.params;
+  const { code } = req.params;
 
-  const deleteUser = await urlModel.findByIdAndDelete({ id });
+  const deleteUrl = await urlModel.findOneAndDelete({ shortCode: code });
+
+  if (!deleteUrl) {
+    return res.status(400).json({
+      message: "url is not found",
+    });
+  }
 
   return res.status(200).json({
     message: "Url deleted successfully",
+    deleteUrl,
   });
 };

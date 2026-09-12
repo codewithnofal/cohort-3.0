@@ -10,6 +10,8 @@ export default function UrlList({ getAllUrlData, setLinks, links, deleteUrl }) {
     setTimeout(() => {
       setCopied(null);
     }, 2000);
+
+    
   };
 
   useEffect(() => {
@@ -65,7 +67,7 @@ export default function UrlList({ getAllUrlData, setLinks, links, deleteUrl }) {
               </button>
 
               <button
-                onClick={() => deleteUrl(link._id)}
+                onClick={() => deleteUrl(link.shortCode)}
                 type="button"
                 aria-label="Delete link"
                 className="rounded-lg border border-[#e9e9e7] cursor-pointer bg-[#fcfcfb] p-1.5 text-[#787774] transition-colors hover:bg-[#fdebec] hover:text-[#e03e3e]"

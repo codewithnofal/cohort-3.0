@@ -15,8 +15,8 @@ export default function UrlShortener() {
     setLinks(res.data?.urls);
   };
 
-  const deleteUrl = async (id) => {
-    const res = await api.get(`/url/delete/${id}`);
+  const deleteUrl = async (code) => {
+    const res = await api.delete(`/url/delete/${code}`);
     getAllUrlData();
   };
 
