@@ -63,9 +63,9 @@ export const getAllUrlController = async (req, res) => {
 };
 
 export const deleteUrlController = async (req, res) => {
-  const { code } = req.params;
+  const { id } = req.params;
 
-  const deleteUser = await urlModel.findOneAndDelete({ shortCode: code });
+  const deleteUser = await urlModel.findByIdAndDelete({ id });
 
   return res.status(200).json({
     message: "Url deleted successfully",
