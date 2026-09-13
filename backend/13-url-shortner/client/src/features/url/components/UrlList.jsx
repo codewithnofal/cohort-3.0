@@ -11,7 +11,6 @@ export default function UrlList({ getAllUrlData, setLinks, links, deleteUrl }) {
       setCopied(null);
     }, 2000);
 
-    
   };
 
   useEffect(() => {
