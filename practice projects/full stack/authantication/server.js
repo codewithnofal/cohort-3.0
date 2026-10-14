@@ -1,7 +1,9 @@
-import app from "./app/app";
+import app from "./app/app.js";
+import config from "./config/config.js";
 
-const port = 3000;
+const port = config.PORT;
 
 app.listen(port, () => {
   console.log(`server running on ${port} `);
 });
+``
