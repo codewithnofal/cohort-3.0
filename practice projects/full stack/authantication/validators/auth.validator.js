@@ -20,7 +20,7 @@ export const registerValidation = [
     .exists().withMessage("password is required").bail()
     .isString().withMessage("password must be a string").bail()
     .custom((value) => value.trim().length > 0).withMessage("password cannot be empty or only spaces").bail()
-    .isLength({max: 6}).withMessage("password must be at least 8 char long"),
+    .isLength({min: 6}).withMessage("password must be at least 8 char long"),
 
     (req, res, next) => {
         const error = validationResult(req)
